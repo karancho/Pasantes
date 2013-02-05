@@ -1,4 +1,10 @@
 Pasantes::Application.routes.draw do
+  resources :localities
+
+
+  resources :provinces
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
