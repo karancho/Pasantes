@@ -1,0 +1,28 @@
+<div class="depot_form">
+  <% if flash[:alert] %>
+    <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+
+<%= form_tag do %>
+  
+  <p>Fundación Islas Malvinas</p>
+  <p>Escuela Internacional de Turismo, Hotelería y Gastronomía</p>
+  <p>Departamento de Práctica Profesional</p>
+  	
+  <fieldset>
+    <legend>Ingrese valores de logueo</legend>
+      <div>
+        <%= label_tag :email, 'Email:' %>
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+      <div>
+        <%= label_tag :password, 'Password:' %>
+        <%= password_field_tag :password, params[:password] %>
+      </div>
+      <div>
+        <%= submit_tag "Entrar" %>
+      </div>
+    </fieldset>
+<% end %>
+</div>
+

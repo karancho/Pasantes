@@ -1,4 +1,32 @@
 Pasantes::Application.routes.draw do
+
+#==========================================================================
+# Pagina 198 de AWDR:
+# Whereas previously we
+# relied on the scaffolding generator to create our model and routes for us, this
+# time we simply generated a controller because there is no database-backed
+# model for this controller. Unfortunately, without the scaffolding conventions
+# to guide it, Rails has no way of knowing which actions are to respond to GET
+# requests, which are to respond to POST requests, and so on, for this controller
+
+  get "admin" => "admin#index"
+  controller :sessions do
+    get    'login' => :new
+    post   'login' => :create
+    delete 'logout' => :destroy
+  end
+#Esto produce:
+#rake routes
+# admin  GET    /admin(.:format)   admin#index
+# login  GET    /login(.:format)   sessions#new
+#        POST   /login(.:format)   sessions#create
+# logout DELETE /logout(.:format)  sessions#destroy
+#============================================================================
+
+  get "sessions/new"
+  get "sessions/create"
+  get "sessions/destroy"
+
   resources :users
 
 
@@ -58,6 +86,9 @@ Pasantes::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+    get "landing/bienvenida"
+    root :to => 'landing#bienvenida'
+
 
   # See how all your routes lay out with "rake routes"
 

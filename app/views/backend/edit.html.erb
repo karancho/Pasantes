@@ -1,0 +1,17 @@
+
+
+<%= form_for(@user, :url => backend_update_path(@user), :html => { :method => :put }) do |f| %>
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name, :autofocus => true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.submit "Update" %></div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<!-- <p>Unhappy? <%#= button_to "Cancel account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>  -->
+
+<%= link_to "Back", :back %>

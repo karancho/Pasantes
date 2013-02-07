@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Pasantes</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Pasantes</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<% if session[:user_id] %>
+		<ul>
+			<li>
+				<%= link_to 'ABM Provincias',provinces_path %>
+			</li>
+			<li>
+				<%= link_to 'ABM Localidades', localities_path %>
+			</li>
+			<li>
+				<%= link_to 'Usuarios',users_path %>
+			</li>
+		</ul>
+		<%= button_to 'Logout', logout_path, method: :delete %>
+		
+		
+		<% end %>
 
-<%= yield %>
+		<%= yield %>
 
-</body>
+	</body>
 </html>
