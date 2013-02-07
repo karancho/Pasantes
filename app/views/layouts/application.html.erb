@@ -19,9 +19,9 @@
 				</li>
 			</ul>
 			<% user = User.find_by_id(session[:user_id]) %>
-			<% if user.dni == "111" %>
+			<% if user.admin == true %>
 			<ul>
-				Administradores
+				Administradores:
 				<li>
 					<%= link_to 'ABM Provincias',provinces_path %>
 				</li>
