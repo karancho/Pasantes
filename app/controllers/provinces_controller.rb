@@ -1,5 +1,8 @@
 class ProvincesController < ApplicationController
-  skip_before_filter :authorize, only: [:create, :update, :destroy]
+  
+  #before_filter :soloadmin
+  
+  #skip_before_filter :authorize, only: [:create, :update, :destroy]
   #skip_before_filter :authorize
   
   # GET /provinces

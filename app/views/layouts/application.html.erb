@@ -8,20 +8,34 @@
 	</head>
 	<body>
 		<% if session[:user_id] %>
-		<ul>
-			<li>
-				<%= link_to 'ABM Provincias',provinces_path %>
-			</li>
-			<li>
-				<%= link_to 'ABM Localidades', localities_path %>
-			</li>
-			<li>
-				<%= link_to 'Usuarios',users_path %>
-			</li>
-		</ul>
-		<%= button_to 'Logout', logout_path, method: :delete %>
-		
-		
+
+			<ul>
+				Menu General
+				<li>
+					Ofertas
+				</li>
+				<li>
+					Mi CV
+				</li>
+			</ul>
+			<% user = User.find_by_id(session[:user_id]) %>
+			<% if user.dni == "111" %>
+			<ul>
+				Administradores
+				<li>
+					<%= link_to 'ABM Provincias',provinces_path %>
+				</li>
+				<li>
+					<%= link_to 'ABM Localidades', localities_path %>
+				</li>
+				<li>
+					<%= link_to 'Usuarios',users_path %>
+				</li>
+			</ul>
+			<% end %>
+	
+			<%= button_to 'Logout', logout_path, method: :delete %>
+
 		<% end %>
 
 		<%= yield %>
