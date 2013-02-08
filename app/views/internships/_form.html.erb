@@ -1,0 +1,86 @@
+<%= form_for(@internship) do |f| %>
+<% if @internship.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
+
+	<ul>
+		<% @internship.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :company_id %>
+	<br />
+	<%= f.select :company_id, @companies.map {|com| [com.name, com.id]} %>
+</div>
+<div class="field">
+	<%= f.label :description_job %>
+	<br />
+	<%= f.text_field :description_job %>
+</div>
+
+<fieldset>
+	<legend>
+		TODO: checkboxs para desasignar
+	</legend>
+</fieldset>
+
+<div class="field">
+	<%= f.label :situation_id %>
+	<br />
+	<%= f.select :situation_id, @situations.map {|sit| [sit.status, sit.id]} %>
+</div>
+<div class="field">
+	<%= f.label :date_from %>
+	<br />
+	<%= f.date_select :date_from %>
+</div>
+<div class="field">
+	<%= f.label :date_until %>
+	<br />
+	<%= f.date_select :date_until %>
+</div>
+<div class="field">
+	<%= f.label :hs_monday %>
+	<br />
+	<%= f.number_field :hs_monday %>
+</div>
+<div class="field">
+	<%= f.label :hs_tuesday %>
+	<br />
+	<%= f.number_field :hs_tuesday %>
+</div>
+<div class="field">
+	<%= f.label :hs_wednesday %>
+	<br />
+	<%= f.number_field :hs_wednesday %>
+</div>
+<div class="field">
+	<%= f.label :hs_thursday %>
+	<br />
+	<%= f.number_field :hs_thursday %>
+</div>
+<div class="field">
+	<%= f.label :hs_friday %>
+	<br />
+	<%= f.number_field :hs_friday %>
+</div>
+<div class="field">
+	<%= f.label :hs_saturday %>
+	<br />
+	<%= f.number_field :hs_saturday %>
+</div>
+<div class="field">
+	<%= f.label :hs_sunday %>
+	<br />
+	<%= f.number_field :hs_sunday %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>

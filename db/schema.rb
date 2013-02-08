@@ -11,7 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207220505) do
+ActiveRecord::Schema.define(:version => 20130208173710) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "locality_id"
+    t.string   "manager"
+    t.string   "boss"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "internships", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "description_job"
+    t.integer  "situation_id"
+    t.date     "date_from"
+    t.date     "date_until"
+    t.integer  "hs_monday"
+    t.integer  "hs_tuesday"
+    t.integer  "hs_wednesday"
+    t.integer  "hs_thursday"
+    t.integer  "hs_friday"
+    t.integer  "hs_saturday"
+    t.integer  "hs_sunday"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "internships_tasks", :force => true do |t|
+    t.integer  "internship_id"
+    t.integer  "task_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "localities", :force => true do |t|
     t.string   "locality"
@@ -24,6 +58,18 @@ ActiveRecord::Schema.define(:version => 20130207220505) do
     t.string   "province"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "situations", :force => true do |t|
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

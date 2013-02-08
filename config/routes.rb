@@ -1,5 +1,20 @@
 Pasantes::Application.routes.draw do
 
+  resources :tasks
+
+
+  resources :situations
+
+
+  resources :internships_tasks
+
+
+  resources :internships
+
+
+  resources :companies
+
+
 #==========================================================================
 # Pagina 198 de AWDR:
 # Whereas previously we

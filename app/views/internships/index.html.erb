@@ -1,0 +1,47 @@
+<% user = User.find_by_id(session[:user_id]) %>
+
+<h1>Listado de ofertas</h1>
+
+<% if user.admin == true %>
+  <%= link_to 'Agregar Oferta', new_internship_path %>
+<% end %>
+
+<p>TODO: filtrar por mes</p>
+
+<table border="1">
+  <tr>
+    <th>Empresa</th>
+    <th>Descripción del trabajo</th>
+    <th>Cantidad de alumnos solicitados</th>
+    <th>Situación</th>
+    <th>Desde</th>
+    <th>Hasta</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @internships.each do |internship| %>
+  <tr>
+    <td><%= internship.company.name %></td>
+    <td><%= internship.description_job %></td>
+    <td>TODO</td>
+    <td><%= internship.situation.status %></td>
+    <td><%= internship.date_from %></td>
+    <td><%= internship.date_until %></td>
+    
+    <td><%= link_to 'Mas Datos', internship %></td>
+    
+    <% if user.admin == true %>
+      <td><%= link_to 'Edit', edit_internship_path(internship) %></td>
+      <td><%= link_to 'Destroy', internship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

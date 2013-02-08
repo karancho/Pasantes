@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company_id: 1
+  description_job: MyString
+  situation_id: 1
+  date_from: 2013-02-08
+  date_until: 2013-02-08
+  hs_monday: 1
+  hs_tuesday: 1
+  hs_wednesday: 1
+  hs_thursday: 1
+  hs_friday: 1
+  hs_saturday: 1
+  hs_sunday: 1
+
+two:
+  company_id: 1
+  description_job: MyString
+  situation_id: 1
+  date_from: 2013-02-08
+  date_until: 2013-02-08
+  hs_monday: 1
+  hs_tuesday: 1
+  hs_wednesday: 1
+  hs_thursday: 1
+  hs_friday: 1
+  hs_saturday: 1
+  hs_sunday: 1

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  address: MyString
+  locality_id: 1
+  manager: MyString
+  boss: MyString
+
+two:
+  name: MyString
+  address: MyString
+  locality_id: 1
+  manager: MyString
+  boss: MyString
