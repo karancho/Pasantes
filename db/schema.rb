@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130208173710) do
+ActiveRecord::Schema.define(:version => 20130209003134) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -41,10 +41,8 @@ ActiveRecord::Schema.define(:version => 20130208173710) do
   end
 
   create_table "internships_tasks", :force => true do |t|
-    t.integer  "internship_id"
-    t.integer  "task_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer "internship_id"
+    t.integer "task_id"
   end
 
   create_table "localities", :force => true do |t|

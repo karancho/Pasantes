@@ -8,36 +8,53 @@
 	</head>
 	<body>
 		<% if session[:user_id] %>
+		
+		<%= button_to 'Salir', logout_path, method: :delete %>
 
-			<ul>
-				Menu General
-				<li>
-					<%= link_to 'Ofertas',internships_path %>					
-				</li>
-				<li>
-					Mi CV
-				</li>
-			</ul>
-			<% user = User.find_by_id(session[:user_id]) %>
-			<% if user.admin == true %>
-			<ul>
-				Administradores:
-				<li>
-					<%= link_to 'ABM Provincias',provinces_path %>
-				</li>
-				<li>
-					<%= link_to 'ABM Localidades', localities_path %>
-				</li>
-				<li>
-					<%= link_to 'Usuarios',users_path %>
-				</li>
-			</ul>
-			<% end %>
-	
-			<%= button_to 'Logout', logout_path, method: :delete %>
+		<table border="0">
+			<tr valign="top">
+				<% user = User.find_by_id(session[:user_id]) %>
+				<% if user.admin == true %>
+
+				<td>
+				<ul>
+					Menu Administradores
+					<li>
+						<%= link_to 'ABM Usuarios',users_path %>
+					</li>
+					<li>
+						<%= link_to 'ABM Ofertas',internships_path %>
+					</li>
+					</br>
+					Parametrización del sistema
+					<li>
+						<%= link_to 'ABM Provincias',provinces_path %>
+					</li>
+					<li>
+						<%= link_to 'ABM Localidades', localities_path %>
+					</li>
+					<li>
+						<%= link_to 'ABM tareas tipicas', tasks_path %>
+					</li>
+
+				</ul></td>
+				<% end %>
+				<td>
+				<ul>
+					Menu Alumnos
+					<li>
+						<%= link_to 'Ofertas',internships_path %>
+					</li>
+					<li>
+						Subir CV
+					</li>
+				</ul></td>
+
+			</tr>
+		</table>
 
 		<% end %>
-
+<hr>
 		<%= yield %>
 
 	</body>

@@ -14,73 +14,107 @@
 <% end %>
 
 <div class="field">
-	<%= f.label :company_id %>
+	<%#= f.label :company_id %>
+	Compañía
 	<br />
 	<%= f.select :company_id, @companies.map {|com| [com.name, com.id]} %>
 </div>
+
 <div class="field">
-	<%= f.label :description_job %>
+	<%#= f.label :description_job %>
+	Adjunte una descripción general del trabajo solicitado
 	<br />
 	<%= f.text_field :description_job %>
 </div>
 
+O simplemente marque las tareas que deberá cumplir el estudiante
+<% for task in Task.all %>
+	<div>
+		<%= check_box_tag "internship[task_ids][]", task.id, @internship.tasks.include?(task) %>
+		<%= task.description %>
+	</div>
+<% end %> 
+
 <fieldset>
 	<legend>
-		TODO: checkboxs para desasignar
+		TODO: checkboxs con alumnos a desasignar
 	</legend>
 </fieldset>
 
+</br>
+
 <div class="field">
-	<%= f.label :situation_id %>
+	<%#= f.label :situation_id %>
+	Situación actual de esta oferta
 	<br />
 	<%= f.select :situation_id, @situations.map {|sit| [sit.status, sit.id]} %>
 </div>
+
 <div class="field">
-	<%= f.label :date_from %>
+	<%#= f.label :date_from %>
+	Desde
 	<br />
 	<%= f.date_select :date_from %>
 </div>
+
 <div class="field">
-	<%= f.label :date_until %>
+	<%#= f.label :date_until %>
+	Hasta
 	<br />
 	<%= f.date_select :date_until %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_monday %>
+	<%#= f.label :hs_monday %>
+	Horas solicitadas de trabajo día lunes:
 	<br />
 	<%= f.number_field :hs_monday %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_tuesday %>
+	<%#= f.label :hs_tuesday %>
+	Horas solicitadas de trabajo día martes:
 	<br />
 	<%= f.number_field :hs_tuesday %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_wednesday %>
+	<%#= f.label :hs_wednesday %>
+	Horas solicitadas de trabajo día miercoles:
 	<br />
 	<%= f.number_field :hs_wednesday %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_thursday %>
+	<%#= f.label :hs_thursday %>
+	Horas solicitadas de trabajo día jueves:
 	<br />
 	<%= f.number_field :hs_thursday %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_friday %>
+	<%#= f.label :hs_friday %>
+	Horas solicitadas de trabajo día viernes: 
 	<br />
 	<%= f.number_field :hs_friday %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_saturday %>
+	<%#= f.label :hs_saturday %>
+	Horas solicitadas de trabajo día sábado:
 	<br />
 	<%= f.number_field :hs_saturday %>
 </div>
+
 <div class="field">
-	<%= f.label :hs_sunday %>
+	<%#= f.label :hs_sunday %>
+	Horas solicitadas de trabajo día domingo:
 	<br />
 	<%= f.number_field :hs_sunday %>
 </div>
+
 <div class="actions">
 	<%= f.submit %>
 </div>
+
 <% end %>

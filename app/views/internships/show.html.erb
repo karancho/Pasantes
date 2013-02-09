@@ -1,70 +1,84 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+	<%= notice %>
+</p>
 
-  TODO: Listar alumnos aspirantes / en pasantía
-  Mostrar alumnos en curso, solo administradores. 
-  Requiere un m m hacia usuarios. La tabla combinacion debe tener
-  - campo nota en la tabla combinacion
+TODO: Listar alumnos aspirantes / en pasantía
+Mostrar alumnos en curso, solo administradores.
+Requiere un m m hacia usuarios. La tabla combinacion debe tener
+- campo nota en la tabla combinacion
 
 <p>
-  <b>Company:</b>
-  <%= @internship.company.name %>
+	<b>Empresa</b>
+	<%= @internship.company.name %>
 </p>
 
 <p>
-  <b>Description job:</b>
-  <%= @internship.description_job %>
+	<b>Descripción general del trabajo</b>
+	<%= @internship.description_job %>
 </p>
 
 <p>
-  <b>Situation:</b>
-  <%= @internship.situation.status %>
+	<b>Tareas que se le solicita</b>
+	<ul>
+	<% @tasks.each do |pas| %>
+	
+	<li><%= pas.description %></li>
+	<% end %>
+	</ul>
 </p>
 
 <p>
-  <b>Desde</b>
-  <%= @internship.date_from %>
+	<b>Situación actual:</b>
+	<%= @internship.situation.status %>
 </p>
 
 <p>
-  <b>Hasta</b>
-  <%= @internship.date_until %>
+	<b>Desde</b>
+	<%= @internship.date_from %>
 </p>
 
 <p>
-  <b>Hs monday:</b>
-  <%= @internship.hs_monday %>
+	<b>Hasta</b>
+	<%= @internship.date_until %>
 </p>
 
 <p>
-  <b>Hs tuesday:</b>
-  <%= @internship.hs_tuesday %>
+	<b>Horas solicitadas de trabajo día lunes:</b>
+	<%= @internship.hs_monday %>
 </p>
 
 <p>
-  <b>Hs wednesday:</b>
-  <%= @internship.hs_wednesday %>
+	<b>Horas solicitadas de trabajo día martes:</b>
+	<%= @internship.hs_tuesday %>
 </p>
 
 <p>
-  <b>Hs thursday:</b>
-  <%= @internship.hs_thursday %>
+	<b>Horas solicitadas de trabajo día miercoles:</b>
+	<%= @internship.hs_wednesday %>
 </p>
 
 <p>
-  <b>Hs friday:</b>
-  <%= @internship.hs_friday %>
+	<b>Horas solicitadas de trabajo día jueves:</b>
+	<%= @internship.hs_thursday %>
 </p>
 
 <p>
-  <b>Hs saturday:</b>
-  <%= @internship.hs_saturday %>
+	<b>Horas solicitadas de trabajo día viernes: </b>
+	<%= @internship.hs_friday %>
 </p>
 
 <p>
-  <b>Hs sunday:</b>
-  <%= @internship.hs_sunday %>
+	<b>Horas solicitadas de trabajo día sábado:</b>
+	<%= @internship.hs_saturday %>
 </p>
 
+<p>
+	<b>Horas solicitadas de trabajo día domingo:</b>
+	<%= @internship.hs_sunday %>
+</p>
 
-<%= link_to 'Edit', edit_internship_path(@internship) %> |
+<% user = User.find_by_id(session[:user_id]) %>
+<% if user.admin == true %>
+  <%= link_to 'Edit', edit_internship_path(@internship) %> |
+<% end %>
 <%= link_to 'Back', internships_path %>

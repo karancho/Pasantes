@@ -14,6 +14,7 @@ class InternshipsController < ApplicationController
   # GET /internships/1.json
   def show
     @internship = Internship.find(params[:id])
+    @tasks = @internship.tasks.find_all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,9 +62,11 @@ class InternshipsController < ApplicationController
   # PUT /internships/1
   # PUT /internships/1.json
   def update
+    params[:internship][:task_ids] ||= []
     @internship = Internship.find(params[:id])
     @companies = Company.all
     @situations = Situation.all
+    
     respond_to do |format|
       if @internship.update_attributes(params[:internship])
         format.html { redirect_to @internship, notice: 'Internship was successfully updated.' }
