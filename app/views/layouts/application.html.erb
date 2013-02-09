@@ -8,9 +8,13 @@
 	</head>
 	<body>
 		<% if session[:user_id] %>
-		
-		<%= button_to 'Salir', logout_path, method: :delete %>
 
+		<table>
+			<tr>
+				<td><%= button_to 'Salir de la sesión', logout_path, method: :delete %> </td>
+				<td><%= button_to 'Principal', admin_url, method: :get %> </td>
+			</tr>
+		</table>
 		<table border="0">
 			<tr valign="top">
 				<% user = User.find_by_id(session[:user_id]) %>
@@ -54,7 +58,7 @@
 		</table>
 
 		<% end %>
-<hr>
+		<hr>
 		<%= yield %>
 
 	</body>

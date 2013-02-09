@@ -28,18 +28,23 @@ Requiere un m m hacia usuarios. La tabla combinacion debe tener
 </p>
 
 <p>
+	<b>Cantidad de alumnos que se solicitan:</b>
+	<%= @internship.napplicants %>
+</p>
+
+<p>
 	<b>Situación actual:</b>
 	<%= @internship.situation.status %>
 </p>
 
 <p>
-	<b>Desde</b>
-	<%= @internship.date_from %>
+	<b>Desde el</b>
+	<%= @internship.date_from.to_time.strftime('%m/%d/%Y') %>
 </p>
 
 <p>
-	<b>Hasta</b>
-	<%= @internship.date_until %>
+	<b>Hasta el</b>
+	<%= @internship.date_until.to_time.strftime('%m/%d/%Y') %>
 </p>
 
 <p>
@@ -79,6 +84,6 @@ Requiere un m m hacia usuarios. La tabla combinacion debe tener
 
 <% user = User.find_by_id(session[:user_id]) %>
 <% if user.admin == true %>
-  <%= link_to 'Edit', edit_internship_path(@internship) %> |
+  <%= link_to 'Editar', edit_internship_path(@internship) %> |
 <% end %>
-<%= link_to 'Back', internships_path %>
+<%= link_to 'Volver', internships_path %>

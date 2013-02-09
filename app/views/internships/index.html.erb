@@ -3,45 +3,57 @@
 <h1>Listado de ofertas</h1>
 
 <% if user.admin == true %>
-  <%= link_to 'Agregar Oferta', new_internship_path %>
+<%= link_to 'Agregar Oferta', new_internship_path %>
 <% end %>
 
-<p>TODO: filtrar por mes</p>
+<p>
+	TODO: filtrar por mes
+</p>
 
 <table border="1">
-  <tr>
-    <th>Empresa</th>
-    <th>Descripción del trabajo</th>
-    <th>Nº alumnos</th>
-    <th>Situación</th>
-    <th>Desde</th>
-    <th>Hasta</th>
+	<tr>
+		<th>Empresa</th>
+		<th>Descripción del trabajo</th>
+		<th>Nº alumnos</th>
+		<th>Situación</th>
+		<th>Desde</th>
+		<th>Hasta</th>
+		<th></th>
+		
+		<% if user.admin == true %>
+		  <th></th>
+		  <th></th>
+		<% end %>
+		
+		<% if user.admin == false %>
+		  <th></th>
+		<% end %>
 
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	</tr>
 
-<% @internships.each do |internship| %>
-  <tr>
-    <td><%= internship.company.name %></td>
-    <td><%= internship.description_job %></td>
-    <td>TODO</td>
-    <td><%= internship.situation.status %></td>
-    <td><%= internship.date_from %></td>
-    <td><%= internship.date_until %></td>
-    
-    <td><%= link_to 'Mas Datos', internship %></td>
-    
-    <% if user.admin == true %>
-      <td><%= link_to 'Edit', edit_internship_path(internship) %></td>
-      <td><%= link_to 'Destroy', internship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-    
-  </tr>
-<% end %>
+	<% @internships.each do |internship| %>
+	<tr>
+		<td><%= internship.company.name %></td>
+		<td><%= internship.description_job %></td>
+		<td><%= internship.napplicants %></td>
+		<td><%= internship.situation.status %></td>
+		<td><%= internship.date_from.to_time.strftime('%m/%d/%Y') %></td>
+		<td><%= internship.date_until.to_time.strftime('%m/%d/%Y') %></td>
+
+		<td><%= link_to 'Mas Datos', internship %></td>
+
+		<% if user.admin == true %>
+		<td><%= link_to 'Editar', edit_internship_path(internship) %></td>
+		<td><%= link_to 'Borrar', internship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<% end %>
+		
+		<% if user.admin == false %>
+		  <td>Postularme</td>
+		<% end %>
+
+	</tr>
+	<% end %>
 </table>
 
 <br />
-
 
