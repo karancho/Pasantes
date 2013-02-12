@@ -17,14 +17,8 @@
 
 <p>
   <b>Locality:</b>
-  <%= @user.locality_id %>
+  <%= @user.locality.locality %>
 </p>
-
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

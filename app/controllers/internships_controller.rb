@@ -6,7 +6,7 @@ class InternshipsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @internships }
+      format.json { render :json => @internships }
     end
   end
 
@@ -18,7 +18,7 @@ class InternshipsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @internship }
+      format.json { render :json =>  @internship }
     end
   end
 
@@ -30,7 +30,7 @@ class InternshipsController < ApplicationController
     @situations = Situation.all
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @internship }
+      format.json { render :json =>  @internship }
     end
   end
 
@@ -50,11 +50,11 @@ class InternshipsController < ApplicationController
     
     respond_to do |format|
       if @internship.save
-        format.html { redirect_to @internship, notice: 'Internship was successfully created.' }
-        format.json { render json: @internship, status: :created, location: @internship }
+        format.html { redirect_to @internship, :notice => 'Internship was successfully created.' }
+        format.json { render :json =>  @internship, :status =>  :created, :location => @internship }
       else
-        format.html { render action: "new" }
-        format.json { render json: @internship.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json =>  @internship.errors, :status =>  :unprocessable_entity }
       end
     end
   end
@@ -69,11 +69,11 @@ class InternshipsController < ApplicationController
     
     respond_to do |format|
       if @internship.update_attributes(params[:internship])
-        format.html { redirect_to @internship, notice: 'Internship was successfully updated.' }
+        format.html { redirect_to @internship, :notice =>  'Internship was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @internship.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json =>  @internship.errors, :status =>  :unprocessable_entity }
       end
     end
   end
