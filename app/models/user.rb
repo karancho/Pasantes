@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   belongs_to :locality
 
 
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :name, :presence => true
+  validates :email, :presence => true, :uniqueness => true
   has_secure_password
 
   after_destroy :ensure_an_admin_remains
