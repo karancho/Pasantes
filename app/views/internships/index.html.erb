@@ -7,11 +7,11 @@
 <% end %>
 
 <p>
-Filtro: <%=@mes %>
+Filtro por mes: <%=@mes %>
 
 <%= form_tag(internships_path, :method=>'get', :multipart => true) do %>
    <%= select_tag("mes","<option>Enero</option><option>Febrero</option><option>Marzo</option>".html_safe, :multiple => false) %>
- 
+
    <%= submit_tag 'Cambiar mes' %>
 <% end %>
 
@@ -36,12 +36,12 @@ Filtro: <%=@mes %>
 		<th>Desde</th>
 		<th>Hasta</th>
 		<th></th>
-		
+
 		<% if user.admin == true %>
 		  <th></th>
 		  <th></th>
 		<% end %>
-		
+
 		<% if user.admin == false %>
 		  <th></th>
 		<% end %>
@@ -63,7 +63,7 @@ Filtro: <%=@mes %>
 		<td><%= link_to 'Editar', edit_internship_path(internship) %></td>
 		<td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
 		<% end %>
-		
+
 		<% if user.admin == false %>
 		  <td>Postularme</td>
 		<% end %>
