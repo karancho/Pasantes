@@ -3,6 +3,8 @@ class InternshipsController < ApplicationController
   # GET /internships.json
   def index
     @internships = Internship.all
+    
+	@mes = params[:mes]
 
     respond_to do |format|
       format.html # index.html.erb

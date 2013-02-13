@@ -7,7 +7,24 @@
 <% end %>
 
 <p>
-	TODO: filtrar por mes
+Filtro: <%=@mes %>
+
+<%= form_tag(internships_path, :method=>'get', :multipart => true) do %>
+   <%= select_tag("mes","<option>Enero</option><option>Febrero</option><option>Marzo</option>".html_safe, :multiple => false) %>
+ 
+   <%= submit_tag 'Cambiar mes' %>
+<% end %>
+
+<!--
+<form action="/internships" method="get">
+	<select name="mes">
+		"<option>Enero</option><option>Febrero</option><option>Marzo</option>"
+	</select>
+
+	<input type="submit">
+</form>
+-->
+
 </p>
 
 <table border="1">
