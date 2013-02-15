@@ -2,9 +2,153 @@ class InternshipsController < ApplicationController
   # GET /internships
   # GET /internships.json
   def index
-    @internships = Internship.all
-    
-	@mes = params[:mes]
+
+      @mes = params[:mes]
+      mesNumerico = "0" + Time.now.month.to_s
+
+    case @mes
+      when "Enero"
+        mesNumerico = "01"
+      when "Febrero"
+        mesNumerico = "02"
+      when "Marzo"
+        mesNumerico = "03"
+      when "Abril"
+        mesNumerico = "04"
+      when "Mayo"
+        mesNumerico = "05"
+      when "Junio"
+        mesNumerico = "06"
+      when "Julio"
+        mesNumerico = "07"
+      when "Agosto"
+        mesNumerico = "08"
+      when "Setiembre"
+        mesNumerico = "09"
+      when "Octubre"
+        mesNumerico = "10"
+      when "Noviembre"
+        mesNumerico = "11"
+      when "Diciembre"
+        mesNumerico = "12"
+    end
+
+
+    #@internships = Internship.all
+    #@internships = Internship.find_by_date_from("#{Time.now.year}-#{minumero}-09")
+    @internships = Internship.where("date_from LIKE :prefix", :prefix => "#{Time.now.year}-#{mesNumerico}-%")
+
+
+
+  @variable = ""
+  @variable = @variable + "<option"
+
+  if Time.now.month == 1
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Enero</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 2
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Febrero</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 3
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Marzo</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 4
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Abril</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 5
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Mayo</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 6
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Junio</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 7
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Julio</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 8
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Agosto</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 9
+     @variable = @variable + " selected>"
+  else
+     @variable = @variable + ">"
+  end
+  @variable = @variable + "Setiembre</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 10
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Octubre</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 11
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Noviembre</option>"
+
+  @variable = @variable + "<option"
+
+  if Time.now.month == 12
+      @variable = @variable + " selected>"
+  else
+      @variable = @variable + ">"
+  end
+  @variable = @variable + "Diciembre</option>"
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,7 +193,7 @@ class InternshipsController < ApplicationController
     @internship = Internship.new(params[:internship])
     @companies = Company.all
     @situations = Situation.all
-    
+
     respond_to do |format|
       if @internship.save
         format.html { redirect_to @internship, :notice => 'Internship was successfully created.' }
@@ -68,7 +212,7 @@ class InternshipsController < ApplicationController
     @internship = Internship.find(params[:id])
     @companies = Company.all
     @situations = Situation.all
-    
+
     respond_to do |format|
       if @internship.update_attributes(params[:internship])
         format.html { redirect_to @internship, :notice =>  'Internship was successfully updated.' }

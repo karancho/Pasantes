@@ -7,18 +7,18 @@
 <% end %>
 
 <p>
-Filtro por mes: <%=@mes %>
+  <!-- Filtro por mes: --><%#=@mes %>
 
-<%= form_tag(internships_path, :method=>'get', :multipart => true) do %>
-   <%= select_tag("mes","<option>Enero</option><option>Febrero</option><option>Marzo</option>".html_safe, :multiple => false) %>
-
-   <%= submit_tag 'Cambiar mes' %>
+  <!-- Variable: --> <%#=@variable %>
+<%= form_tag(internships_path, :method =>'get', :multipart => true) do %>
+  <%= select_tag("mes","#{@variable}".html_safe, :multiple => false) %>
+  <%= submit_tag 'Filtrar' %>
 <% end %>
 
 <!--
 <form action="/internships" method="get">
 	<select name="mes">
-		"<option>Enero</option><option>Febrero</option><option>Marzo</option>"
+		"<option value="1">Enero</option><option value="2">Febrero</option><option  value="3">Marzo</option>"
 	</select>
 
 	<input type="submit">
@@ -54,8 +54,8 @@ Filtro por mes: <%=@mes %>
 		<td><%= internship.description_job %></td>
 		<td><%= internship.napplicants %></td>
 		<td><%= internship.situation.status %></td>
-		<td><%= internship.date_from.to_time.strftime('%m/%d/%Y') %></td>
-		<td><%= internship.date_until.to_time.strftime('%m/%d/%Y') %></td>
+		<td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
+		<td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
 		<td><%= link_to 'Mas Datos', internship %></td>
 
