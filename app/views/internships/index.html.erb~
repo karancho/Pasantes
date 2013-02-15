@@ -1,0 +1,76 @@
+<% user = User.find_by_id(session[:user_id]) %>
+
+<h1>Listado de ofertas</h1>
+
+<% if user.admin == true %>
+<%= link_to 'Agregar Oferta', new_internship_path %>
+<% end %>
+
+<p>
+Filtro por mes: <%=@mes %>
+
+<%= form_tag(internships_path, :method =>'get', :multipart => true) do %>
+   <%= select_tag("mes","<option>Enero</option><option>Febrero</option><option>Marzo</option>Abril<option></option><option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option><option>Setiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>".html_safe, :multiple => false) %>
+
+   <%= submit_tag 'Cambiar mes' %>
+<% end %>
+
+<!--
+<form action="/internships" method="get">
+	<select name="mes">
+		"<option value="1">Enero</option><option value="2">Febrero</option><option  value="3">Marzo</option>"
+	</select>
+
+	<input type="submit">
+</form>
+-->
+
+</p>
+
+<table border="1">
+	<tr>
+		<th>Empresa</th>
+		<th>Descripción del trabajo</th>
+		<th>Nº alumnos</th>
+		<th>Situación</th>
+		<th>Desde</th>
+		<th>Hasta</th>
+		<th></th>
+
+		<% if user.admin == true %>
+		  <th></th>
+		  <th></th>
+		<% end %>
+
+		<% if user.admin == false %>
+		  <th></th>
+		<% end %>
+
+	</tr>
+
+	<% @internships.each do |internship| %>
+	<tr>
+		<td><%= internship.company.name %></td>
+		<td><%= internship.description_job %></td>
+		<td><%= internship.napplicants %></td>
+		<td><%= internship.situation.status %></td>
+		<td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
+		<td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
+
+		<td><%= link_to 'Mas Datos', internship %></td>
+
+		<% if user.admin == true %>
+		<td><%= link_to 'Editar', edit_internship_path(internship) %></td>
+		<td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+		<% end %>
+
+		<% if user.admin == false %>
+		  <td>Postularme</td>
+		<% end %>
+
+	</tr>
+	<% end %>
+</table>
+
+<br />
+
