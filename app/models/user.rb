@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :internships
   has_many :companies, :through => :internships
   belongs_to :locality
+  has_many :contracts
 
 
   validates :name, :presence => true
