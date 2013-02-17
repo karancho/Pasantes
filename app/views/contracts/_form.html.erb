@@ -1,0 +1,47 @@
+<%= form_for(@contract) do |f| %>
+  <% if @contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% @contract.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%#= f.select :user_id, @users.map {|user| [user.name, user.id]} %>
+    <select name="contract[user_id]">
+     <% @users.each do |user| %>
+         <option value="<%= user.id %>" 
+           <%= 'selected' if user.id == @contract.user_id %> >
+           <%= user.name %>
+           <%= user.surname %>
+         </option>
+     <% end %>
+    </select>
+
+  </div>
+  <div class="field">
+    <%= f.label :internship_id %><br />
+    <select name="contract[internship_id]">
+      <% @internships.each do |inter| %>
+        <option value="<%= inter.id %>" 
+          <%= 'selected' if inter.id == @contract.internship_id %> >
+          <%= inter.description_job %>
+          | desde
+          <%= inter.date_from.to_time.strftime('%d/%m/%Y') %>
+          | hasta
+          <%= inter.date_until.to_time.strftime('%d/%m/%Y') %>
+        </option>
+      <% end %>
+    </select>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

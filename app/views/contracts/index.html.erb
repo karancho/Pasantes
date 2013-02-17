@@ -1,0 +1,41 @@
+<% user = User.find_by_id(session[:user_id]) %>
+<h1>Listando contratos</h1>
+
+<% if user.admin == true %>
+  <%= link_to 'Crear Contrato', new_contract_path %>
+<% end %>
+
+<table border="1">
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Descripc Trabajo</th>
+    <th>Desde</th>
+    <th>Hasta</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contracts.each do |contract| %>
+  <tr>
+    <td><%= contract.user.name %></td>
+    <td><%= contract.user.surname %></td>
+
+    <td><%= contract.internship.description_job %></td>
+
+    <td><%= contract.internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
+    <td><%= contract.internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
+
+    <td><%= link_to 'Ver / Imprimir', contract %></td>
+
+    <% if user.admin == true %>
+      <td><%= link_to 'Modificar', edit_contract_path(contract) %></td>
+      <td><%= link_to 'Borrar', contract, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
