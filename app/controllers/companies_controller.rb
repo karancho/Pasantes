@@ -25,6 +25,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new.json
   def new
     @company = Company.new
+    @localities = Locality.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +36,14 @@ class CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
+    @localities = Locality.all
   end
 
   # POST /companies
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
+    @localities = Locality.all
 
     respond_to do |format|
       if @company.save
@@ -57,6 +60,7 @@ class CompaniesController < ApplicationController
   # PUT /companies/1.json
   def update
     @company = Company.find(params[:id])
+    @localities = Locality.all
 
     respond_to do |format|
       if @company.update_attributes(params[:company])

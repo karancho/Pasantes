@@ -14,7 +14,7 @@
 <% end %>
 
 <div class="field">
-	<%#= f.label :company_id %>
+	<%= f.label :company_id, "Compañía" %>
 	Compañía
 	<br />
 	<%= f.select :company_id, @companies.map {|com| [com.name, com.id]} %>

@@ -31,6 +31,8 @@
       <% @internships.each do |inter| %>
         <option value="<%= inter.id %>" 
           <%= 'selected' if inter.id == @contract.internship_id %> >
+          <%= inter.company.name %>
+          |
           <%= inter.description_job %>
           | desde
           <%= inter.date_from.to_time.strftime('%d/%m/%Y') %>

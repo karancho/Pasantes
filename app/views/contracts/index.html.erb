@@ -9,6 +9,7 @@
   <tr>
     <th>Nombre</th>
     <th>Apellido</th>
+    <th>en Empresa</th>
     <th>Descripc Trabajo</th>
     <th>Desde</th>
     <th>Hasta</th>
@@ -21,6 +22,8 @@
   <tr>
     <td><%= contract.user.name %></td>
     <td><%= contract.user.surname %></td>
+
+    <td><%= contract.internship.company.name %></td>
 
     <td><%= contract.internship.description_job %></td>
 

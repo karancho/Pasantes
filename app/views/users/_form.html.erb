@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Nombre" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :surname %><br />
+    <%= f.label :surname, "Apellido" %><br />
     <%= f.text_field :surname %>
   </div>
-  <div class="field">
+  <div class="field", "DNI">
     <%= f.label :dni %><br />
     <%= f.text_field :dni %>
   </div>
-  <div class="field">
+  <div class="field", "CUIL">
     <%= f.label :cuil %><br />
     <%= f.text_field :cuil %>
   </div>
@@ -31,13 +31,20 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  <div class="field">
+    <%= f.label :address, "Dirección" %><br />
+    <%= f.text_field :address %>
+  </div>
+
+
 
   <div class="field">
+    <%= f.label :locality_id, "Localidad" %><br />
     <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
 
   <div class="field">
-    <%= f.label :admin %><br />
+    <%= f.label :admin, "Administrador?" %><br />
     <%= f.check_box :admin %>
   </div>
 

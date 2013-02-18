@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216001734) do
+ActiveRecord::Schema.define(:version => 20130218032941) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -18,8 +18,11 @@ ActiveRecord::Schema.define(:version => 20130216001734) do
     t.integer  "locality_id"
     t.string   "manager"
     t.string   "boss"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "boss_dni"
+    t.string   "manager_cuil"
+    t.string   "position"
   end
 
   create_table "contracts", :force => true do |t|
@@ -88,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20130216001734) do
     t.string   "email"
     t.boolean  "admin"
     t.string   "cuil"
+    t.string   "address"
   end
 
 end

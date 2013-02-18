@@ -15,14 +15,47 @@
 				<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
 			</tr>
 		</table>
-		<table border="0">
+		<table border="1">
 			<tr valign="top">
 				<% user = User.find_by_id(session[:user_id]) %>
 				<% if user.admin == true %>
 
-				<td>
+				<td colspan="3">
+                  TODO (por hacer / terminar)
 				<ul>
+				<h5>
+                    <li>
+						CI ley 26427 proporcionado por majo
+
+					</li>
+
+					<li>
+						Iteraccion de tareas y hs por día en contrato
+					</li>
+					<li>
+						Sección para que los alumnos rellenen su CV
+					</li>
+					<li>
+						Boton "Postularme" para los alumnos: probar entrando como alumno@prueba.com password alumno
+					</li>
+
+					<li>
+        				        Sección para que los empresarios corrijan sus datos, publiquen sus pasantias, y Majo valide las ofertas.
+					</li>
+
+
+				</ul>
+				<h5>
+				</td>
+			</tr>
+
+
+
+			<tr valign="top">
+
+				<td>
                   Menu Administradores
+				<ul>
                     <li>
 						<%= link_to 'Empresas',companies_path %>
 					</li>
@@ -38,8 +71,14 @@
 					</li>
 
 
-					</br>
+				</ul>
+				</td>
+
+				<td>
 					Parametrización del sistema
+				<ul>
+ 
+ 
 					<li>
 						<%= link_to 'ABM Provincias',provinces_path %>
 					</li>
@@ -53,8 +92,8 @@
 				</ul></td>
 				<% end %>
 				<td>
-				<ul>
 					Menu Alumnos
+				<ul>
 					<li>
 						<%= link_to 'Ofertas',internships_path %>
 					</li>

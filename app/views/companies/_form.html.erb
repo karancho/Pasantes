@@ -12,25 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Nombre" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :address, "Dirección" %><br />
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :locality_id %><br />
-    <%= f.number_field :locality_id %>
+    <%= f.label :locality_id, "Localidad" %><br />
+    <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
+
   <div class="field">
-    <%= f.label :manager %><br />
+    <%= f.label :manager, "Encargado de supervisar al alumno" %><br />
     <%= f.text_field :manager %>
   </div>
   <div class="field">
-    <%= f.label :boss %><br />
+    <%= f.label :manager_cuil, "CUIL Encargado" %><br />
+    <%= f.text_field :manager_cuil %>
+  </div>
+
+  <div class="field">
+    <%= f.label :boss, "Representante maximo de la compañía" %><br />
     <%= f.text_field :boss %>
   </div>
+  <div class="field">
+    <%= f.label :boss_dni, "DNI Representante" %><br />
+    <%= f.text_field :boss_dni %>
+  </div>
+  <div class="field">
+    <%= f.label :position, "Cargo del Representante dentro de la Compañía (presidente, director, etc)" %><br />
+    <%= f.text_field :position %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

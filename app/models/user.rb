@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin
+  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil
 
   has_many :internships
   has_many :companies, :through => :internships
@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true
+
+  validates_presence_of :dni, :cuil
+
   has_secure_password
 
   after_destroy :ensure_an_admin_remains
