@@ -2,7 +2,7 @@ class InternshipsController < ApplicationController
   # GET /internships
   # GET /internships.json
   def index
-=BEGIN
+=begin
       @mes = params[:mes]
       mesNumerico = "0" + Time.now.month.to_s
 
@@ -33,11 +33,11 @@ class InternshipsController < ApplicationController
         mesNumerico = "12"
     end
 
-=END
+=end
     #@internships = Internship.where("date_from LIKE :prefix", :prefix => "#{Time.now.year}-#{mesNumerico}-%")
     @internships = Internship.order("date_from").reverse
 
-=BEGIN
+=begin
 
   @variable = ""
   @variable = @variable + "<option"
@@ -147,7 +147,7 @@ class InternshipsController < ApplicationController
       @variable = @variable + ">"
   end
   @variable = @variable + "Diciembre</option>"
-=END
+=end
 
     respond_to do |format|
       format.html # index.html.erb
