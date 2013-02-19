@@ -1,6 +1,7 @@
 <% user = User.find_by_id(session[:user_id]) %>
 
 <h1>Listado de ofertas</h1>
+<h4>Ordenando por fecha de publicación</h4>
 
 <% if user.admin == true %>
 <%= link_to 'Agregar Oferta', new_internship_path %>

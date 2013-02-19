@@ -35,7 +35,8 @@ class InternshipsController < ApplicationController
 
 =end
     #@internships = Internship.where("date_from LIKE :prefix", :prefix => "#{Time.now.year}-#{mesNumerico}-%")
-    @internships = Internship.order("date_from").reverse
+    #@internships = Internship.order("date_from").reverse
+    @internships = Internship.order("id").reverse
 
 =begin
 
