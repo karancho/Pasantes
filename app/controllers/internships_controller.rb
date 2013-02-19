@@ -36,7 +36,7 @@ class InternshipsController < ApplicationController
 
     #@internships = Internship.all
     #@internships = Internship.find_by_date_from("#{Time.now.year}-#{minumero}-09")
-    @internships = Internship.where("date_from LIKE :prefix", :prefix => "#{Time.now.year}-#{mesNumerico}-%")
+    @internships = Internship.where("date_from LIKE :prefix", :prefix => "#{Time.now.year}-#{mesNumerico}-2")
 
 
 
