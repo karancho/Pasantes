@@ -10,10 +10,10 @@
   <!-- Filtro por mes: --><%#=@mes %>
 
   <!-- Variable: --> <%#=@variable %>
-<%= form_tag(internships_path, :method =>'get', :multipart => true) do %>
-  <%= select_tag("mes","#{@variable}".html_safe, :multiple => false) %>
-  <%= submit_tag 'Filtrar' %>
-<% end %>
+<%#= form_tag(internships_path, :method =>'get', :multipart => true) do %>
+  <%#= select_tag("mes","#{@variable}".html_safe, :multiple => false) %>
+  <%#= submit_tag 'Filtrar' %>
+<%# end %>
 
 <!--
 <form action="/internships" method="get">
