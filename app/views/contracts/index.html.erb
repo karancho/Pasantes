@@ -30,7 +30,16 @@
     <td><%= contract.internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
     <td><%= contract.internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
-    <td><%= link_to 'Ver / Imprimir', contract %></td>
+    <td>
+      Ver / Imprimir
+      <%= link_to '[CI]', contract %>
+      |
+      <%#= link_to '[CM]', contract %>
+
+      <%= link_to '[CM]', :controller => "contracts", :action => "cm", :id => contract
+      %>
+
+    </td>
 
     <% if user.admin == true %>
       <td><%= link_to 'Modificar', edit_contract_path(contract) %></td>

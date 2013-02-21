@@ -21,6 +21,19 @@ class ContractsController < ApplicationController
     end
   end
 
+  # GET /contracts/1
+  # GET /contracts/1.json
+  def cm
+    @contract = Contract.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @contract }
+    end
+  end
+
+
+
   # GET /contracts/new
   # GET /contracts/new.json
   def new

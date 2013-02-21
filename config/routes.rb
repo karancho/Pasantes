@@ -1,6 +1,7 @@
 Pasantes::Application.routes.draw do
 
   resources :contracts
+  get '/contracts/:id/cm', to: 'contracts#cm'
 
 
   resources :tasks
