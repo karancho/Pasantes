@@ -35,12 +35,6 @@ O simplemente marque las tareas que deberá cumplir el estudiante
 	</div>
 <% end %> 
 
-<fieldset>
-	<legend>
-		TODO: checkboxs con alumnos a desasignar
-	</legend>
-</fieldset>
-
 </br>
 
 <div class="field">
@@ -69,6 +63,13 @@ O simplemente marque las tareas que deberá cumplir el estudiante
 	Hasta
 	<br />
 	<%= f.date_select :date_until %>
+</div>
+
+<div class="field">
+	<%#= f.label :horario %>
+	Horario: a convenir?
+	<br />
+	<%= f.check_box :horario %>
 </div>
 
 <div class="field">

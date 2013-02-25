@@ -41,6 +41,13 @@
 </p>
 
 <p>
+	<b>Horario: a convenir?</b>
+  <% if @internship.horario then %>
+    <%="si" %>
+  <% end %>
+</p>
+
+<p>
 	<b>Desde el</b>
 	<%= @internship.date_from.to_time.strftime('%m/%d/%Y') %>
 </p>
