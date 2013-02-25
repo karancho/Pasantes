@@ -1,0 +1,25 @@
+<h1>Listing internships_users</h1>
+
+<table>
+  <tr>
+    <th>Internship</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @internships_users.each do |internships_user| %>
+  <tr>
+    <td><%= internships_user.internship_id %></td>
+    <td><%= internships_user.user_id %></td>
+    <td><%= link_to 'Show', internships_user %></td>
+    <td><%= link_to 'Edit', edit_internships_user_path(internships_user) %></td>
+    <td><%= link_to 'Destroy', internships_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Internships user', new_internships_user_path %>

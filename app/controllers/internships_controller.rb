@@ -161,6 +161,7 @@ class InternshipsController < ApplicationController
   def show
     @internship = Internship.find(params[:id])
     @tasks = @internship.tasks.find_all
+    @users = @internship.users
 
     respond_to do |format|
       format.html # show.html.erb
@@ -234,5 +235,13 @@ class InternshipsController < ApplicationController
       format.html { redirect_to internships_url }
       format.json { head :no_content }
     end
+  end
+
+  def postularme
+    #params[:internship][:user_ids] ||= []
+    @internship = Internship.find(params[:id])
+    s = User.find(session[:user_id])
+    @internship.users << s
+  
   end
 end

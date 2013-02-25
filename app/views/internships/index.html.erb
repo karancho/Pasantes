@@ -30,9 +30,10 @@
 
 <table border="1">
 	<tr>
+		<th>ID</th>
 		<th>Empresa</th>
 		<th>Descripción del trabajo</th>
-		<th>Nº alumnos</th>
+    <th>Nº alumnos</br>postulados</th>
 		<th>Situación</th>
 		<th>Desde</th>
 		<th>Hasta</th>
@@ -51,24 +52,26 @@
 
 	<% @internships.each do |internship| %>
 	<tr>
+    <td>
+      <%= Time.now.year %>-<%= internship.id %>
+    </td>
 		<td><%= internship.company.name %></td>
 		<td><%= internship.description_job %></td>
 		<td><%= internship.napplicants %></td>
-		<td><%= internship.situation.status %></td>
+		<td><%#= internship.situation.status %></td>
 		<td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
 		<td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
-		<td><%= link_to 'Mas Datos', internship %></td>
+		<td><%= link_to 'Mas Datos / Ver Postulados', internship %></td>
 
 		<% if user.admin == true %>
       <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
 		  <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
 		<% end %>
 
-	  <td>Postularme</td>
-
-	</tr>
+    <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
 	<% end %>
+  </tr>
 </table>
 
 <br />

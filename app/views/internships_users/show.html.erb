@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Internship:</b>
+  <%= @internships_user.internship_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @internships_user.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_internships_user_path(@internships_user) %> |
+<%= link_to 'Back', internships_users_path %>

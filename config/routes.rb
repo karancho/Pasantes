@@ -1,20 +1,19 @@
 Pasantes::Application.routes.draw do
 
+  resources :internships_users
+
+
   resources :contracts
   get '/contracts/:id/cm', to: 'contracts#cm'
 
-
   resources :tasks
-
 
   resources :situations
 
-
   resources :internships_tasks
 
-
   resources :internships
-
+  get '/internships/:id/postularme', :to => 'internships#postularme'
 
   resources :companies
 
