@@ -66,8 +66,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         #format.html { redirect_to @user, :notice =>  'User was successfully updated.' }
-        format.html { redirect_to users_url, :notice =>  'User  #{@user.name}  #{@user.surname} was successfully created.' }
-        format.json { head :no_content }
+        if @user.admin
+          format.html { redirect_to users_url, :notice =>  'User  #{@user.name}  #{@user.surname} was successfully updated.' }
+          format.json { head :no_content }
+        else 
+          format.html { redirect_to landing_bienvenida_url, :notice =>  'User  #{@user.name}  #{@user.surname} was successfully updated.' }
+          format.json { head :no_content }
+        end
       else
         format.html { render :action => "edit" }
         format.json { render :json =>  @user.errors, :status =>  :unprocessable_entity }

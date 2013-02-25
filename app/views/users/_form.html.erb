@@ -36,17 +36,17 @@
     <%= f.text_field :address %>
   </div>
 
-
-
   <div class="field">
     <%= f.label :locality_id, "Localidad" %><br />
     <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
 
-  <div class="field">
-    <%= f.label :admin, "Administrador?" %><br />
-    <%= f.check_box :admin %>
-  </div>
+  <% if @user.admin %>
+    <div class="field">
+      <%= f.label :admin, "Administrador?" %><br />
+      <%= f.check_box :admin %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :password, 'Password' %><br />
