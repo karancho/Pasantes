@@ -8,7 +8,7 @@ gem 'rails', '3.2.11'
 group :development, :test do
   gem 'sqlite3'
   gem "rails-erd"
-  gem 'railroady'
+  #gem 'railroady'
 end
 
 group :production do
