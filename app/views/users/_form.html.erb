@@ -41,7 +41,8 @@
     <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
 
-  <% if @user.admin %>
+  <% user = User.find_by_id(session[:user_id]) %>
+	<% if user.admin == true %>
     <div class="field">
       <%= f.label :admin, "Administrador?" %><br />
       <%= f.check_box :admin %>
