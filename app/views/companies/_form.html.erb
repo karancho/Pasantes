@@ -11,8 +11,9 @@
     </div>
   <% end %>
 
+  <p>Datos para automatizar la creación de contratos de pasantía.</p>
   <div class="field">
-    <%= f.label :name, "Nombre" %><br />
+    <%= f.label :name, "Razón Social" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -25,16 +26,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :manager, "Encargado de supervisar al alumno" %><br />
+    <%= f.label :manager, "Nombre y Apellido del encargado de supervisar al alumno" %><br />
     <%= f.text_field :manager %>
   </div>
   <div class="field">
     <%= f.label :manager_cuil, "CUIL Encargado" %><br />
     <%= f.text_field :manager_cuil %>
   </div>
-
+	<hr>
   <div class="field">
-    <%= f.label :boss, "Representante maximo de la compañía" %><br />
+    <%= f.label :boss, "Nombre y Apellido de quien representa a la compañía. " %><br />
     <%= f.text_field :boss %>
   </div>
   <div class="field">

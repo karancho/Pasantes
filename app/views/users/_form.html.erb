@@ -42,11 +42,17 @@
   </div>
 
   <% user = User.find_by_id(session[:user_id]) %>
+	<% if user %>
 	<% if user.admin == true %>
     <div class="field">
       <%= f.label :admin, "Administrador?" %><br />
       <%= f.check_box :admin %>
     </div>
+    <div class="field">
+      <%= f.label :manager, "Empresario?" %><br />
+      <%= f.check_box :manager %>
+    </div>
+  <% end %>
   <% end %>
 
   <div class="field">

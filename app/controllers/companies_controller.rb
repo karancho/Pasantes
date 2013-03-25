@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  skip_before_filter :authorize, only: [:new, :create, :update, :edit, :show]
   # GET /companies
   # GET /companies.json
   def index

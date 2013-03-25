@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authorize, only: [:new, :create, :update, :edit, :show]
   # GET /users
   # GET /users.json
   def index
@@ -45,6 +46,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @localities = Locality.all
 
+    usuarioEnCurso = User.find_by_id(session[:user_id]) 
+    if usuarioEnCurso == nil #es un empresario dandose de alta
+      @user.manager = true
+    end
     respond_to do |format|
       if @user.save
         #format.html { redirect_to @user, :notice =>  'User was successfully created.' }

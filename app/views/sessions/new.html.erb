@@ -9,15 +9,14 @@
   <p>Escuela Internacional de Turismo, Hotelería y Gastronomía</p>
   <h1>Departamento de Práctica Profesional</h1>
   <p>&nbsp;</p>
-  <p>Hola! Estamos reprogramando el viejo sistema de pasantías completamente desde cero. Podes ver diariamente un estado de avance <a href="https://github.com/karancho/Pasantes/commits/master">aquí</a></p>
-  <p>Deberas solicitar usuario / password a Nico (laboratorio@eim.esc.edu.ar) con copia a Sergio (sergio@eim.esc.edu.ar) para poder ingresar.</p>
-  <p>Ayudanos a mejorarlo! recibimos también ahi criticas (be nice) o ideas para agregarle</p>
-  <p>&nbsp;</p>
-  	
+  <p>Hola! Estamos reprogramando el viejo sistema de pasantías completamente desde cero. Podes ver diariamente un estado de avance <a href="https://github.com/karancho/Pasantes/commits/master">aquí.</a></p>
+  <p>¿Eres <b>empresario o encargado</b>? ¿Necesitas recursos humanos capacitados? Puedes <%= link_to 'darte de alta', new_user_path %>, dar de alta <%= link_to 'la empresa en la que trabajas', new_company_path %>, y comenzar a <%= link_to 'postear ofertas', new_internship_path %> de pasantías.
+  <p>¿Eres <b>alumno</b> de la escuela? solicita usuario y contraseña a Erica (laboratorio@eim.esc.edu.ar) con copia a Sergio (sergio@eim.esc.edu.ar) para poder ingresar.</p>
+  <p>Ayudanos a mejorarlo! recibimos también ahi criticas (be nice) o ideas para agregarle nuevas funciones.</p>
+  
   <fieldset>
     <legend>Ingrese valores de logueo</legend>
-    Solicite usuario y contraseña al profesor de práctica profesional, o a su director de carrera.
-      <div>
+    <div>
         <%= label_tag :email, 'Email:' %>
         <%= email_field_tag :email, params[:email] %>
       </div>
