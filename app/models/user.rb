@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   #has_many :companies, :through => :internships
   
   
-  #belongs_to :locality
+  belongs_to :locality
   #has_many :contracts
   has_and_belongs_to_many :internships
 
