@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Academia / Colegio</b>
+  <%= @study.academy %>
+</p>
+
+<p>
+  <b>Año de Comienzo de Cursado</b>
+  <%= @study.from %>
+</p>
+
+<p>
+  <b>Año de Finalización (esperado)</b>
+  <%= @study.until %>
+</p>
+
+<p>
+  <b>Titulo Obtenido:</b>
+  <%= @study.title %>
+</p>
+
+<p>
+  <b>Descripción extra:</b>
+  <%= form_for(@study) do |f| %>
+    <%= f.text_area :description, :readonly => true  %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_study_path(@study) %> |
+<%#= link_to 'Back', studies_path %>

@@ -40,6 +40,17 @@
     <%= f.label :locality_id, "Localidad" %><br />
     <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
+  
+  <div class="field">
+    <%= f.label :linkedin, "Perfil público en Linkedin (¡muy útil!)" %><%= f.text_field :linkedin %><br/>
+    Ejemplos: 
+    <ul>
+    	<li><a target="_blank" href="http://www.linkedin.com/pub/esteban-borzone/66/123/21b">http://www.linkedin.com/pub/esteban-borzone/66/123/21b</a><br/></li>
+    	<li><a target="_blank" href="http://www.linkedin.com/in/alonsosergio">http://www.linkedin.com/in/alonsosergio</a><br /></li>    	
+    </ul>
+    
+  </div>
+
 
   <% user = User.find_by_id(session[:user_id]) %>
 	<% if user %>

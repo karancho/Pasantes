@@ -1,0 +1,31 @@
+<h1>Estudios cursados</h1>
+
+<table border="1">
+  <tr>
+    <th>Academia / Colegio</th>
+    <th>Año de Comienzo de Cursado</th>
+    <th>Año de Finalización (esperado)</th>
+    <th>Titulo Obtenido</th>
+    <th>Descripción extra</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @studies.each do |study| %>
+  <tr>
+    <td><%= study.academy %></td>
+    <td><%= study.from %></td>
+    <td><%= study.until %></td>
+    <td><%= study.title %></td>
+    <td><%= study.description %></td>
+    <td><%= link_to 'Mas Datos', study %></td>
+    <td><%= link_to 'Modificar', edit_study_path(study) %></td>
+    <td><%= link_to 'Borrar', study, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Agregar nuevo titulo', new_study_path %>

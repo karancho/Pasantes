@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  academy: MyString
+  from: 2013-04-07
+  until: 2013-04-07
+  title: MyString
+  description: MyString
+
+two:
+  academy: MyString
+  from: 2013-04-07
+  until: 2013-04-07
+  title: MyString
+  description: MyString
