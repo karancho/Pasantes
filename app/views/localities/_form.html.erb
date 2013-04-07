@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :locality %><br />
+    <%= f.label :locality, "Localidad" %><br />
     <%= f.text_field :locality %>
   </div>
   <div class="field">
-    <%= f.label :province_id %><br />
+    <%= f.label :province_id, "Localidad" %><br />
     <%#= f.number_field :province_id %>
     <%= f.select :province_id, @provinces.map {|prov| [prov.province, prov.id]} %>
   </div>

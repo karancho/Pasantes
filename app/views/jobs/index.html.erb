@@ -1,0 +1,35 @@
+<h1>Empleos anteriores</h1>
+
+<table border="1">
+  <tr>
+    <th>Empresa</th>
+    <th>Cargo</th>
+    <th>Area</th>
+    <th>Desde</th>
+    <th>hasta</th>
+    <th>Actualmente trabajando</th>
+    <th>UserID</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.enterprise_name %></td>
+    <td><%= job.position %></td>
+    <td><%= job.area %></td>
+    <td><%= job.from %></td>
+    <td><%= job.until %></td>
+    <td><%= job.workingnow %></td>    
+    <td><%= job.user_id %></td>
+    <td><%= link_to 'Mas Datos', job %></td>
+    <td><%= link_to 'Modificar', edit_job_path(job) %></td>
+    <td><%= link_to 'Borrar', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Agregar nuevo trabajo', new_job_path %>

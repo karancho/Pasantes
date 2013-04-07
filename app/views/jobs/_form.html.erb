@@ -1,0 +1,48 @@
+<%= form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr />
+
+  <div class="field">
+    <%= f.label :enterprise_name, "Nombre de la compañía" %><br />
+    <%= f.text_field :enterprise_name %>
+  </div>
+  <div class="field">
+    <%= f.label :position, "Cargo que ocupaba (ejemplo: Encargado)" %><br />
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :area, "Area o Departamento (ejemplo: Recepción)" %><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="field">
+    <%= f.label :from, "Desde" %><br />
+    <%= f.date_select :from %>
+  </div>
+  <div class="field">
+    <%= f.label :until, "Hasta" %><br />
+    <%= f.date_select :until %>
+  </div>
+  <div class="field">
+    <%= f.label :workingnow, "Trabajando actualmente" %><br />
+    <%= f.check_box :workingnow %>
+  </div>
+  <div class="field">
+    <%= f.label :taskdescription, "Descripción de tareas realizadas" %><br />
+    <%= f.text_area :taskdescription %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  enterprise_name: MyString
+  position: MyString
+  area: MyString
+  from: 2013-04-07
+  until: 2013-04-07
+  workingnow: false
+  taskdescription: MyString
+  user_id: 1
+
+two:
+  enterprise_name: MyString
+  position: MyString
+  area: MyString
+  from: 2013-04-07
+  until: 2013-04-07
+  workingnow: false
+  taskdescription: MyString
+  user_id: 1

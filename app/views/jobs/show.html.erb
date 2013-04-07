@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre de la compañía:</b>
+  <%= @job.enterprise_name %>
+</p>
+
+<p>
+  <b>Cargo:</b>
+  <%= @job.position %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @job.area %>
+</p>
+
+<p>
+  <b>Desde:</b>
+  <%= @job.from %>
+</p>
+
+<p>
+  <b>Hasta:</b>
+  <%= @job.until %>
+</p>
+
+<p>
+  <b>Actualmente trabajando:</b>
+  <%= @job.workingnow %>
+</p>
+
+<p>
+  <b>Descripción de tareas:</b>
+  <%= form_for(@job) do |f| %>
+    <%= f.text_area :taskdescription, :readonly => true  %>
+  <% end %>
+  <%#= @job.taskdescription %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @job.user.name %>, <%= @job.user.surname %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
