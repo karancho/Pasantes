@@ -12,10 +12,9 @@
 		<table>
 			<tr>
 				<% user = User.find_by_id(session[:user_id]) %>
-				<td>Logueado como <%= user.name %> <%= user.surname %></td>
-
 				<td><%= button_to 'Salir de la sesión', logout_path, :method => "delete" %> </td>
 				<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
+				<td>Logueado como <%= user.name %> <%= user.surname %></td>
 			</tr>
 		</table>
 		<table border="1">
@@ -72,6 +71,9 @@
 					</li>
 					<li>
 						<%= link_to 'Postear Ofertas', new_internship_path %>
+					</li>
+					<li>
+						<%= link_to 'Ver mis Ofertas', internships_path %>
 					</li>
 				</ul></td>
 				<% end %>

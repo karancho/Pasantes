@@ -16,12 +16,27 @@
 </p>
 
 <p>
+  <b>Dirección:</b>
+  <%= @user.address %>
+</p>
+
+<p>
+  <b>CUIL:</b>
+  <%= @user.cuil %>
+</p>
+
+<p>
+  <b>E-mail:</b>
+  <%= @user.email %>
+</p>
+
+<p>
   <b>Locality:</b>
   <%= @user.locality.locality %>
 </p>
 
 <p>
-    <b>Perfil público en Linkedin (¡muy útil! - ¡Mantener actualizado!)" %></b>
+    <b>Perfil público en Linkedin <h6>(¡muy útil! - ¡Mantener actualizado!)"</h6> </b>
     
     <%= @user.linkedin %>
 </p>
