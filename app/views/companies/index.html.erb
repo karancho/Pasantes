@@ -2,11 +2,11 @@
 
 <table border="1">
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Locality</th>
-    <th>Manager</th>
-    <th>Boss</th>
+    <th>Razón Social</th>
+    <th>Dirección</th>
+    <th>Localidad</th>
+    <th>Encargado</th>
+    <th>Director / Presidente</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,15 +17,17 @@
     <td><%= company.name %></td>
     <td><%= company.address %></td>
     <td><%= company.locality.locality %></td>
-    <td><%= company.manager %></td>
+    <td><%= company.manager %><br/>
+    	<%= company.user.name %>, <%= company.user.surname %>
+    </td>
     <td><%= company.boss %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= link_to 'Mas Datos', company %></td>
+    <td><%= link_to 'Modificar', edit_company_path(company) %></td>
+    <td><%= link_to 'Borrar', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Company', new_company_path %>
+<%= link_to 'Agregar otra compañia a la que pertenezco ', new_company_path %>

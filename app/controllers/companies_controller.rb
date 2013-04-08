@@ -3,7 +3,16 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    
+    usuarioLogueado = User.find(session[:user_id])
+    if usuarioLogueado.admin = true
+      @companies = Company.all
+    end
+    
+    if usuarioLogueado.manager = true #si es un manager el que esta logueado, que solo vea sus propias empresas
+      @companies = Company.where(:user_id => usuarioLogueado.id)
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +35,12 @@ class CompaniesController < ApplicationController
   # GET /companies/new.json
   def new
     @company = Company.new
+    
+    @usuarioLogueado = User.find_by_id(session[:user_id])
+    @nombreCompuesto = @usuarioLogueado.surname + ", " + @usuarioLogueado.name
+    @cuilLogueado = @usuarioLogueado.cuil 
+    #@nombreCompuesto = "cacho"
+    
     @localities = Locality.all
 
     respond_to do |format|
@@ -44,6 +59,12 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
+    
+    usuarioLogueado = User.find(session[:user_id])
+    unless usuarioLogueado.admin == true #si es un admin el que esta creando empresas, no tiene sentido que figure como manager
+      @company.user_id = usuarioLogueado.id      
+    end
+    
     @localities = Locality.all
 
     respond_to do |format|

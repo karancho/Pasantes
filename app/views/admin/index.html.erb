@@ -6,85 +6,67 @@
 
 <p>
 	Es una oficina virtual donde podras resolver todo lo referente a Pasantías, Práctica Profesional y Bolsa de Trabajo.
-	Está destinado a alumnos, empresas, profesores y autoridades de la Escuela, los que según el nivel de usuario que posean podrán ofrecer pasantías, postularse a ofertas, publicar currículums, etc, etc, etc.... mirá mas 
-	detalles <a href="http://www.eim.esc.edu.ar/dpp/manual_dpp/intro_home_page.htm">** aquí **</a>!
+	<br/>
+	Está destinado a alumnos, empresas, profesores y autoridades de la Escuela, los que según el nivel de usuario que posean podrán ofrecer pasantías, postularse a ofertas, publicar currículums, etc.
+	<br/>
+</p>
+
+<% usuarioEnCurso = User.find_by_id(session[:user_id]) %>
+
+<% if usuarioEnCurso.manager == true %>
+  <!-- nada por aqui (todavia). Algo se me va a ocurrir -->
+<% else %>
+
 	Si es tu PRIMER TRABAJO, es recomendable leer ademas estos <a href="http://www.eim.esc.edu.ar/dpp1/TallerMiPrimerEmpleoDefinitivo.ppt"> prácticos consejos </a>pertenecientes a la Consultora "Sesa Select" en motivo del Taller Primer Empleo <a href="http://eim.esc.edu.ar/joomla/index.php/noticias-de-la-escuela/55-institucionales-categoria/235-taller-primer-empleo"> que brindaron en nuestra institución.</a>
-</p>
-
-<p>
-	MANUAL DE PASANTIAS y PRÁCTICAS PROFESIONALES
-</p>
-
-<p>
-	Este manual está destinado a alumnos, empresas y profesores que realicen algún tipo de pasantía, práctica profesional o salida de estudio. Clickea <a href="http://www.eim.esc.edu.ar/dpp/manual_dpp/">aquí</a> para conocerlo
-</p>
-
-<p>
-	DATOS DE CONTACTO
+	<br/>
+	
+	<p>
+		MANUAL DE PASANTIAS y PRÁCTICAS PROFESIONALES: Este manual está destinado a alumnos, empresas y profesores que realicen algún tipo de pasantía, práctica profesional o salida de estudio. Clickea <a href="http://www.eim.esc.edu.ar/dpp/manual_dpp/">aquí</a> para conocerlo
+	</p>
+	
+	<p>
+		DATOS DE CONTACTO
+		<ul>
+			<li>
+				Dirección Carrera de Turismo y Hotelería: Mariana Ghiretti
+				<ul>
+					<li>
+						turismo@eim.esc.edu.ar
+					</li>
+					<li>
+						hoteleria@eim.esc.edu.ar
+					</li>
+					<li>
+						mghiretti.eim@gmail.com
+					</li>
+				</ul>
+			</li>
+			<li>
+				Dirección Carrera de Gastronomía / Sommeleria
+				<ul>
+					<li>
+						gastronomia@eim.esc.edu.ar
+					</li>
+					<li>
+						sommelier@eim.esc.edu.ar
+					</li>
+					<li>
+						leitocarranza@hotmail.com
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</p>
+	
+	
+	ATENCIÓN DEL DPP EN VACACIONES			
 	<ul>
-		<li>Dirección Carrera de Turismo y Hotelería: Mariana Ghiretti
-			<ul>
-				<li>turismo@eim.esc.edu.ar</li>
-				<li>hoteleria@eim.esc.edu.ar</li>
-				<li>mghiretti.eim@gmail.com</li>
-			</ul>
-		</li>
-		<li>Dirección Carrera de Gastronomía / Sommeleria
-			<ul>
-				<li>gastronomia@eim.esc.edu.ar</li>
-				<li>sommelier@eim.esc.edu.ar</li>
-				<li>leitocarranza@hotmail.com</li>
-			</ul>
-	    </li>			
+		<li>mghiretti.eim@gmail.com - Serán chequeados una vez por semana.</li>
+		<li>Oficina virtual: www.eim.esc.edu.ar/dpp1</li>
+		<li>En vacaciones solo se atenderán casos de urgencia RELACIONADAS a las prácticas profesionales, ninguna consulta académica</li>
+		<ul>PRESENTACION DE INFORMES HORAS DEL <%= Time.now.year - 1 %>
+			<li>Se recibirán informes hasta el <b>20/02/<%= Time.now.year %></b>.</li>
+			<li>Los alumnos que no completen las cantidades de horas  y la presentación de los informes,  pedidos en los programas respectivos, quedarán en condición de <b>RECURSANTE</b>.</li>
+		</ul>
 	</ul>
-</p>
-
-<br>
-
-</font></td></tr></table></td></tr></table>
-<table border="0" width="100%" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>
-		<table border="0" width="100%">
-			<tr align="center" valign="middle">
-				<td><font class="pn-title">
-					<br>
-					ATENCIÓN DEL DPP EN VACACIONES
-					<br>
-					<br>
-				</font></td>
-			</tr>
-			<tr align="left" valign="middle">
-				<td><font class="pn-normal">En caso de urgencia enviar mails a:
-
-					mghiretti.ei&#109;&#064;&#103;mail.com
-
-					Serán chequeados una vez por semana.
-
-					<br>
-					<br>
-					* Oficina virtual: www.eim.esc.edu.ar/dpp1
-					<br>
-					En vacaciones solo se atenderán casos de urgencia RELACIONADAS a las prácticas profesionales, ninguna consulta académica</font></td>
-			</tr>
-		</table></td>
-	</tr>
-</table>
-<table border="0" width="100%" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>
-		<table border="0" width="100%">
-			<tr align="center" valign="middle">
-				<td><font class="pn-title">
-					<br>
-					PRESENTACION DE INFORMES HORAS DEL <%= Time.now.year - 1 %>
-					<br>
-					<br>
-				</font></td>
-			</tr>
-			<tr align="left" valign="middle">
-				<td><font class="pn-normal">Se recibirán informes hasta el <b>20/02/<%= Time.now.year %></b>.
-					<br>
-					<br>
-					los alumnos que no completen las cantidades de horas  y la presentación de los informes,  pedidos en los programas respectivos, quedarán en condición de <b>RECURSANTE</b>.
-					<br>
+<% end %>

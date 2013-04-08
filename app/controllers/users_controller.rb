@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     if usuarioEnCurso == nil #es un empresario dandose de alta
       @user.manager = true
     end
+    
     respond_to do |format|
       if @user.save
         #format.html { redirect_to @user, :notice =>  'User was successfully created.' }

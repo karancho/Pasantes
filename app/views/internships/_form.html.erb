@@ -14,9 +14,20 @@
 <% end %>
 
 <div class="field">
-	<%= f.label :company_id, "Compañía" %>
-	<br />
-	<%= f.select :company_id, @companies.map {|com| [com.name, com.id]} %>
+	<table>
+		<tr>
+			<td>
+				<%= f.label :company_id, "Empresa" %><br/>
+			</td>
+			<td>
+				<%= f.select :company_id, @companies.map {|com| [com.name, com.id]} %>
+			</td>
+			<td>
+				<h6>¿La Empresa no aparece? <%= link_to 'Agregar ', new_company_path %></h6>				
+			</td>		
+		</tr>
+		
+	</table>
 </div>
 
 <div class="field">

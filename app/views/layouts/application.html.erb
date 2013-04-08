@@ -11,44 +11,21 @@
 
 		<table>
 			<tr>
-        <% user = User.find_by_id(session[:user_id]) %>
-        <td>Logueado como <%=user.name %> <%=user.surname %></td>
-          
+				<% user = User.find_by_id(session[:user_id]) %>
+				<td>Logueado como <%= user.name %> <%= user.surname %></td>
+
 				<td><%= button_to 'Salir de la sesión', logout_path, :method => "delete" %> </td>
 				<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
 			</tr>
 		</table>
 		<table border="1">
-			<tr valign="top">
-				<% if user.admin == true %>
-
-				<td colspan="3">
-                  TODO (por hacer / terminar)
-				<ul>
-				<h5>
-					<li>
-						Iteraccion de tareas y hs por día en contrato
-					</li>
-					<li>
-						Sección para que los alumnos rellenen su CV
-					</li>
-
-					<li>
-        				        Sección para que los empresarios corrijan sus datos, publiquen sus pasantias, y Majo valide las ofertas.
-					</li>
-				<h5>
-				</ul>
-				</td>
-			</tr>
-
-
+			<% if user.admin == true %>
 
 			<tr valign="top">
 
-				<td>
-                  Menu Administradores
+				<td> Menu Administradores
 				<ul>
-                    <li>
+					<li>
 						<%= link_to 'Empresas',companies_path %>
 					</li>
 
@@ -59,18 +36,14 @@
 						<%= link_to 'Ofertas',internships_path %>
 					</li>
 					<li>
-        				        <%= link_to 'Contratos',contracts_path %>
+						<%= link_to 'Contratos',contracts_path %>
 					</li>
 
+				</ul></td>
 
-				</ul>
-				</td>
-
-				<td>
-					Parametrización del sistema
+				<td> Parametrización del sistema
 				<ul>
- 
- 
+
 					<li>
 						<%= link_to 'ABM Provincias',provinces_path %>
 					</li>
@@ -79,30 +52,52 @@
 					</li>
 					<li>
 						<%= link_to 'ABM tareas tipicas', tasks_path %>
-          </li>
+					</li>
 
 					<li>
 						<%= link_to 'ABM Habilidades', skills_path %>
 					</li>
 
-
-
 				</ul></td>
 				<% end %>
-				<td>
-					Menu Alumnos
+
+				<% if user.admin == true or user.manager == true %>
+				<td>Menu Empresarios
+				<ul>
+					<li>
+						<%= link_to 'Datos de Contacto ',edit_user_path(user) %>
+					</li>
+					<li>
+						<%= link_to 'Datos de la Compañía ',companies_path %>
+					</li>
+					<li>
+						<%= link_to 'Postear Ofertas', new_internship_path %>
+					</li>
+				</ul></td>
+				<% end %>
+
+				<% unless user.manager == true %>
+				<td> Menu Alumnos
 				<ul>
 					<li>
 						<%= link_to 'Ofertas',internships_path %>
 					</li>
-					<li>Mi Curriculum (¡mantener actualizado!)
+					<li>
+						Mi Curriculum (¡mantener actualizado!)
 						<ul>
-							<li><%= link_to 'Datos Personales ',edit_user_path(user) %></li>
-							<li><%= link_to 'Empleos anteriores ',jobs_path %></li>
-							<li><%= link_to 'Estudios Cursados ',studies_path %></li>
-						</ul>						
+							<li>
+								<%= link_to 'Datos Personales ',edit_user_path(user) %>
+							</li>
+							<li>
+								<%= link_to 'Empleos anteriores ',jobs_path %>
+							</li>
+							<li>
+								<%= link_to 'Estudios Cursados ',studies_path %>
+							</li>
+						</ul>
 					</li>
 				</ul></td>
+				<% end %>
 
 			</tr>
 		</table>

@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil, :manager
+  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil, :manager, :linkedin
 
   #has_many :internships
-  #has_many :companies, :through => :internships
+  has_many :companies, :through => :internships
+  
+  #Esto es para que la compañia pueda encontrar a su dueno, o para que el dueño pueda cargar su compania sin tener quepasar por internships primero como en la relac anterior arriba 
+  has_many :companies #ojo aca, testear bien si no hay problema con doble relacion  has_many :companies
   
   
   belongs_to :locality

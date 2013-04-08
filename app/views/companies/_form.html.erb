@@ -25,17 +25,28 @@
     <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
 
+
   <div class="field">
     <%= f.label :manager, "Nombre y Apellido del encargado de supervisar al alumno" %><br />
-    <%= f.text_field :manager %>
+    <% if @usuarioLogueado == nil %>
+    	<%= f.text_field :manager, :value => "" %>    	
+    <% else %>        
+    	<%= f.text_field :manager, :value => @nombreCompuesto %>
+    <% end %>
   </div>
+
+  
   <div class="field">
     <%= f.label :manager_cuil, "CUIL Encargado" %><br />
-    <%= f.text_field :manager_cuil %>
-  </div>
+    
+    <% if @usuarioLogueado == nil %>
+    	<%= f.text_field :manager_cuil %>    	
+    <% else %>        
+    	<%= f.text_field :manager_cuil, :value => @cuilLogueado %>
+    <% end %>  </div>
 	<hr>
   <div class="field">
-    <%= f.label :boss, "Nombre y Apellido de quien representa a la compañía. " %><br />
+    <%= f.label :boss, "Nombre y Apellido de ** quien representa a la compañía **. " %><br />
     <%= f.text_field :boss %>
   </div>
   <div class="field">
