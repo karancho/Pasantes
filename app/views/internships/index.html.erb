@@ -4,29 +4,9 @@
 <h4>Ordenando por fecha de publicación</h4>
 
 <% if user.admin == true %>
-<%= link_to 'Agregar Oferta', new_internship_path %>
+    <p><%= link_to 'Agregar Oferta', new_internship_path %></p>
 <% end %>
 
-<p>
-  <!-- Filtro por mes: --><%#=@mes %>
-
-  <!-- Variable: --> <%#=@variable %>
-<%#= form_tag(internships_path, :method =>'get', :multipart => true) do %>
-  <%#= select_tag("mes","#{@variable}".html_safe, :multiple => false) %>
-  <%#= submit_tag 'Filtrar' %>
-<%# end %>
-
-<!--
-<form action="/internships" method="get">
-	<select name="mes">
-		"<option value="1">Enero</option><option value="2">Febrero</option><option  value="3">Marzo</option>"
-	</select>
-
-	<input type="submit">
-</form>
--->
-
-</p>
 
 <table border="1">
 	<tr>
@@ -50,30 +30,68 @@
 
 	</tr>
 
-	<% @internships.each do |internship| %>
-	<tr>
-    <td>
-      <%= Time.now.year %>-<%= internship.id %>
-    </td>
-		<td><%= internship.company.name %></td>
-		<td><%= internship.description_job %></td>
-		<td><%= internship.napplicants %></td>
-		<td><%#= internship.situation.status %></td>
-		<td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
-		<td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
-		<td><%= link_to 'Mas Datos / Ver Postulados', internship %></td>
+  <% if user.manager == true %>
+      <% @companies = Company.where(:user_id => user.id) %>
+      <% @companies.each do |company| %>
 
-		<% if user.admin == true or user.manager == true %>
-      <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
-		  <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-		<% end %>
+        <% @internships = Internship.where(:company_id => company.id) %>
+        <% @internships.each do |internship| %>
+        <tr>
+          <td>
+            <%= Time.now.year %>-<%= internship.id %>
+          </td>
+          <td><%= internship.company.name %></td>
+          <td><%= internship.description_job %></td>
+          <td><%= internship.napplicants %></td>
+          <td><%#= internship.situation.status %></td>
+          <td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
+          <td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
-    <% unless user.manager %>
-      <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
-    <% end %>
-	<% end %>
-  </tr>
+          <td><%= link_to 'Mas Datos / Ver Postulados', internship %></td>
+
+          <% if user.admin == true or user.manager == true %>
+            <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
+            <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+          <% end %>
+
+          <% unless user.manager %>
+            <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
+          <% end %>
+
+          </tr>
+          <% end %><!-- @internships.each do |internship|  -->
+        <% end %><!--  @companies.each do |company| -->
+
+  <% else %> 
+        <% @internships = Internship.order("id").reverse %>
+        <% @internships.each do |internship| %>
+        <tr>
+          <td>
+            <%= Time.now.year %>-<%= internship.id %>
+          </td>
+          <td><%= internship.company.name %></td>
+          <td><%= internship.description_job %></td>
+          <td><%= internship.napplicants %></td>
+          <td><%#= internship.situation.status %></td>
+          <td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
+          <td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
+
+          <td><%= link_to 'Mas Datos / Ver Postulados', internship %></td>
+
+          <% if user.admin == true or user.manager == true %>
+            <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
+            <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+          <% end %>
+
+          <% unless user.manager %>
+            <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
+          <% end %>
+
+          </tr>
+          <% end %><!-- @internships.each do |internship|  -->
+
+  <% end %> <!-- if -->
 </table>
 
 <br />
