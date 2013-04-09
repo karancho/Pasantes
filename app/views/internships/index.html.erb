@@ -64,12 +64,14 @@
 
 		<td><%= link_to 'Mas Datos / Ver Postulados', internship %></td>
 
-		<% if user.admin == true %>
+		<% if user.admin == true or user.manager == true %>
       <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
 		  <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
 		<% end %>
 
-    <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
+    <% unless user.manager %>
+      <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
+    <% end %>
 	<% end %>
   </tr>
 </table>

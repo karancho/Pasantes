@@ -173,8 +173,15 @@ class InternshipsController < ApplicationController
   # GET /internships/new
   # GET /internships/new.json
   def new
+
+    usuarioLogueado = User.find(session[:user_id])
+    if usuarioLogueado.manager
+      @companies = Company.where(:user_id => usuarioLogueado.id)
+    else
+      @companies = Company.all
+    end
+    
     @internship = Internship.new
-    @companies = Company.all
     @situations = Situation.all
     respond_to do |format|
       format.html # new.html.erb

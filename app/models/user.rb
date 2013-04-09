@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :companies, :through => :internships
   
   #Esto es para que la compañia pueda encontrar a su dueno, o para que el dueño pueda cargar su compania sin tener quepasar por internships primero como en la relac anterior arriba 
-  has_many :companies #ojo aca, testear bien si no hay problema con doble relacion  has_many :companies
+  #has_many :companies #ojo aca, testear bien si no hay problema con doble relacion  has_many :companies
   
   
   belongs_to :locality
