@@ -13,7 +13,7 @@
 		<th>ID</th>
 		<th>Empresa</th>
 		<th>Descripción del trabajo</th>
-    <th>Nº alumnos</br>postulados</th>
+    <th>Nº alumnos</br>solicitados</th>
 		<th>Situación</th>
 		<th>Desde</th>
 		<th>Hasta</th>
@@ -43,7 +43,7 @@
           </td>
           <td><%= internship.company.name %></td>
           <td><%= internship.description_job %></td>
-          <td><%= internship.napplicants %></td>
+          <td><center><%= internship.napplicants %></center></td>
           <td><%#= internship.situation.status %></td>
           <td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
           <td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil, :manager, :linkedin
+  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil, :manager, :linkedin, :celphone, :homephone
 
   #has_many :internships
   has_many :companies, :through => :internships

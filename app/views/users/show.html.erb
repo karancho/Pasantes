@@ -1,28 +1,99 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @user.name %>
+  <b><%= @user.name %> <%= @user.surname %> </b>
+</p>
+
+<% usuarioLogueado = User.find(session[:user_id]) %>
+<% if usuarioLogueado.manager == false %>
+  <p>
+    <b>Dni:</b>
+    <%= @user.dni %>
+  </p>
+
+  <p>
+    <b>CUIL:</b>
+    <%= @user.cuil %>
+  </p>
+
+  <p>
+    <b>Dirección:</b>
+    <%= @user.address %>
+  </p>
+
+  <p>
+	<b>Localidad:</b>
+	  <%= @user.locality.locality %>
+  </p>
+
+  <p>
+    <b>Telefono particular</b>
+    <%= @user.homephone %>
+  </p>
+
+<% end %>
+
+<p>
+  <b>Empleos anteriores:</b>
+  <% if @user.jobs.count > 0 %>
+    <% @user.jobs.each do |j| %>
+    <ul>
+      <li>
+        <b><%= j.enterprise_name %></b>
+        <ul>
+          <li>Posición: <%= j.position %></li>
+          <li>Area: <%= j.area %></li>
+          <li>Desde <%= j.from %> hasta <%= j.until %></li>
+          <% if j.workingnow %>
+            <li>Trabajando actualmente</li>
+          <% end %>
+          <li>Descripción de tareas: <%= j.taskdescription %></li>
+        </ul>
+      </li>
+    </ul>
+    <% end %>
+  <% else %>
+    No hay registros
+  <% end %>
 </p>
 
 <p>
-  <b>Surname:</b>
-  <%= @user.surname %>
+  <b>Estudios:</b>
+  <% if @user.studies.count > 0 %>
+    <% @user.studies.each do |s| %>
+    <ul>
+      <li>
+        <b><%= s.academy %></b>
+        <ul>
+          <li>Título: <%= s.title %></li>
+          <li>Desde <%= s.from %> hasta <%= s.until %></li>
+          <li>Descripción: <%= s.description %></li>
+        </ul>
+      </li>
+    </ul>
+    <% end %>
+  <% else %>
+    No hay registros
+  <% end %>
 </p>
 
-<p>
-  <b>Dni:</b>
-  <%= @user.dni %>
-</p>
+
+<% if @user.linkedin != nil %>
+  <p>
+    <b>Perfil público en Linkedin: </b>
+      <%= @user.linkedin %>
+  </p>
+<% end %>
+
+<% if usuarioLogueado.manager == false %>
+  <h6>(¡muy útil! - ¡Mantener actualizado!)"</h6> 
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% else %>
+
+<% end %>
 
 <p>
-  <b>Dirección:</b>
-  <%= @user.address %>
-</p>
-
-<p>
-  <b>CUIL:</b>
-  <%= @user.cuil %>
+  <b>Datos de contacto:</b>
 </p>
 
 <p>
@@ -31,15 +102,16 @@
 </p>
 
 <p>
-  <b>Locality:</b>
-  <%= @user.locality.locality %>
+  <b>Telefono celular</b>
+  <%= @user.celphone %>
 </p>
 
-<p>
-    <b>Perfil público en Linkedin <h6>(¡muy útil! - ¡Mantener actualizado!)"</h6> </b>
-    
-    <%= @user.linkedin %>
-</p>
+<h6>(Mas datos: solo visibles para directores de carrera)</h6>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<script>
+  function goBack() { window.history.back() } 
+</script>
+
+<input type="button" value="Volver" onclick="goBack()">
+
 <%#= link_to 'Back', users_path %>

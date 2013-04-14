@@ -82,7 +82,7 @@
 				<td> Menu Alumnos
 				<ul>
 					<li>
-						<%= link_to 'Ofertas',internships_path %>
+						<%= link_to 'Ofertas de trabajo',internships_path %>
 					</li>
 					<li>
 						Mi Curriculum (¡mantener actualizado!)
@@ -98,6 +98,9 @@
 							</li>
 						</ul>
 					</li>
+					<li>
+						<%= link_to '¿Como se ve mi Curriculum Vitae ahora?', user %>
+					</li>
 				</ul></td>
 				<% end %>
 
@@ -105,6 +108,12 @@
 		</table>
 
 		<% end %>
+		
+		<script>		
+		  function goBack() { window.history.back() } 
+		</script>
+         <input type="button" value="Volver" onclick="goBack()">
+         
 		<hr>
 		<%= yield %>
 

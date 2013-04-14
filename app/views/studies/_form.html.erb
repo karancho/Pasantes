@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :from, "Año de Comienzo de Cursado" %><br />
-    <%= f.date_select :from %>
+    <%= f.date_select :from, :start_year => 1960 %>
   </div>
   <div class="field">
     <%= f.label :until, "Año de Finalización (esperado)" %><br />

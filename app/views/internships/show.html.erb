@@ -27,10 +27,10 @@
 </p>
 
 <p>
-  <b>Chicos postulados a esta pasantía:</b>
+  <b>Alumnos postulados a esta pasantía:</b>
 	<ul>
     <% @users.each do |i| %>
-	    <li><%= i.name %>, <%= i.surname %></li>
+      <li><%= i.name %>, <%= i.surname %>: <%= link_to 'Ver datos / CV', i %></li>
     <% end %>
 	</ul>
 </p>
