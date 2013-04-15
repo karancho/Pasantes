@@ -5,11 +5,11 @@ class CompaniesController < ApplicationController
   def index
     
     usuarioLogueado = User.find(session[:user_id])
-    if usuarioLogueado.admin = true
+    if usuarioLogueado.admin == true
       @companies = Company.all
     end
     
-    if usuarioLogueado.manager = true #si es un manager el que esta logueado, que solo vea sus propias empresas
+    if usuarioLogueado.manager == true #si es un manager el que esta logueado, que solo vea sus propias empresas
       @companies = Company.where(:user_id => usuarioLogueado.id)
     end
     
