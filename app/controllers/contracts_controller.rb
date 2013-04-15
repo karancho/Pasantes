@@ -32,8 +32,6 @@ class ContractsController < ApplicationController
     end
   end
 
-
-
   # GET /contracts/new
   # GET /contracts/new.json
   def new
@@ -100,4 +98,33 @@ class ContractsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def redactarme
+    @contract = Contract.new 
+
+    @internship = Internship.find(params[:id])
+        
+    @contract.internship_id = @internship.id #proveniente de internships index
+    
+    usuarioLogueado = User.find(session[:user_id])
+    @contract.user_id = usuarioLogueado.id 
+    
+    @contract.save
+  end
+  
+  def imprimirmeci
+    @contract = Contract.find_by_user_id(params[:id])
+    respond_to do |format|
+          format.html { redirect_to @contract }
+          format.json { head :no_content }  
+    end    
+  end  
+  
+  def imprimirmecm    
+    @contract = Contract.find_by_user_id(params[:id])
+    respond_to do |format|
+          format.html { render :action => "cm" }  
+    end    
+  end  
+  
 end

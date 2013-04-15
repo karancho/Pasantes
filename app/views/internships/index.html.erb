@@ -13,11 +13,10 @@
 		<th>ID</th>
 		<th>Empresa</th>
 		<th>Descripción del trabajo</th>
-    <th>Nº alumnos</br>solicitados</th>
-		<th>Situación</th>
+        <th>Nº alumnos</br>solicitados</th>
 		<th>Desde</th>
 		<th>Hasta</th>
-		<th></th>
+		
 
 		<% if user.admin == true %>
 		  <th></th>
@@ -43,8 +42,8 @@
           </td>
           <td><%= internship.company.name %></td>
           <td><%= internship.description_job %></td>
-          <td><center><%= internship.napplicants %></center></td>
-          <td><%#= internship.situation.status %></td>
+          <td><center><%= internship.napplicants %></center></td> 
+                  
           <td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
           <td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
@@ -53,10 +52,6 @@
           <% if user.admin == true or user.manager == true %>
             <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
             <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-          <% end %>
-
-          <% unless user.manager %>
-            <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
           <% end %>
 
           </tr>
@@ -73,19 +68,43 @@
           <td><%= internship.company.name %></td>
           <td><%= internship.description_job %></td>
           <td><%= internship.napplicants %></td>
-          <td><%#= internship.situation.status %></td>
+          
           <td><%= internship.date_from.to_time.strftime('%d/%m/%Y') %></td>
           <td><%= internship.date_until.to_time.strftime('%d/%m/%Y') %></td>
 
           <td><%= link_to 'Mas Datos / Ver Postulados', internship %></td>
 
           <% if user.admin == true or user.manager == true %>
-            <td><%= link_to 'Editar', edit_internship_path(internship) %></td>
-            <td><%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+            <td>
+              <h6>
+            	<%= link_to 'Editar', edit_internship_path(internship) %><br/>
+            	<%= link_to 'Borrar', internship, :method => :delete, :data => { :confirm => 'Are you sure?' } %>            	
+              <h6>
+            </td>
           <% end %>
 
           <% unless user.manager %>
-            <td><%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %><td>
+            <tr>
+	            <td colspan="8">
+	              <!--<h6 style="vertical-align:top;"> --></h6>
+	                <%= link_to 'Postularme', :controller => 'internships', :action => 'postularme', :id => internship %> -
+	                <%= link_to 'Generar Convenios', redactarme_url(:id => internship.id), :confirm => '¿Te ha llamado el empresario y has pasado la entrevista ?' %>
+	                
+	                <% if user.contracts.count > 0 %>
+	                  <% if Contract.find_by_user_id_and_internship_id(user.id,internship.id) != nil %>
+	               
+		                   - Tiene contratos disponibles para imprimir:	                        				 
+	      				  <%#= link_to 'Contrato Individual', contract %>
+	      				  <%#= link_to 'Convenio de Pasantías', :controller => "contracts", :action => "cm", :id => contract %>
+	      				  
+	      				  <%= link_to 'Contrato Individual', imprimirmeci_url(:id => user.id), :confirm => '¿Te ha llamado el empresario y has pasado la entrevista ?' %> -
+	      				  <%= link_to 'Contrato de Pasantías', imprimirmecm_url(:id => user.id), :confirm => '¿Te ha llamado el empresario y has pasado la entrevista ?' %> -
+      				  <% end %>
+	                <% end %>
+
+	            </td>
+            </tr>
+            <tr><td colspan="8"> &nbsp; </td></tr>
           <% end %>
 
           </tr>

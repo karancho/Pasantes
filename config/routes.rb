@@ -2,15 +2,11 @@ Pasantes::Application.routes.draw do
 
   resources :studies
 
-
   resources :jobs
-
 
   resources :skills
 
-
   resources :internships_users
-
 
   resources :contracts
   get '/contracts/:id/cm', to: 'contracts#cm'
@@ -22,9 +18,24 @@ Pasantes::Application.routes.draw do
   resources :internships_tasks
 
   resources :internships
-  get '/internships/:id/postularme', :to => 'internships#postularme'
-
+  
   resources :companies
+
+  get '/internships/:id/postularme', :to => 'internships#postularme'  
+  
+    # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
+  
+  # Sample of named route:
+  #match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+  
+  #Este me sirvio mas que el anterior get cuando tuve que incluir un  :confirm => '¿Te ha llamado el empresario y has pasado la entrevista ?' 
+  match 'contracts/:id/redactarme' => 'contracts#redactarme', :as => :redactarme
+  
+  match 'contracts/:id/imprimirmeci' => 'contracts#imprimirmeci', :as => :imprimirmeci
+  match 'contracts/:id/imprimirmecm' => 'contracts#imprimirmecm', :as => :imprimirmecm
 
 
 #==========================================================================
@@ -55,24 +66,12 @@ Pasantes::Application.routes.draw do
   get "sessions/destroy"
 
   resources :users
-
-
   resources :localities
-
-
   resources :provinces
 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

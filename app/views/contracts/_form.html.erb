@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
+    <%= f.label :user_id, "Usuario" %><br />
     <%#= f.select :user_id, @users.map {|user| [user.name, user.id]} %>
     <select name="contract[user_id]">
      <% @users.each do |user| %>
@@ -26,7 +26,7 @@
 
   </div>
   <div class="field">
-    <%= f.label :internship_id %><br />
+    <%= f.label :internship_id, "Oferta" %><br />
     <select name="contract[internship_id]">
       <% @internships.each do |inter| %>
         <option value="<%= inter.id %>" 
@@ -44,6 +44,6 @@
 
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Armar Contrato Individual y Convenio Marco" %>
   </div>
 <% end %>

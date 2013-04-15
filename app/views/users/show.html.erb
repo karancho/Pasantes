@@ -77,19 +77,11 @@
   <% end %>
 </p>
 
-
 <% if @user.linkedin != nil %>
   <p>
     <b>Perfil público en Linkedin: </b>
       <%= @user.linkedin %>
   </p>
-<% end %>
-
-<% if usuarioLogueado.manager == false %>
-  <h6>(¡muy útil! - ¡Mantener actualizado!)"</h6> 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-<% else %>
-
 <% end %>
 
 <p>
@@ -111,6 +103,14 @@
 <script>
   function goBack() { window.history.back() } 
 </script>
+
+<% if usuarioLogueado.manager == false %>
+  <h6>(¡muy útil! - ¡Mantener actualizado!)"</h6> 
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% else %>
+
+<% end %>
+
 
 <input type="button" value="Volver" onclick="goBack()">
 
