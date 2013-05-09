@@ -13,9 +13,15 @@
 
   <p>Datos para automatizar la creación de contratos de pasantía.</p>
   <div class="field">
-    <%= f.label :name, "Razón Social" %><br />
+    <%= f.label :name, "Nombre:" %><br />
     <%= f.text_field :name %>
   </div>
+  
+    <div class="field">
+    <%= f.label :razon, "Razón Social" %><br />
+    <%= f.text_field :razon %>
+  </div>
+  
   <div class="field">
     <%= f.label :address, "Dirección" %><br />
     <%= f.text_field :address %>

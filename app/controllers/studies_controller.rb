@@ -7,7 +7,7 @@ class StudiesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @studies }
+      format.json { render :json => @studies }
     end
   end
 
@@ -18,7 +18,7 @@ class StudiesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @study }
+      format.json { render :json => @study }
     end
   end
 
@@ -29,7 +29,7 @@ class StudiesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @study }
+      format.json { render :json => @study }
     end
   end
 
@@ -47,11 +47,11 @@ class StudiesController < ApplicationController
     @study.user_id = s.id
     respond_to do |format|
       if @study.save
-        format.html { redirect_to @study, notice: 'Study was successfully created.' }
-        format.json { render json: @study, status: :created, location: @study }
+        format.html { redirect_to @study,  :notice => 'Study was successfully created.' }
+        format.json { render :json => @study,  :status => :created, :location => @study }
       else
-        format.html { render action: "new" }
-        format.json { render json: @study.errors, status: :unprocessable_entity }
+        format.html { render  :action => "new" }
+        format.json { render :json => @study.errors,  :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class StudiesController < ApplicationController
 
     respond_to do |format|
       if @study.update_attributes(params[:study])
-        format.html { redirect_to @study, notice: 'Study was successfully updated.' }
+        format.html { redirect_to @study,  :notice => 'Study was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @study.errors, status: :unprocessable_entity }
+        format.html { render  :action => "edit" }
+        format.json { render :json => @study.errors,  :status => :unprocessable_entity }
       end
     end
   end

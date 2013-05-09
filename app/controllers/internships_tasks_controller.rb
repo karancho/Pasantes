@@ -6,7 +6,7 @@ class InternshipsTasksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @internships_tasks }
+      format.json { render :json => @internships_tasks }
     end
   end
 
@@ -17,7 +17,7 @@ class InternshipsTasksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @internships_task }
+      format.json { render :json => @internships_task }
     end
   end
 
@@ -28,7 +28,7 @@ class InternshipsTasksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @internships_task }
+      format.json { render :json => @internships_task }
     end
   end
 
@@ -44,11 +44,11 @@ class InternshipsTasksController < ApplicationController
 
     respond_to do |format|
       if @internships_task.save
-        format.html { redirect_to @internships_task, notice: 'Internships task was successfully created.' }
-        format.json { render json: @internships_task, status: :created, location: @internships_task }
+        format.html { redirect_to @internships_task,  :notice => 'Internships task was successfully created.' }
+        format.json { render :json => @internships_task,  :status => :created, :location => @internships_task }
       else
-        format.html { render action: "new" }
-        format.json { render json: @internships_task.errors, status: :unprocessable_entity }
+        format.html { render  :action => "new" }
+        format.json { render :json => @internships_task.errors,  :status => :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class InternshipsTasksController < ApplicationController
 
     respond_to do |format|
       if @internships_task.update_attributes(params[:internships_task])
-        format.html { redirect_to @internships_task, notice: 'Internships task was successfully updated.' }
+        format.html { redirect_to @internships_task,  :notice => 'Internships task was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @internships_task.errors, status: :unprocessable_entity }
+        format.html { render  :action => "edit" }
+        format.json { render :json => @internships_task.errors,  :status => :unprocessable_entity }
       end
     end
   end

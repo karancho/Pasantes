@@ -1,5 +1,5 @@
 class InternshipsController < ApplicationController
-  skip_before_filter :authorize, only: [:new, :create, :update, :edit, :show]
+  skip_before_filter :authorize,:only =>  [:new, :create, :update, :edit, :show]
   # GET /internships
   # GET /internships.json
   def index

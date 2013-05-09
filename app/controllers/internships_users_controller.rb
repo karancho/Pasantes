@@ -6,7 +6,7 @@ class InternshipsUsersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @internships_users }
+      format.json { render :json => @internships_users }
     end
   end
 
@@ -17,7 +17,7 @@ class InternshipsUsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @internships_user }
+      format.json { render :json => @internships_user }
     end
   end
 
@@ -28,7 +28,7 @@ class InternshipsUsersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @internships_user }
+      format.json { render :json => @internships_user }
     end
   end
 
@@ -44,11 +44,11 @@ class InternshipsUsersController < ApplicationController
 
     respond_to do |format|
       if @internships_user.save
-        format.html { redirect_to @internships_user, notice: 'Internships user was successfully created.' }
-        format.json { render json: @internships_user, status: :created, location: @internships_user }
+        format.html { redirect_to @internships_user,  :notice => 'Internships user was successfully created.' }
+        format.json { render :json => @internships_user,  :status => :created, :location => @internships_user }
       else
-        format.html { render action: "new" }
-        format.json { render json: @internships_user.errors, status: :unprocessable_entity }
+        format.html { render  :action => "new" }
+        format.json { render :json => @internships_user.errors,  :status => :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class InternshipsUsersController < ApplicationController
 
     respond_to do |format|
       if @internships_user.update_attributes(params[:internships_user])
-        format.html { redirect_to @internships_user, notice: 'Internships user was successfully updated.' }
+        format.html { redirect_to @internships_user,  :notice => 'Internships user was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @internships_user.errors, status: :unprocessable_entity }
+        format.html { render  :action => "edit" }
+        format.json { render :json => @internships_user.errors,  :status => :unprocessable_entity }
       end
     end
   end

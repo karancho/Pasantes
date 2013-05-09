@@ -18,7 +18,7 @@ class SituationsControllerTest < ActionController::TestCase
 
   test "should create situation" do
     assert_difference('Situation.count') do
-      post :create, situation: { status: @situation.status }
+      post :create, situation: {  :status => @situation.status }
     end
 
     assert_redirected_to situation_path(assigns(:situation))
@@ -35,7 +35,7 @@ class SituationsControllerTest < ActionController::TestCase
   end
 
   test "should update situation" do
-    put :update, id: @situation, situation: { status: @situation.status }
+    put :update, id: @situation, situation: {  :status => @situation.status }
     assert_redirected_to situation_path(assigns(:situation))
   end
 

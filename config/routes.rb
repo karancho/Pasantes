@@ -9,7 +9,7 @@ Pasantes::Application.routes.draw do
   resources :internships_users
 
   resources :contracts
-  get '/contracts/:id/cm', to: 'contracts#cm'
+  get '/contracts/:id/cm', :to => 'contracts#cm'
 
   resources :tasks
 
