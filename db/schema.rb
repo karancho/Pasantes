@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509000641) do
+ActiveRecord::Schema.define(:version => 20130512233908) do
 
   create_table "companies", :force => true do |t|
     t.string    "name"
@@ -18,13 +18,15 @@ ActiveRecord::Schema.define(:version => 20130509000641) do
     t.integer   "locality_id"
     t.string    "manager"
     t.string    "boss"
-    t.timestamp "created_at",   :null => false
-    t.timestamp "updated_at",   :null => false
+    t.timestamp "created_at",                            :null => false
+    t.timestamp "updated_at",                            :null => false
     t.string    "boss_dni"
     t.string    "manager_cuil"
     t.string    "position"
     t.integer   "user_id"
     t.string    "razon"
+    t.string    "art",          :default => "COMPLETAR"
+    t.string    "obsocial",     :default => "COMPLETAR"
   end
 
   create_table "contracts", :force => true do |t|
@@ -62,16 +64,16 @@ ActiveRecord::Schema.define(:version => 20130509000641) do
   end
 
   create_table "jobs", :force => true do |t|
-    t.string   "enterprise_name"
-    t.string   "position"
-    t.string   "area"
-    t.date     "from"
-    t.date     "until"
-    t.boolean  "workingnow"
-    t.string   "taskdescription"
-    t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string    "enterprise_name"
+    t.string    "position"
+    t.string    "area"
+    t.date      "from"
+    t.date      "until"
+    t.boolean   "workingnow"
+    t.string    "taskdescription"
+    t.integer   "user_id"
+    t.timestamp "created_at",      :null => false
+    t.timestamp "updated_at",      :null => false
   end
 
   create_table "localities", :force => true do |t|
@@ -94,20 +96,20 @@ ActiveRecord::Schema.define(:version => 20130509000641) do
   end
 
   create_table "skills", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "studies", :force => true do |t|
-    t.string   "academy"
-    t.date     "from"
-    t.date     "until"
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
+    t.string    "academy"
+    t.date      "from"
+    t.date      "until"
+    t.string    "title"
+    t.string    "description"
+    t.timestamp "created_at",  :null => false
+    t.timestamp "updated_at",  :null => false
+    t.integer   "user_id"
   end
 
   create_table "tasks", :force => true do |t|

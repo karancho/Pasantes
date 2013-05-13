@@ -23,7 +23,7 @@
     	<%#= company.user.name %>
     	<%#= company.user.surname %>
     <td><%= company.boss %></td>
-    <td><%= link_to 'Mas Datos', company %></td>
+    <td><%#= link_to 'Mas Datos', company %></td>
     <td><%= link_to 'Modificar', edit_company_path(company) %></td>
     <td><%= link_to 'Borrar', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
