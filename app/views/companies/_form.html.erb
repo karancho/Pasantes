@@ -34,22 +34,24 @@
 
   <div class="field">
     <%= f.label :manager, "Nombre y Apellido del encargado de supervisar al alumno" %><br />
-    <% if @usuarioLogueado == nil %>
-    	<%= f.text_field :manager, :value => "" %>    	
-    <% else %>        
-    	<%= f.text_field :manager, :value => @nombreCompuesto %>
-    <% end %>
+    <%# if @usuarioLogueado == nil %>
+    	<%#= f.text_field :manager, :value => "" %>    	
+    	<%= f.text_field :manager %>
+    <%# else %>        
+    	<%#= f.text_field :manager, :value => @nombreCompuesto %>
+    <%# end %>
   </div>
 
   
   <div class="field">
-    <%= f.label :manager_cuil, "CUIL Encargado" %><br />
+    <!-- pequeño hack para no tener que renombrar la columna cuil por dni -->
+    <%= f.label :manager_cuil, "DNI Encargado" %><br />
     
-    <% if @usuarioLogueado == nil %>
+    <%# if @usuarioLogueado == nil %>
     	<%= f.text_field :manager_cuil %>    	
-    <% else %>        
-    	<%= f.text_field :manager_cuil, :value => @cuilLogueado %>
-    <% end %>  </div>
+    <%# else %>        
+    	<%#= f.text_field :manager_cuil, :value => @cuilLogueado %>
+    <%# end %>  </div>
 	<hr>
   <div class="field">
     <%= f.label :boss, "Nombre y Apellido de ** quien representa a la compañía **. " %><br />

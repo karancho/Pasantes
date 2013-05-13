@@ -9,7 +9,10 @@
 
 <p>En la ciudad de Mendoza, el día <b><%= Time.now.day %>-<%= Time.now.month %>-<%= Time.now.year %></b>, entre la <b>EMPRESA</b> <b><%=@contract.internship.company.name.upcase %></b> cuyos datos son: razón social: <b><%=@contract.internship.company.razon.upcase %></b>, con domicilio en <b> <%=@contract.internship.company.address.upcase %></b>, localidad de <b><%=@contract.internship.company.locality.locality.upcase %></b>, provincia de <b><%=@contract.internship.company.locality.province.province.upcase %></b>, representada en este acto por el Sr. <b><%=@contract.internship.company.boss.upcase %></b>, cuyo número de Documento es DNI <b><%=@contract.internship.company.boss_dni.upcase %></b>, quien en su calidad de <b><%=@contract.internship.company.position.upcase %></b>, y la <b>ESCUELA INTERNACIONAL DE TURISMO, HOTELERÍA Y GASTRONOMÍA DE MENDOZA</b>, representada en este acto por la <b>FUNDACION ISLAS MALVINAS</b>, quien comparece a este acto representada por su Presidente <b>ARMANDO ALONSO BADIA (LE. Nº: 8.149.227)</b> y con la participación del Señor Rector de la <b>ESCUELA INTERNACIONAL DE TURISMO, HOTELERÍA Y GASTRONOMÍA DE MENDOZA, Lic. Federico Vasquez de Novoa, D.N.I 20.857.939</b>, todos con domicilio legal en <b>Avda. Roque Saenz Peña No: 745, Ciudad de Mendoza</b>, en adelante la <b>ESCUELA</b>, acuerdan celebrar el presente <b>C</b>ontrato <b>I</b>ndividual, que desde este acto pasa a formar parte del convenio suscripto entre ambas partes el día <b><%= Time.now.day %>-<%= Time.now.month %>-<%= Time.now.year %></b>, con las siguientes cláusulas: </p>
 
-<p>PRIMERA: La EMPRESA recibirá en pasantía al alumno <b><%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %>, CUIL Nº: <%=@contract.user.cuil.upcase %></b>, con domicilio real en <b><%=@contract.user.address %></b> desde el día: <b><%=@contract.internship.date_from.to_time.strftime('%d/%m/%Y') %> </b>por un período de …. Meses, que caduca el: <b><%=@contract.internship.date_until.to_time.strftime('%d/%m/%Y') %></b>, 
+<p>PRIMERA: La EMPRESA recibirá en pasantía al alumno <b><%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %>, CUIL Nº: <%=@contract.user.cuil.upcase %></b>, con domicilio real en <b><%=@contract.user.address %></b> 
+	desde el día: <b><%=@contract.internship.date_from.to_time.strftime('%d/%m/%Y') %> </b>por un período de 
+<%= @contract.internship.date_until.month - @contract.internship.date_from.month + 1 %>
+ Meses, que caduca el: <b><%=@contract.internship.date_until.to_time.strftime('%d/%m/%Y') %></b>, 
 	desempeñando las tareas de 
 	<% @contract.internship.tasks.each do |t| %> 
 	  <b><%= t.description %></b>, 
@@ -33,7 +36,7 @@
 
 <p>SEXTA: Las pasantías serán coordinadas por el Prof <b>Sergio Alonso, CUIL nº: 20-23180414-6</b> en carácter de docente guía, quien asesorará en todo lo relacionado al sistema de pasantías educativas determinadas por el Art. 1 - Ley 26.427</p>
 
-<p>SEPTIMA: LA <b>EMPRESA</b>, designará un tutor, quién junto al docente guía designado por la <b>ESCUELA</b>, elaborarán de manera conjunta un plan de trabajo que ayude a alcanzar los objetivos pedagógicos de las pasantías, este plan de trabajo, se archivará junto al legajo de  pasantías del alumno. (Art. 17 - Ley 26.427). El tutor designado es el Sr. <b><%=@contract.internship.company.manager.upcase %></b>, CUIL /CUIT <b><%=@contract.internship.company.manager_cuil.upcase %></b>.-</p>
+<p>SEPTIMA: LA <b>EMPRESA</b>, designará un tutor, quién junto al docente guía designado por la <b>ESCUELA</b>, elaborarán de manera conjunta un plan de trabajo que ayude a alcanzar los objetivos pedagógicos de las pasantías, este plan de trabajo, se archivará junto al legajo de  pasantías del alumno. (Art. 17 - Ley 26.427). El tutor designado es el Sr. <b><%=@contract.internship.company.manager.upcase %></b>, DNI <b><%=@contract.internship.company.manager_cuil.upcase %></b>.-</p>
 
 <p>OCTAVA: Las horas de la presente pasantía, serán computadas dentro de la cantidad de horas que el alumno debe cumplir de acuerdo a la resolución de la carrera respectiva.</p>
 
