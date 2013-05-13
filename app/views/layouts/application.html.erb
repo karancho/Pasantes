@@ -7,22 +7,32 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
+		<img src="/assets/logonuevo.escuela-chico.jpg" align="right">
 		<% if session[:user_id] %>
 
 		<table>
 			<tr>
-				<% user = User.find_by_id(session[:user_id]) %>
+				<script>		
+		  			function goBack() { window.history.back() } 
+				</script>
+				<td><input type="button" value="Volver" onclick="goBack()"></td>
+         
+				<% user = User.find_by_id(session[:user_id]) %>				
 				<td><%= button_to 'Salir de la sesión', logout_path, :method => "delete" %> </td>
 				<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
 				<td>Logueado como <%= user.name %> <%= user.surname %></td>
 			</tr>
 		</table>
-		<table border="1">
+	    
+	    <h1>Escuela Internacional de Turismo,</h1>
+	    <h1>Hotelería y Gastronomía</h1>	    
+        
+		<table border="0">
 			<% if user.admin == true %>
 
 			<tr valign="top">
-
-				<td> Menu Administradores
+				
+				<td> <center>Menu<br>Administradores</center>
 				<ul>
 					<li>
 						<%= link_to 'Empresas',companies_path %>
@@ -40,7 +50,7 @@
 
 				</ul></td>
 
-				<td> Parametrización del sistema
+				<td> <center>Parametrización<br>Del sistema</center>
 				<ul>
 
 					<li>
@@ -61,7 +71,7 @@
 				<% end %>
 
 				<% if user.admin == true or user.manager == true %>
-				<td>Menu Empresarios
+				<td><center>Menu<br>Empresarios</center>
 				<ul>
 					<li>
 						<%= link_to 'Mis Datos de Contacto ',edit_user_path(user) %>
@@ -79,7 +89,7 @@
 				<% end %>
 
 				<% unless user.manager == true %>
-				<td> Menu Alumnos
+				<td> <center>Menu<br>Alumnos</center>
 				<ul>
 					<li>
 						<%= link_to 'Ofertas de trabajo',internships_path %>
@@ -103,16 +113,12 @@
 					</li>
 				</ul></td>
 				<% end %>
+				
 
 			</tr>
 		</table>
 
-		<% end %>
-		
-		<script>		
-		  function goBack() { window.history.back() } 
-		</script>
-         <input type="button" value="Volver" onclick="goBack()">
+		<% end %>		
          
 		<hr>
 		<%= yield %>
