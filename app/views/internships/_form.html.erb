@@ -37,6 +37,12 @@
 	<%= f.text_field :description_job %>
 </div>
 
+<div class="field">
+	<%= f.label :description, "Si desea agregar algo mas, puede hacerlo en el siguiente cuadro" %>
+	<br />
+	<%= f.text_area :description %>
+</div>
+
 O simplemente marque las tareas que deberá cumplir el estudiante
 <% for task in Task.all %>
 	<div>
@@ -47,11 +53,7 @@ O simplemente marque las tareas que deberá cumplir el estudiante
 
 </br>
 
-<div class="field">
-	<%= f.label :description, "Si desea agregar algo mas, puede hacerlo en el siguiente cuadro" %>
-	<br />
-	<%= f.text_area :description %>
-</div>
+
 
 <div class="field">
 	<%#= f.label :napplicants %>
