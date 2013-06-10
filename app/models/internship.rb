@@ -3,6 +3,7 @@ class Internship < ActiveRecord::Base
   belongs_to :company
   belongs_to :situation
   has_many :contracts
+ 
 
   has_and_belongs_to_many :tasks
   has_and_belongs_to_many :users

@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :treatment, "Tratamiento" %><br />
+	<%= f.select :treatment_id, @treatments.map {|tr| [tr.treatment, tr.id]} %>
+  </div>
+  
+  <div class="field">
     <%= f.label :name, "Nombre" %><br />
     <%= f.text_field :name %>
   </div>

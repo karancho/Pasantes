@@ -34,6 +34,9 @@
 
   <div class="field">
     <%= f.label :manager, "Nombre y Apellido del encargado de supervisar al alumno" %><br />
+    <%= f.label :treatment, "Tratamiento" %><br />
+	<%= f.select :managertreatment_id, @treatments.map {|tr| [tr.treatment, tr.id]} %>
+    
     <%# if @usuarioLogueado == nil %>
     	<%#= f.text_field :manager, :value => "" %>    	
     	<%= f.text_field :manager %>
@@ -55,6 +58,9 @@
 	<hr>
   <div class="field">
     <%= f.label :boss, "Nombre y Apellido de ** quien representa a la compañía **. " %><br />
+    <%= f.label :treatment, "Tratamiento" %><br />
+	<%= f.select :bosstreatment_id, @treatments.map {|tr| [tr.treatment, tr.id]} %>
+
     <%= f.text_field :boss %>
   </div>
   <div class="field">

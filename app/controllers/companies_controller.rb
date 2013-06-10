@@ -35,6 +35,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new.json
   def new
     @company = Company.new
+    @treatments = Treatment.all
     
     @usuarioLogueado = User.find_by_id(session[:user_id])
     @nombreCompuesto = @usuarioLogueado.surname + ", " + @usuarioLogueado.name
@@ -53,12 +54,14 @@ class CompaniesController < ApplicationController
   def edit
     @company = Company.find(params[:id])
     @localities = Locality.all
+    @treatments = Treatment.all
   end
 
   # POST /companies
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
+    @treatments = Treatment.all
     
     usuarioLogueado = User.find(session[:user_id])
     unless usuarioLogueado.admin == true #si es un admin el que esta creando empresas, no tiene sentido que figure como manager
@@ -83,6 +86,7 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     @localities = Locality.all
+    @treatments = Treatment.all
 
     respond_to do |format|
       if @company.update_attributes(params[:company])

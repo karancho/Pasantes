@@ -1,5 +1,8 @@
 Pasantes::Application.routes.draw do
 
+  resources :treatments
+
+
   resources :studies
 
   resources :jobs

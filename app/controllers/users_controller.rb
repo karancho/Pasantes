@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @localities = Locality.all
+    @treatments = Treatment.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @localities = Locality.all
+    @treatments = Treatment.all
   end
 
   # POST /users
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @localities = Locality.all
+    @treatments = Treatment.all
 
     usuarioEnCurso = User.find_by_id(session[:user_id]) 
     if usuarioEnCurso == nil #es un empresario dandose de alta
@@ -68,6 +71,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @localities = Locality.all
+    @treatments = Treatment.all
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

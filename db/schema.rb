@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605002843) do
+ActiveRecord::Schema.define(:version => 20130610184034) do
 
   create_table "companies", :force => true do |t|
     t.string    "name"
@@ -18,15 +18,17 @@ ActiveRecord::Schema.define(:version => 20130605002843) do
     t.integer   "locality_id"
     t.string    "manager"
     t.string    "boss"
-    t.timestamp "created_at",                            :null => false
-    t.timestamp "updated_at",                            :null => false
+    t.timestamp "created_at",                                   :null => false
+    t.timestamp "updated_at",                                   :null => false
     t.string    "boss_dni"
     t.string    "manager_cuil"
     t.string    "position"
     t.integer   "user_id"
     t.string    "razon"
-    t.string    "art",          :default => "COMPLETAR"
-    t.string    "obsocial",     :default => "COMPLETAR"
+    t.string    "art",                 :default => "COMPLETAR"
+    t.string    "obsocial",            :default => "COMPLETAR"
+    t.integer   "bosstreatment_id"
+    t.integer   "managertreatment_id"
   end
 
   create_table "contracts", :force => true do |t|
@@ -119,6 +121,12 @@ ActiveRecord::Schema.define(:version => 20130605002843) do
     t.timestamp "updated_at",  :null => false
   end
 
+  create_table "treatments", :force => true do |t|
+    t.string   "treatment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string    "name"
     t.string    "surname"
@@ -135,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20130605002843) do
     t.string    "linkedin"
     t.string    "celphone"
     t.string    "homephone"
+    t.integer   "treatment_id"
   end
 
 end

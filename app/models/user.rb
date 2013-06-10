@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil, :manager, :linkedin, :celphone, :homephone
+  attr_accessible :dni, :locality_id, :name, :password_digest, :surname, :email, :password, :password_confirmation, :admin, :address, :cuil, :manager, :linkedin, :celphone, :homephone, :treatment_id
 
   #has_many :internships
   has_many :companies, :through => :internships
@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_many :studies
 
+  belongs_to :treatment
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true
 

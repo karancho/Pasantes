@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b><%= @user.name %> <%= @user.surname %> </b>
+  <b><%= @user.treatment.treatment %> <%= @user.name %> <%= @user.surname %> </b>
 </p>
 
 <% usuarioLogueado = User.find(session[:user_id]) %>
