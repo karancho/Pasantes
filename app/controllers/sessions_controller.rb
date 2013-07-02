@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   skip_before_filter :authorize
+  
+  #es solo para evitar application.html.erb - esta bienvenida tiene distinto fondo
+  layout 'session.html.erb'
 
   def new
   end

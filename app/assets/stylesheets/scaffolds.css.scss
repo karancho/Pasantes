@@ -1,15 +1,23 @@
 body {
-  background-color: #fff;
+  /*background-color: #fff;*/
+  background-image:url('background-pattern-claro.jpg');
+  
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
+p, ol, ul, td, ul, li {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 18px;
+}
+
+.buttonTo {
+    border: none;
+    background: url('/assets/button.png') no-repeat top left;
+ 
 }
 
 pre {
@@ -63,7 +71,6 @@ div {
     color: #fff;
   }
   ul li {
-    font-size: 12px;
     list-style: square;
   }
 }
