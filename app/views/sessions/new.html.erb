@@ -1,10 +1,9 @@
 <%= form_tag do %>
   
-  <p><b>Fundación Islas Malvinas</b></p>
-
-  <h2>Departamento de Práctica Profesional</h2>
-  <h2>Portal de Autogestión de Pasantías - Bolsa de Trabajo</h2>
-  <hr>
+  <center>
+  <h3>Departamento de Práctica Profesional</h3>
+  <h3>Portal de Autogestión de Pasantías - Bolsa de Trabajo</h3>
+  </center>
   
   <p class="hola">¡Hola! Estamos reprogramando el viejo sistema de pasantías completamente desde cero. Podes ver diariamente un estado de avance <a href="https://github.com/karancho/Pasantes/commits/master">aquí.</a></p>
   <p>¿Eres <b>empresario o encargado</b>? ¿Necesitas recursos humanos capacitados? Puedes <%= link_to 'darte de alta', new_user_path %> y comenzar postear ofertas de pasantías.
@@ -12,7 +11,7 @@
   <p>Ayudanos a mejorarlo! recibimos también ahi criticas (be nice ;) o ideas para agregarle nuevas funciones.</p>
   
   <fieldset>
-    <legend>Ingrese valores de logueo</legend>
+    <legend><b>Ingrese valores de logueo</b></legend>
     <div>
         <%= label_tag :email, 'Email:' %>
         <%= email_field_tag :email, params[:email] %>
