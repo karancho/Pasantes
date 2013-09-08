@@ -48,8 +48,14 @@ class InternshipsController < ApplicationController
 
   # GET /internships/1/edit
   def edit
+    usuarioLogueado = User.find(session[:user_id])
+    if usuarioLogueado.manager
+      @companies = Company.where(:user_id => usuarioLogueado.id)
+    else
+      @companies = Company.all
+    end
+ 
     @internship = Internship.find(params[:id])
-    @companies = Company.all
     @situations = Situation.all
     @types = Type.all
   end
@@ -57,8 +63,14 @@ class InternshipsController < ApplicationController
   # POST /internships
   # POST /internships.json
   def create
+    usuarioLogueado = User.find(session[:user_id])
+    if usuarioLogueado.manager
+      @companies = Company.where(:user_id => usuarioLogueado.id)
+    else
+      @companies = Company.all
+    end
+    
     @internship = Internship.new(params[:internship])
-    @companies = Company.all
     @situations = Situation.all
     @types = Type.all
 
@@ -76,9 +88,15 @@ class InternshipsController < ApplicationController
   # PUT /internships/1
   # PUT /internships/1.json
   def update
+    usuarioLogueado = User.find(session[:user_id])
+    if usuarioLogueado.manager
+      @companies = Company.where(:user_id => usuarioLogueado.id)
+    else
+      @companies = Company.all
+    end
+ 
     params[:internship][:task_ids] ||= []
     @internship = Internship.find(params[:id])
-    @companies = Company.all
     @situations = Situation.all
     @types = Type.all
 
