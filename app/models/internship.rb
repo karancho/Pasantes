@@ -1,6 +1,7 @@
 class Internship < ActiveRecord::Base
   attr_accessible :company_id, :date_from, :date_until, :description_job, :hs_friday, :hs_monday, :hs_saturday, :hs_sunday, :hs_thursday, :hs_tuesday, :hs_wednesday, :situation_id, :task_ids, :napplicants, :horario, :description
   belongs_to :company
+  belongs_to :type
   belongs_to :situation
   has_many :contracts
  

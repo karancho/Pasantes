@@ -30,6 +30,7 @@ class InternshipsController < ApplicationController
   # GET /internships/new.json
   def new
 
+    @types = Type.all
     usuarioLogueado = User.find(session[:user_id])
     if usuarioLogueado.manager
       @companies = Company.where(:user_id => usuarioLogueado.id)
@@ -50,6 +51,7 @@ class InternshipsController < ApplicationController
     @internship = Internship.find(params[:id])
     @companies = Company.all
     @situations = Situation.all
+    @types = Type.all
   end
 
   # POST /internships
@@ -58,6 +60,7 @@ class InternshipsController < ApplicationController
     @internship = Internship.new(params[:internship])
     @companies = Company.all
     @situations = Situation.all
+    @types = Type.all
 
     respond_to do |format|
       if @internship.save
@@ -77,6 +80,7 @@ class InternshipsController < ApplicationController
     @internship = Internship.find(params[:id])
     @companies = Company.all
     @situations = Situation.all
+    @types = Type.all
 
     respond_to do |format|
       if @internship.update_attributes(params[:internship])

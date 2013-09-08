@@ -31,6 +31,21 @@
 </div>
 
 <div class="field">
+	<table>
+		<tr>
+			<td>
+				<%= f.label :type_id, "Tipo de empleo" %><br/>
+			</td>
+			<td>
+				<%= f.select :type_id, @types.map {|ty| [ty.tipo, ty.id]} %>
+			</td>
+		</tr>
+		
+	</table>
+</div>
+
+
+<div class="field">
 	<%#= f.label :description_job %>
 	Adjunte una descripción general del trabajo solicitado
 	<br />

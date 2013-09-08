@@ -12,8 +12,9 @@
 	<tr>
 		<th>ID</th>
 		<th>Empresa</th>
+		<th>Tipo de trabajo</th>
 		<th>Descripción del trabajo</th>
-        <th>Nº alumnos</br>solicitados</th>
+    <th>Nº alumnos</br>solicitados</th>
 		<th>Desde</th>
 		<th>Hasta</th>
 		
@@ -40,7 +41,8 @@
           <td>
             <%= Time.now.year %>-<%= internship.id %>
           </td>
-          <td><%= internship.company.name %></td>
+          <td><%#= internship.company.name %></td>
+          <td><%= internship.type.tipo %></td>
           <td><%= internship.description_job %></td>
           <td><center><%= internship.napplicants %></center></td> 
                   
@@ -66,6 +68,7 @@
             <%= Time.now.year %>-<%= internship.id %>
           </td>
           <td><%= internship.company.name %></td>
+          <td><%= internship.type.tipo %></td>
           <td><%= internship.description_job %></td>
           <td><%= internship.napplicants %></td>
           
