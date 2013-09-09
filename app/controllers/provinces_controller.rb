@@ -8,7 +8,7 @@ class ProvincesController < ApplicationController
   # GET /provinces
   # GET /provinces.json
   def index
-    @provinces = Province.all
+    @provinces = Province.order(:province)
 
     respond_to do |format|
       format.html # index.html.erb

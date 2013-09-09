@@ -26,10 +26,18 @@
     <%= f.label :address, "Dirección" %><br />
     <%= f.text_field :address %>
   </div>
-  <div class="field">
-    <%= f.label :locality_id, "Localidad" %><br />
-    <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
-  </div>
+
+    <select name="company[locality_id]">
+     <% @localities.each do |locality| %>
+         <option value="<%= locality.id %>" 
+           <%= 'selected' if locality.id == @company.locality_id %> >
+           <%= locality.locality %> - 
+           <%= locality.province.province %>
+         </option>
+     <% end %>
+    </select>
+
+
 
 
   <div class="field">
