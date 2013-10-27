@@ -25,6 +25,11 @@ class User < ActiveRecord::Base
 
   after_destroy :ensure_an_admin_remains
 
+  #Util para select_tag de form_atg en reconectar_form
+  def nombre_completo
+    return surname + ", " + name
+  end
+
   private
   def ensure_an_admin_remains
     if User.count.zero?

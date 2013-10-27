@@ -33,9 +33,9 @@ class InternshipsController < ApplicationController
     @types = Type.all
     usuarioLogueado = User.find(session[:user_id])
     if usuarioLogueado.manager
-      @companies = Company.where(:user_id => usuarioLogueado.id)
+      @companies = Company.where(:user_id => usuarioLogueado.id).order("name ASC")
     else
-      @companies = Company.all
+      @companies = Company.order("name ASC")
     end
     
     @internship = Internship.new

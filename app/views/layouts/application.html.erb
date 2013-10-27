@@ -49,7 +49,11 @@
 					</li>
 					<li>
 						<%= link_to 'Contratos',contracts_path %>
+          </li>
+					<li>
+						<%= link_to 'Conectar empresa con otro usuario',reconectar_path %>
 					</li>
+
 
 				</ul></td>
 
@@ -125,6 +129,9 @@
          
 		<hr>
 		<%= yield %>
+		<hr>
+
+		<h6>Desarrollado por <a href='http://about.me/elbunker'>Sergio A. Alonso - Bunker</a></h6>
 
     <%= debug(params) if Rails.env.development? %>
 	</body>

@@ -1,30 +1,24 @@
 Pasantes::Application.routes.draw do
 
+  #Paso 1, Oso Agente especial: creo el formulario. Un get basta para llegar
+  get "reconectar",  :to => 'reconectar#reconectar_form'
+  #Paso 2, el formulario, un form_tag en este caso, va a contestar enviando con post
+  post "reconectar", :to => 'reconectar#reconectar_response'
+
   resources :types
-
-
   resources :treatments
-
-
   resources :studies
-
   resources :jobs
-
   resources :skills
-
   resources :internships_users
 
   resources :contracts
   get '/contracts/:id/cm', :to => 'contracts#cm'
 
   resources :tasks
-
   resources :situations
-
   resources :internships_tasks
-
   resources :internships
-  
   resources :companies
 
   get '/internships/:id/postularme', :to => 'internships#postularme'  

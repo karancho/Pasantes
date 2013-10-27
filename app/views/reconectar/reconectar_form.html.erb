@@ -1,0 +1,27 @@
+<%= form_tag do %>
+
+<div id="formlogin">
+	<h3>Escoja nueva conexión</h3>
+</div>
+
+<div id="formlogin">
+<fieldset>
+	<legend>
+		<b>Matchee a gusto:</b>
+	</legend>
+	<div>
+		<%= label_tag :company, 'Companía:' %>
+    <%= select_tag :company_id, options_from_collection_for_select(@companies, :id, :name), include_blank: true %>
+	</div>
+	<div>
+		<%= label_tag :user, 'Empresario (filtrar aca):' %>
+    <%= select_tag :user_id, options_from_collection_for_select(@users, :id, :nombre_completo), include_blank: true %>
+	</div>
+	<div>
+		<%= submit_tag "Combinar" %>
+	</div>
+</fieldset>
+</div>
+
+<% end %>
+
