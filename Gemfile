@@ -11,6 +11,7 @@ group :development, :test do
   gem 'sqlite3'
   gem "rails-erd"
   gem 'railroady'
+  gem 'debugger'
 end
 
 group :production do

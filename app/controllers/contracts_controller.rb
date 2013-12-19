@@ -100,14 +100,20 @@ class ContractsController < ApplicationController
   end
 
   def redactarme
+    #debugger
     @contract = Contract.new 
 
     @internship = Internship.find(params[:id])
         
     @contract.internship_id = @internship.id #proveniente de internships index
     
-    usuarioLogueado = User.find(session[:user_id])
-    @contract.user_id = usuarioLogueado.id 
+    elpelotudodecarrizo = User.find(session[:user_id])
+    
+    elpelotudodecarrizo.contracts.each do |i|
+      i.destroy
+    end
+
+    @contract.user_id = elpelotudodecarrizo.id 
     
     @contract.save
   end
