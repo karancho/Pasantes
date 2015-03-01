@@ -2,7 +2,7 @@
 
 <div id="formlogin">
 	<h3>Departamento de Práctica Profesional</h3>
-	<h3>Portal de Autogestión de Pasantías - Bolsa de Trabajo</h3>
+	<h3>Portal de Autogestión de Pasantías - Ofertas de Trabajo</h3>
 </div>
 
 <div id="formlogin">
@@ -29,12 +29,22 @@
 	¡Hola! Estamos reprogramando el viejo sistema de pasantías completamente desde cero. Podes ver diariamente un estado de avance <a href="https://github.com/karancho/Pasantes/commits/master">aquí.</a>
 </p>
 <p>
-	¿Eres <b>empresario o encargado</b>? ¿Necesitas recursos humanos capacitados? Puedes <%= link_to 'darte de alta', new_user_path %> y comenzar postear ofertas de pasantías.
+	¿Sos <b>empresario o encargado</b>? ¿Necesitas recursos humanos capacitados? Podes <%= link_to 'darte de alta', new_user_path %> y comenzar postear ofertas de pasantías.
 <p>
-	¿Eres <b>alumno</b> de la escuela? solicita usuario y contraseña a la cuenta laboratorio@eim.esc.edu.ar con copia a sergio@eim.esc.edu.ar para poder ingresar.
+	¿Sos <b>alumno</b> de la escuela? <%= link_to 'date de alta', new_user_path %>, y mandanos tu DNI a la cuenta laboratorio@eim.esc.edu.ar con copia a sergio@eim.esc.edu.ar para validar tus datos y comenzar a operar con tus pasantías.
 </p>
+
 <p>
-	Ayudanos a mejorarlo! recibimos también ahi criticas (be nice ;) o ideas para agregarle nuevas funciones.
+	<p>¿Sos <b>Egresado</b> de algúna <b>carrera</b> o tomaste algún <b>curso</b>? <br>
+	En una iniciativa planteada por el prof Carlos Tessone y la prof Viviana Coratolo, la escuela <b>busca a los alumnos que egresaron de la escuela</b>. Diversas empresas se contactan todo el tiempo, solicitan perfiles y requieren del talento que ha pasado por nuestras aulas.<br>
+	Si egresaste de la escuela... <%= link_to '¡volvé!', new_user_path %> siempre habrá un espacio para nuestros queridos alumnos.</p>
+	<p></p>
+
+</p>
+
+
+<p>
+	Ayudanos a mejorar este portal! recibimos también ahi criticas (be nice ;) o ideas para agregarle nuevas funciones.
 </p>
 
 <% end %>

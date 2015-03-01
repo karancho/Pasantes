@@ -1,0 +1,15 @@
+Ejemplo para poder retomar el proyecto
+
+git clone git@heroku.com:dpp1.git
+cd dpp1
+rvm install ruby-1.9.2-p330
+rvm use ruby-1.9.2-p330
+bundle install
+bundle exec db:migrate
+
+Para no tener que bajar la base desde Heroku
+bundle exec db:seed
+
+Recordar refrescar github
+
+Ya con eso se puede empezar a programar

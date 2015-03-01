@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+#Contar con al menos un administrador
+Treatment.create :treatment => 'Sr'
+Locality.create :locality => 'Mendoza', :province_id => 1
+User.create(:name => 'Sergio', :surname => 'Alonso', :dni => '12231231', :cuil => '20-1231312-6', :locality_id => 1, :password => 'tangamandapio', :email => 'escuelwwwaint@gmail.com', :admin => true, :treatment_id => 1)

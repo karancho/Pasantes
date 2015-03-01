@@ -1,82 +1,101 @@
+<% debugger %>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b><%#= @user.treatment.treatment %> 
+  <b><%= @user.treatment.treatment %> 
   	<%= @user.name %> <%= @user.surname %> </b>
 </p>
 
-<% usuarioLogueado = User.find(session[:user_id]) %>
-<% if usuarioLogueado.manager == false %>
-  <p>
-    <b>Dni:</b>
-    <%= @user.dni %>
-  </p>
+<% if @user.admin %>
+  <b>Nivel:</b> Administrador
+<% end %>
 
-  <p>
-    <b>CUIL:</b>
-    <%= @user.cuil %>
-  </p>
-
-  <p>
-    <b>Dirección:</b>
-    <%= @user.address %>
-  </p>
-
-  <p>
-	<b>Localidad:</b>
-	  <%= @user.locality.locality %>
-  </p>
-
-  <p>
-    <b>Telefono particular</b>
-    <%= @user.homephone %>
-  </p>
-
+<% if @user.manager %>
+  <b>Nivel:</b> Empresario
 <% end %>
 
 <p>
-  <b>Empleos anteriores:</b>
-  <% if @user.jobs.count > 0 %>
-    <% @user.jobs.each do |j| %>
-    <ul>
-      <li>
-        <b><%= j.enterprise_name %></b>
-        <ul>
-          <li>Posición: <%= j.position %></li>
-          <li>Area: <%= j.area %></li>
-          <li>Desde <%= j.from %> hasta <%= j.until %></li>
-          <% if j.workingnow %>
-            <li>Trabajando actualmente</li>
-          <% end %>
-          <li>Descripción de tareas: <%= j.taskdescription %></li>
-        </ul>
-      </li>
-    </ul>
-    <% end %>
-  <% else %>
-    No hay registros
+  <b>Carrera / Curso: </b><%= @user.career %> 
+  <% if @user.careercomplete %>
+    (terminada)
   <% end %>
+  <% if @user.anioegreso %>
+   . Egresado / terminado en año <%= @user.anioegreso %>
+  <% end %>
+
 </p>
 
+<% if session[:user_id] %>
+  <% usuarioLogueado = User.find(session[:user_id]) %>
+  <% if usuarioLogueado.manager == false %>
+    <p>
+      <b>Dni:</b>
+      <%= @user.dni %>
+    </p>
+
+    <p>
+      <b>CUIL:</b>
+      <%= @user.cuil %>
+    </p>
+
+    <p>
+      <b>Dirección:</b>
+      <%= @user.address %>
+    </p>
+
+    <p>
+  	<b>Localidad:</b>
+  	  <%= @user.locality.locality %>
+    </p>
+
+  <% end %>
+<% end %>
+
+<!-- TODO 
 <p>
-  <b>Estudios:</b>
-  <% if @user.studies.count > 0 %>
-    <% @user.studies.each do |s| %>
-    <ul>
+  <b>Empleos anteriores:</b>
+  -->
+  <%# if @user.jobs.count > 0 %>
+    <%# @user.jobs.each do |j| %>
+    <!-- <ul>
       <li>
-        <b><%= s.academy %></b>
+        <b><%#= j.enterprise_name %></b>
         <ul>
-          <li>Título: <%= s.title %></li>
-          <li>Desde <%= s.from %> hasta <%= s.until %></li>
-          <li>Descripción: <%= s.description %></li>
+          <li>Posición: <%#= j.position %></li>
+          <li>Area: <%#= j.area %></li>
+          <li>Desde <%#= j.from %> hasta <%#= j.until %></li>
+          <%# if j.workingnow %>
+            <li>Trabajando actualmente</li>
+          <%# end %>
+          <li>Descripción de tareas: <%#= j.taskdescription %></li>
         </ul>
       </li>
     </ul>
-    <% end %>
-  <% else %>
+    <%# end %>
+  <%# else %>
     No hay registros
-  <% end %>
-</p>
+  <%# end %>
+</p> -->
+
+<!-- <p>
+  <b>Estudios:</b>
+  <%# if @user.studies.count > 0 %>
+    <%# @user.studies.each do |s| %>
+    <ul>
+      <li>
+        <b><%#= s.academy %></b>
+        <ul>
+          <li>Título: <%#= s.title %></li>
+          <li>Desde <%#= s.from %> hasta <%#= s.until %></li>
+          <li>Descripción: <%#= s.description %></li>
+        </ul>
+      </li>
+    </ul>
+    <%# end %>
+  <%# else %>
+    No hay registros
+  <%# end %>
+</p> -->
 
 <% if @user.linkedin != nil %>
   <p>
@@ -84,6 +103,8 @@
       <%= @user.linkedin %>
   </p>
 <% end %>
+
+<hr>
 
 <p>
   <b>Datos de contacto:</b>
@@ -98,21 +119,62 @@
   <b>Telefono celular</b>
   <%= @user.celphone %>
 </p>
+<p>
+  <b>Telefono particular</b>
+  <%= @user.homephone %>
+</p>
+<p>
+  <b>#Skype</b>
+  <%= @user.skype %>
+</p>
 
-<h6>(Mas datos: solo visibles para directores de carrera)</h6>
+<p>
+  <b>Actualmente trabajando:</b>
+  <% if @user.working %>
+    Si
+    <% if @user.workwhere %>
+      , en <%= @user.workwhere %>
+      <% if @user.position %>
+        , en el puesto de <%= @user.position %>
+      <% end %>
+    <% end %>
+  <% else %>
+    No
+  <% end %>
+</p>
+
+<% if @user.searchingjob %>
+  Atento a propuestas laborables
+<% end %>
+
+<p>
+  <b>Habilidades y aptitudes</b>
+  <br />
+  <%= simple_format(@user.skills) %>
+</p>
+
+<p>
+  <b>Interesado en aprender</b>
+  <br />
+  <%= simple_format(@user.skillstoimprove) %>
+</p>
 
 <script>
   function goBack() { window.history.back() } 
 </script>
 
-<% if usuarioLogueado.manager == false %>
-  <h6>(¡muy útil! - ¡Mantener actualizado!)"</h6> 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-<% else %>
+<% if session[:user_id] %>  
+  <input type="button" value="Volver" onclick="goBack()">
+  <% if usuarioLogueado.manager == false %>   
+   <%= link_to 'Edit', edit_user_path(@user) %> |
+  <% end %>
+<% end %>
 
+<% if session[:user_id] == nil %>  
+  <%= link_to "Volver a Home Page", '/' %>
 <% end %>
 
 
-<input type="button" value="Volver" onclick="goBack()">
+
 
 <%#= link_to 'Back', users_path %>

@@ -1,12 +1,16 @@
-<h1>Listing users</h1>
+
+<h1>Usuarios en base</h1>
+
+<p><%= link_to 'Usuario nuevo', new_user_path %></p>
+
 
 <table border="1">
   <tr>
   	<th></th>
-    <th>Name</th>
-    <th>Surname</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
     <th>Dni</th>
-    <th>Administrador</th>
+    <th colspan="2">Nivel</th>
     <th>Empresario</th>
     <th></th>
     <th></th>
@@ -19,8 +23,8 @@
     <td><%= user.name %></td>
     <td><%= user.surname %></td>
     <td><%= user.dni %></td>
-    <td><%= user.admin %></td>
-    <td><%= user.manager %></td>
+    <td><%= "Administrador" if user.admin %>  </td>
+    <td><%= "Empresario"    if user.manager %></td>
     <td><%= link_to 'Mas / Chequear CV', user %></td>
     <td><%= link_to 'Corregir Datos', edit_user_path(user) %></td>
     <td><%= link_to 'Borrar', user, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
@@ -30,4 +34,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+

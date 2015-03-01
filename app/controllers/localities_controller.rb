@@ -1,4 +1,6 @@
 class LocalitiesController < ApplicationController
+  #skip_before_filter :authorize
+  before_filter :authorize
   # GET /localities
   # GET /localities.json
   def index

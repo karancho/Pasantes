@@ -1,4 +1,10 @@
 class TreatmentsController < ApplicationController
+  #Solo cuando en application_controller esta seteado como before_filter :authorize
+  #skip_before_filter :authorize, :only => [:new, :create, :update, :edit, :show]
+
+  #Activando autorizacion por CONTROLADOR, no GENERAL
+  before_filter :authorize
+  
   # GET /treatments
   # GET /treatments.json
   def index

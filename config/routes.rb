@@ -113,7 +113,10 @@ Pasantes::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
     get "landing/bienvenida"
-    root :to => 'landing#bienvenida'
+    #root :to => 'landing#bienvenida'
+
+    root :to => 'sessions#new'
+
 
 
   # See how all your routes lay out with "rake routes"

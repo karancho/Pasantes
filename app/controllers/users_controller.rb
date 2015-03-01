@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
-  skip_before_filter :authorize,:only =>  [:new, :create, :update, :edit, :show]
+  #skip_before_filter :authorize,:only =>  [:new, :create, :update, :edit, :show]
+  #skip_before_filter :authorize,:only =>  [:update, :edit, :show]
   # GET /users
   # GET /users.json
+
+  #Solo cuando en application_controller esta seteado como before_filter :authorize
+  #skip_before_filter :authorize, :only => [:new, :create, :update, :edit, :show]
+
+  #Activando autorizacion por CONTROLADOR, no GENERAL
+  before_filter :authorize, :only =>  [:update, :edit, :index]
+
   def index
     @users = User.order(:name)
 
@@ -14,6 +22,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    debugger
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -49,16 +58,18 @@ class UsersController < ApplicationController
     @localities = Locality.all
     @treatments = Treatment.all
 
-    usuarioEnCurso = User.find_by_id(session[:user_id]) 
-    if usuarioEnCurso == nil #es un empresario dandose de alta
-      @user.manager = true
-    end
+    #usuarioEnCurso = User.find_by_id(session[:user_id]) 
+    #if usuarioEnCurso == nil #es un empresario dandose de alta
+    #  @user.manager = true
+    #end
     
     respond_to do |format|
       if @user.save
-        #format.html { redirect_to @user, :notice =>  'User was successfully created.' }
-        format.html { redirect_to users_url, :notice =>  'User  #{@user.name}  #{@user.surname} was successfully created.' }
+        #debugger
+        format.html { redirect_to @user, :notice =>  'User was successfully created.' }
+        #format.html { redirect_to :action => "show", :id => @user.id }
         format.json { render :json =>  @user, :status =>  :created, :location => @user }
+
       else
         format.html { render :action => "new" }
         format.json { render :json =>  @user.errors, :status =>  :unprocessable_entity }
@@ -106,4 +117,8 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+  
 end
