@@ -108,7 +108,7 @@
 								Mi Curriculum (¡mantener actualizado!)
 								<ul>
 									<li>
-										<%= link_to 'Datos Personales ',edit_user_path(user) %>
+										<%= link_to 'Corregir datos Personales ',edit_user_path(user) %>
 									</li>
 									<li>
 										<%= link_to 'Empleos anteriores ',jobs_path %>
@@ -131,8 +131,10 @@
 			<% else %>
 				<p>
 					<b>Datos todavia no validados</b>. Se requiere esta validación <b>para comenzar a operar</b> con la plataforma.</br>
-					Por favor envia una solicitud de validación al correo laboratorio@eim.esc.edu.ar (o al número de Whatsapp +5492615868765) con un smile enojado.
-					
+					Por favor envia una solicitud de validación al correo laboratorio@eim.esc.edu.ar (o al número de Whatsapp +5492615868765) con un smile enojado.</br>
+					Al hacerlo, recuerda tener tus <b><%= link_to 'datos completos',edit_user_path(user) %></b>, asi podemos buscarte entre nuestros registros.</br>
+					Sobre todo si sos un alumno de los primeros (años 80), cuando no teníamos sistema informático ;) </br>
+					Mientras esperas, podrías ir cargando datos que suman cuando las empresas descubran tu postulación a una oferta de trabajo, como <b><%= link_to 'empleos anteriores ',jobs_path %></b>, y <b><%= link_to 'Estudios Cursados ',studies_path %></b>
 				</p>
 			<% end %> <!-- fin <%# if user.validated %>		-->
 
