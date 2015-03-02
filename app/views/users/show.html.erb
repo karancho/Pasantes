@@ -16,7 +16,7 @@
 <% requiere_validacion_de_datos = 0 %>
 <% if @user.validated %>
   <% validator = User.find(@user.validated_id) %>
-  <b>Datos validados</b> por <%= validator.name %> <%= validator.surname %>
+  <b>Datos personales: validados</b> por <%= validator.name %> <%= validator.surname %>
 <% else %>
   <b>Datos todavia no validados. Requiere esta validación para comenzar a operar con la plataforma.</b>
   <% requiere_validacion_de_datos = 1 %>
@@ -29,18 +29,16 @@
   </p>
 <% else %>
   <p>
-    <b>
-      Condición de egresado todavía no validado.
-      <% requiere_validacion_de_datos = 1 %>
-    </b>
+    Condición de <b>*** egresado ***</b> todavía no validado en esta plataforma.
+    <% requiere_validacion_de_datos = 1 %>
+    
   </p>  
 <% end %>
 
 <% if requiere_validacion_de_datos == 1 %>
   <p>
       <b>
-        Datos todavía no validados. Un correo ha sido enviado a Sergio Alonso (sergio@eim.esc.edu.ar) <br>
-        Si la cuenta no ha sido validada en las próximas 24 horas, por favor envia un recordatorio a ese correo (o al número de Whatsapp +5492615868765) con un smile enojado.
+        Por favor envia una solicitud de validación al correo laboratorio@eim.esc.edu.ar (o al número de Whatsapp +5492615868765) con un smile enojado.
       </b>
     </p>  
 <% end %>
@@ -147,15 +145,15 @@
 </p>
 
 <p>
-  <b>Telefono celular</b>
+  <b>Telefono celular: </b>
   <%= @user.celphone %>
 </p>
 <p>
-  <b>Telefono particular</b>
+  <b>Telefono particular: </b>
   <%= @user.homephone %>
 </p>
 <p>
-  <b>#Skype</b>
+  <b>#Skype: </b>
   <%= @user.skype %>
 </p>
 
@@ -179,13 +177,13 @@
 <% end %>
 
 <p>
-  <b>Habilidades y aptitudes</b>
+  <b>Habilidades y aptitudes:</b>
   <br />
   <%= simple_format(@user.skills) %>
 </p>
 
 <p>
-  <b>Interesado en aprender</b>
+  <b>Interesado en aprender:</b>
   <br />
   <%= simple_format(@user.skillstoimprove) %>
 </p>

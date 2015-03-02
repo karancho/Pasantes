@@ -1,14 +1,3 @@
-Procesar retorno a su show, el usuario que se auto creo, o al menos a una pantalla que le de las gracias
-probar TODO
-
-agregar sistema de validacion por Secretaria: 
-"si es alumno" que envie un mail para validarlo con gestion de alumnos
-"si es empresario" que envie un mail para buscarlo en linkedin o llamarle
-
-solo asi dejarlo operar
-
-luego de correr migracion en prd
-
 Generar un listado de
 - Empresarios
   - De estos, validarlos con Afip y con Linkedin
@@ -16,19 +5,15 @@ Generar un listado de
 - Alumnos egresados
   - De estos obtener quienes son alumnos, y quienes han egresado
 
-Evitar modo flojo, que hubiera sido correr script que valide a los actuales validated = true (boolean) por el validated_by = 1
+Para permitir pasar a los usuarios actuales
 
 User.all.each do |u|
   u.validated = true
   u.validated_id = 1
-  u.graduated = true
-  u.graduated_id = 1
+  #u.graduated = true
+  #u.graduated_id = 1
   u.save
 end
 
-pushear a github para hacer bombo
 
 
-aclarar un poco el fondo
-
-avisar tessone y viana, armar link en facebook para que quede todo bien correcto
