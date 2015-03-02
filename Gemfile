@@ -14,10 +14,11 @@ group :development, :test do
   gem 'debugger'
 end
 
-group :production do
+gem 'pg'
+
+#group :production do
 #  gem 'thin'
-  gem 'pg'
-end
+#end
 
 gem 'json'
 
