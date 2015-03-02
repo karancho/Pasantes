@@ -28,13 +28,13 @@
     <%= f.label :career, "Carrera / Curso" %><br />
     <%= f.text_field :career %>
   </div>
-  <div class="field", "DNI (obligatorio)">
-    <%= f.label :dni %><br />
+  <div class="field">
+    <%= f.label :dni, "DNI (obligatorio)" %><br />
     <%= f.text_field :dni %>
   </div>
-  <div class="field", "CUIL" >
-    <%= f.label :cuil %><br />
-    <%= f.text_field :cuil %>
+  <div class="field">
+    <%= f.label :cuil, "CUIL/CUIT (obligatorio para poder operar en el sistema)" %><br />
+    <%= f.text_field :cuil %> Obtenga <a href='https://seti.afip.gob.ar/padron-puc-constancia-internet/ConsultaConstanciaAction.do' target="_blank">aquí</a> su código de identificador único
   </div>
   <div class="field">
     <%= f.label :email, "E-mail (obligatorio)" %><br />
@@ -71,15 +71,15 @@
     <%= f.label :linkedin, "Perfil público en Linkedin (¡muy útil!)" %><%= f.text_field :linkedin %><br/>
     Ejemplos: 
     <ul>
-    	<li><a target="_blank" href="http://www.linkedin.com/pub/esteban-borzone/66/123/21b">http://www.linkedin.com/pub/esteban-borzone/66/123/21b</a><br/></li>
-    	<li><a target="_blank" href="http://www.linkedin.com/in/alonsosergio">http://www.linkedin.com/in/alonsosergio</a><br /></li>    	
+    	<li><a target="_blank" href="http://www.linkedin.com/pub/esteban-borzone/66/123/21b" target="_blank">http://www.linkedin.com/pub/esteban-borzone/66/123/21b</a><br/></li>
+    	<li><a target="_blank" href="http://www.linkedin.com/in/alonsosergio" target="_blank">http://www.linkedin.com/in/alonsosergio</a><br /></li>    	
     </ul>
     
   </div>
 
   <div class="field">
-      <%= f.label :working, "¿Estas actualmente trabajando?" %>
       <%= f.check_box :working %>
+      <%= f.label :working, "Actualmente trabajando" %>      
   </div>
 
   <div class="field">
@@ -92,16 +92,16 @@
     <%= f.text_field :position %>
   </div>
   <div class="field">
-      <%= f.label :searchingjob, "¿Estas atento a nuevas propuestas?" %>
       <%= f.check_box :searchingjob %>
+      <%= f.label :searchingjob, "Atento a nuevas propuestas" %>
   </div>
 
   <hr>
   <p><b>Solo Egresados:</b></p>
 
   <div class="field">
-      <%= f.label :careercomplete, "¿Carrera terminada? (sujeto a validación de Secretaría Académica)" %>
       <%= f.check_box :careercomplete %>
+      <%= f.label :careercomplete, "¿Carrera terminada? (sujeto a validación de Secretaría Académica)" %>
   </div>
 
   <div class="field">
@@ -123,20 +123,11 @@
     <%= f.text_area :skillstoimprove %>
   </div>
 
-
-  <% user = User.find_by_id(session[:user_id]) %>
-  	<% if user %>
-  	<% if user.admin == true %>
-      <div class="field">
-        <%= f.label :admin, "Administrador?" %>
-        <%= f.check_box :admin %>
-      </div>
-    <% end %>
-  <% end %>
-
   <div class="field">
-    <%= f.label :manager, "Soy empresario o encargado, y necesito postear ofertas de trabajo" %>
     <%= f.check_box :manager %>
+    <SPAN title="Este valor cambia lo que puede hacer el usuario dentro del sistema. Los empresarios pueden subir ofertas de trabajo y ver solo las suyas, en tanto que el alumno puede ver todas las ofertas, y postularse si lo desea">
+      <%= f.label :manager, "Soy empresario o encargado, y necesito postear ofertas de trabajo [info]" %>
+    </SPAN>
   </div>
 
   <div class="field">
@@ -148,6 +139,37 @@
     <%= f.label :password_confirmation, 'Confirmar' %><br />
     <%= f.password_field :password_confirmation, :size => 40 %>
   </div>
+
+  <% user = User.find_by_id(session[:user_id]) %>
+    <% if user %>
+    <% if user.admin == true %>
+      <hr>
+      <h1>Solo Administradores o Directores de Carrera:</h1>
+      <div class="field">
+        <%= f.check_box :admin %>
+        <%= f.label :admin, "Administrador" %>        
+      </div>
+
+      <div class="field">
+        <%= f.check_box :validated %>
+        <%= f.label :validated, "Datos validos. Confirmo que este usuario:" %></br>
+        <ul>
+          <li>
+            Es alumno, posee historial academico. Lo he validado con Secretaría o Sistema de Gestion de Alumnos.
+          </li>
+          <li>
+            Es empresario. Lo he validado buscándolo en Linkedin, Guía Telefonica y <a href='https://seti.afip.gob.ar/padron-puc-constancia-internet/ConsultaConstanciaAction.do'  target='_blank'>Afip</a>)
+          </li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <%= f.check_box :graduated %>
+        <%= f.label :graduated, "Egresado. Confirmo que este alumno efectivamente se ha recibido en la fecha y en la carrera que manifiesta, habiendolo validado con Secretaría o Sistema de Gestion de Alumnos. " %></br>        
+      </div>
+
+    <% end %>
+  <% end %>
 
 
   <div class="actions">

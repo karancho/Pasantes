@@ -10,122 +10,134 @@
 		<img src="/assets/logo-nuevo-chico-transparente-con-lunapic.gif" align="right" style="height: 140px; width: auto;">
 		<% if session[:user_id] %>
 
-		<table>
-			<tr>
-				<script>		
-		  			function goBack() { window.history.back() } 
-				</script>
-				<td><input type="button" value="Volver" onclick="goBack()"></td>
-         
-				<% user = User.find_by_id(session[:user_id]) %>				
-				
-				<%#= button_to 'Salir de la sesión', logout_path, :method => "delete", :class => "buttonTo"  %>
-				<td><%= button_to 'Salir de la sesión', logout_path, :method => "delete" %> </td>
-				
-				<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
-				<td>Logueado como <%= user.name %> <%= user.surname %></td>
-			</tr>
-		</table>
-	    
-	    <h1>Escuela Internacional de Turismo,</h1>
-	    <h1>Hotelería y Gastronomía</h1>	    
-        
-		<table border="0">
-			<% if user.admin == true %>
+			<table>
+				<tr>
+					<script>		
+			  			function goBack() { window.history.back() } 
+					</script>
+					<td><input type="button" value="Volver" onclick="goBack()"></td>
+	         
+					<% user = User.find_by_id(session[:user_id]) %>				
+					
+					<%#= button_to 'Salir de la sesión', logout_path, :method => "delete", :class => "buttonTo"  %>
+					<td><%= button_to 'Salir de la sesión', logout_path, :method => "delete" %> </td>
+					
+					<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
+					<td>Logueado como <%= user.name %> <%= user.surname %></td>
+				</tr>
+			</table>
+		    
+		    <h1>Escuela Internacional de Turismo,</h1>
+		    <h1>Hotelería y Gastronomía</h1>	    
+	        
+	        <% if user.validated %>
 
-			<tr valign="top">
-				
-				<td> <center>Menu<br>Administradores</center>
-				<ul>
-					<li>
-						<%= link_to 'Empresas',companies_path %>
-					</li>
+				<table border="0">
 
-					<li>
-						<%= link_to 'Usuarios',users_path %>
-					</li>
-					<li>
-						<%= link_to 'Ofertas',internships_path %>
-					</li>
-					<li>
-						<%= link_to 'Contratos',contracts_path %>
-          </li>
-					<li>
-						<%= link_to 'Conectar empresa con otro usuario',reconectar_path %>
-					</li>
+					<% if user.admin == true %>
 
-
-				</ul></td>
-
-				<td> <center>Parametrización<br>del sistema</center>
-				<ul>
-
-					<li>
-						<%= link_to 'ABM Provincias',provinces_path %>
-					</li>
-					<li>
-						<%= link_to 'ABM Localidades', localities_path %>
-					</li>
-					<li>
-						<%= link_to 'ABM tareas tipicas', tasks_path %>
-					</li>
-
-					<li>
-						<%= link_to 'ABM Habilidades', skills_path %>
-					</li>
-
-				</ul></td>
-				<% end %>
-
-				<% if user.admin == true or user.manager == true %>
-				<td><center>Menu<br>Empresarios</center>
-				<ul>
-					<li>
-						<%= link_to 'Mis Datos de Contacto ',edit_user_path(user) %>
-					</li>
-					<li>
-						<%= link_to 'Datos de la Empresa ',companies_path %>
-					</li>
-					<li>
-						<%= link_to 'Postear Ofertas', new_internship_path %>
-					</li>
-					<li>
-						<%= link_to 'Ver mis Ofertas', internships_path %>
-					</li>
-				</ul></td>
-				<% end %>
-
-				<% unless user.manager == true %>
-				<td> <center>Menu<br>Alumnos</center>
-				<ul>
-					<li>
-						<%= link_to 'Ofertas de trabajo',internships_path %>
-					</li>
-					<li>
-						Mi Curriculum (¡mantener actualizado!)
+					  <tr valign="top">
+						
+						<td> <center>Menu<br>Administradores</center>
 						<ul>
 							<li>
-								<%= link_to 'Datos Personales ',edit_user_path(user) %>
+								<%= link_to 'Empresas',companies_path %>
+							</li>
+
+							<li>
+								<%= link_to 'Usuarios',users_path %>
 							</li>
 							<li>
-								<%= link_to 'Empleos anteriores ',jobs_path %>
+								<%= link_to 'Ofertas',internships_path %>
 							</li>
 							<li>
-								<%= link_to 'Estudios Cursados ',studies_path %>
+								<%= link_to 'Contratos',contracts_path %>
+		          			</li>
+							<li>
+								<%= link_to 'Conectar empresa con otro usuario',reconectar_path %>
 							</li>
-						</ul>
-					</li>
-					<li>
-						<%= link_to '¿Como se ve mi Curriculum Vitae ahora?', user %>
-					</li>
-				</ul></td>
-				<% end %>
-				
 
-			</tr>
-		</table>
 
-		<% end %>		
+						</ul></td>
+
+						<td> <center>Parametrización<br>del sistema</center>
+						<ul>
+
+							<li>
+								<%= link_to 'ABM Provincias',provinces_path %>
+							</li>
+							<li>
+								<%= link_to 'ABM Localidades', localities_path %>
+							</li>
+							<li>
+								<%= link_to 'ABM tareas tipicas', tasks_path %>
+							</li>
+
+							<li>
+								<%= link_to 'ABM Habilidades', skills_path %>
+							</li>
+
+						</ul></td>
+						<% end %>
+
+						<% if user.admin == true or user.manager == true %>
+						<td><center>Menu<br>Empresarios</center>
+						<ul>
+							<li>
+								<%= link_to 'Mis Datos de Contacto ',edit_user_path(user) %>
+							</li>
+							<li>
+								<%= link_to 'Datos de la Empresa ',companies_path %>
+							</li>
+							<li>
+								<%= link_to 'Postear Ofertas', new_internship_path %>
+							</li>
+							<li>
+								<%= link_to 'Ver mis Ofertas', internships_path %>
+							</li>
+						</ul></td>
+						<% end %>
+
+						<% unless user.manager == true %>
+						<td> <center>Menu<br>Alumnos</center>
+						<ul>
+							<li>
+								<%= link_to 'Ofertas de trabajo',internships_path %>
+							</li>
+							<li>
+								Mi Curriculum (¡mantener actualizado!)
+								<ul>
+									<li>
+										<%= link_to 'Datos Personales ',edit_user_path(user) %>
+									</li>
+									<li>
+										<%= link_to 'Empleos anteriores ',jobs_path %>
+									</li>
+									<li>
+										<%= link_to 'Estudios Cursados ',studies_path %>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<%= link_to '¿Como se ve mi Curriculum Vitae ahora?', user %>
+							</li>
+						</ul></td>
+						<% end %>
+						
+
+					</tr>
+				</table>
+
+			<% else %>
+				<p>
+					<b>
+						Datos todavía no validados. Un correo ha sido enviado a Sergio Alonso (sergio@eim.esc.edu.ar) <br>
+						Si la cuenta no ha sido validada en las próximas 24 horas, por favor envia un recordatorio a ese correo (o al número de Whatsapp +5492615868765) con un smile enojado.
+					</b>
+				</p>
+			<% end %> <!-- fin <%# if user.validated %>		-->
+
+		<% end %> <!-- fin <%# if session[:user_id] %> -->
          
 		<hr>
 		<%= yield %>

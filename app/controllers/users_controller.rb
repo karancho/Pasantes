@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    debugger
+    
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -54,18 +54,24 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    #debugger
     @user = User.new(params[:user])
     @localities = Locality.all
     @treatments = Treatment.all
 
-    #usuarioEnCurso = User.find_by_id(session[:user_id]) 
-    #if usuarioEnCurso == nil #es un empresario dandose de alta
-    #  @user.manager = true
-    #end
+    if @user.validated == false and params[:user][:validated] == true #alguien esta validando este usuario
+      usuarioEnCurso = User.find_by_id(session[:user_id])
+      @user.validated_by = usuarioEnCurso.id
+    end
+
+    if @user.graduated == false and params[:user][:graduated] == true #alguien esta validando este usuario
+      usuarioEnCurso = User.find_by_id(session[:user_id])
+      @user.graduated_by = usuarioEnCurso.id
+    end
     
     respond_to do |format|
       if @user.save
-        #debugger
+        
         format.html { redirect_to @user, :notice =>  'User was successfully created.' }
         #format.html { redirect_to :action => "show", :id => @user.id }
         format.json { render :json =>  @user, :status =>  :created, :location => @user }

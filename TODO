@@ -7,6 +7,28 @@ agregar sistema de validacion por Secretaria:
 
 solo asi dejarlo operar
 
+luego de correr migracion en prd
+
+Generar un listado de
+- Empresarios
+  - De estos, validarlos con Afip y con Linkedin
+- Alumnos
+- Alumnos egresados
+  - De estos obtener quienes son alumnos, y quienes han egresado
+
+Evitar modo flojo, que hubiera sido correr script que valide a los actuales validated = true (boolean) por el validated_by = 1
+
+User.all.each do |u|
+  u.validated = true
+  u.validated_id = 1
+  u.graduated = true
+  u.graduated_id = 1
+  u.save
+end
+
 pushear a github para hacer bombo
+
+
+aclarar un poco el fondo
 
 avisar tessone y viana, armar link en facebook para que quede todo bien correcto

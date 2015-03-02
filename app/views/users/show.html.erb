@@ -1,4 +1,3 @@
-<% debugger %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,6 +11,38 @@
 
 <% if @user.manager %>
   <b>Nivel:</b> Empresario
+<% end %>
+
+<% requiere_validacion_de_datos = 0 %>
+<% if @user.validated %>
+  <% validator = User.find(@user.validated_id) %>
+  <b>Datos validados</b> por <%= validator.name %> <%= validator.surname %>
+<% else %>
+  <b>Datos todavia no validados. Requiere esta validación para comenzar a operar con la plataforma.</b>
+  <% requiere_validacion_de_datos = 1 %>
+<% end %>
+
+<% if @user.graduated %>
+  <% graduator = User.find(@user.graduated_id) %>
+  <p>
+    <b>Condición de egresado: confirmada</b> por <%= graduator.name %> <%= graduator.surname %>
+  </p>
+<% else %>
+  <p>
+    <b>
+      Condición de egresado todavía no validado.
+      <% requiere_validacion_de_datos = 1 %>
+    </b>
+  </p>  
+<% end %>
+
+<% if requiere_validacion_de_datos == 1 %>
+  <p>
+      <b>
+        Datos todavía no validados. Un correo ha sido enviado a Sergio Alonso (sergio@eim.esc.edu.ar) <br>
+        Si la cuenta no ha sido validada en las próximas 24 horas, por favor envia un recordatorio a ese correo (o al número de Whatsapp +5492615868765) con un smile enojado.
+      </b>
+    </p>  
 <% end %>
 
 <p>
