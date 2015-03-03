@@ -11,6 +11,32 @@ Desantendido se refiere a que
 - Los empresarios pueden postear ellos mismos sus ofertas de trabajo o solicitud de pasantes. También pueden escojer entre los candidatos y llamar a una entrevista.
 - Los egresados pueden dejar sus datos, cuestión de conocer su historia de vida, y pueden acceder a las ofertas de trabajo.
 
+Para instalar, requiere de 
+
+1) Clonar el proyecto
+git clone https://github.com/karancho/Pasantes
+
+2) Instalar Ruby en la rama 2.0, preferentemente con RVM
+
+3) Ejecutar bundle en la raíz del proyecto
+
+4) Escojer algun tipo de base de datos en config/routes.rb
+
+5) Ejecutar la migración y poblado de datos mediante
+bundle exec rake db:migrate
+bundle exec rake db:seed
+
+6) Puede correr un server de prueba ejecutando en la raíz del proyecto
+bundle exec rails server
+
+Este server permite varias conexiones simultáneas, y debería ser suficiente para una Lan pequeña.
+
+7) Para correr el proyecto en producción con muchos usuarios a la vez, puede abrirse una cuenta gratuita en Heroku o similar, y desplegar allí. Si tiene un server (Windows o Linux) o una VPS con Apache, debe instalar Passenger. Tengo un libro que puede ayudarlo con esos pasos, publicado gratuitamente en www.eim.esc.edu.ar/incubadora
+
+8) Comience logueando con el administrador que existe en db/seeds.rb
+
+Puede ver una versión funcionando en http://www.eim.esc.edu.ar/dpp1
+
 Sergio A. Alonso
 escuelaint@gmail.com
 http://about.me/elbunker
