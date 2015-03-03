@@ -21,7 +21,7 @@ git clone https://github.com/karancho/Pasantes
 3) Ejecutar bundle en la raíz del proyecto
 
 4) Escojer algun tipo de base de datos. En tal sentido se provee dos archivos de ejemplo que debería ser renombrandos de acuerdo a sus necesidades, como database.yml. Estos archivos son
-- database.yml.postgres
+- database.yml.postgres (apto para compatibilidad con Heroku y muchas transacciones)
 - database.yml.sqlite3
 
 Rails 3 por supuesto, soporta MySQL y MariaDB. Consulte la documentación de Rails para setear esta base.
