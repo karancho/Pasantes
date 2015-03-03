@@ -4,8 +4,13 @@ El presente sistema busca proveer una base desatendida para profesores de Práct
 
 * Seguimiento de alumnos
 * Impresión de Contratos
+* Seguimiento de Egresados
 
-En cuanto a los alumnos se busca proveer un sistema de autogestión de ofertas y curriculum vitae
+Desantendido se refiere a que 
+- Los alumnos pueden auto gestionarse, generar sus contratos de trabajo, postularse y subir sus Curriculums para que los vean sus empresarios.
+- Los empresarios pueden postear ellos mismos sus ofertas de trabajo o solicitud de pasantes. También pueden escojer entre los candidatos y llamar a una entrevista.
+- Los egresados pueden dejar sus datos, cuestión de conocer su historia de vida, y pueden acceder a las ofertas de trabajo.
 
-Sergio A. Alonso - aka karancho
-escuelaint@gmail.com 
+Sergio A. Alonso
+escuelaint@gmail.com
+http://about.me/elbunker
