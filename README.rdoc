@@ -15,13 +15,13 @@ Para instalar, requiere de
 
 1) Clonar el proyecto. Ayuda: http://danielme.com/2013/08/07/importar-repositorios-de-github-con-git-o-eclipse/
 
-2) Instalar Ruby en la rama 2.0, preferentemente con RVM
+2) Instalar Ruby en la rama 2.0, preferentemente con RVM, que permite varias versiones en simultáneo.
 
 3) Ejecutar bundle en la raíz del proyecto
 
 4) Escojer algun tipo de base de datos. En tal sentido se provee dos archivos de ejemplo que debería ser renombrandos de acuerdo a sus necesidades, como database.yml. Estos archivos son
-- database.yml.postgres (apto para compatibilidad con Heroku y muchas transacciones)
-- database.yml.sqlite3
+- database.yml.postgres (instalado por defecto, y apto para compatibilidad con Heroku y muchas transacciones)
+- database.yml.sqlite3 (mas apto para principiantes, ambientes de desarrollo o con poca carga)
 
 Rails 3 por supuesto, soporta MySQL y MariaDB. Consulte la documentación de Rails para setear esta base.
 
@@ -30,9 +30,9 @@ Rails 3 por supuesto, soporta MySQL y MariaDB. Consulte la documentación de Rai
 - bundle exec rake db:seed
 
 6) Puede correr un server de prueba ejecutando en la raíz del proyecto
-bundle exec rails server
+- bundle exec rails server
 
-Este server permite varias conexiones simultáneas, y debería ser suficiente para una Lan pequeña.
+El server por defecto en Ruby (webrick) permite varias conexiones simultáneas, y debería ser suficiente para una Lan pequeña. Alternativamente puede instalar Mongrel o Thin.
 
 7) Para correr el proyecto en producción con muchos usuarios a la vez, puede abrirse una cuenta gratuita en Heroku o similar, y desplegar allí. Si tiene un server (Windows o Linux) o una VPS con Apache, debe instalar Passenger. Tengo un libro que puede ayudarlo con esos pasos, publicado gratuitamente en www.eim.esc.edu.ar/incubadora
 
