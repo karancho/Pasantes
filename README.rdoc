@@ -13,8 +13,7 @@ Desantendido se refiere a que
 
 Para instalar, requiere de 
 
-1) Clonar el proyecto
-git clone https://github.com/karancho/Pasantes
+1) Clonar el proyecto. Ayuda: http://danielme.com/2013/08/07/importar-repositorios-de-github-con-git-o-eclipse/
 
 2) Instalar Ruby en la rama 2.0, preferentemente con RVM
 
@@ -41,6 +40,9 @@ Este server permite varias conexiones simultáneas, y debería ser suficiente pa
 
 Puede ver una versión funcionando en http://www.eim.esc.edu.ar/dpp1
 
+Este proyecto se encuentra licenciado libremente como Beerware - http://es.wikipedia.org/wiki/Beerware
+
+----
 Sergio A. Alonso
 escuelaint@gmail.com
 http://about.me/elbunker
