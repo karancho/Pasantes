@@ -20,11 +20,15 @@ git clone https://github.com/karancho/Pasantes
 
 3) Ejecutar bundle en la raíz del proyecto
 
-4) Escojer algun tipo de base de datos en config/routes.rb
+4) Escojer algun tipo de base de datos. En tal sentido se provee dos archivos de ejemplo que debería ser renombrandos de acuerdo a sus necesidades, como database.yml. Estos archivos son
+- database.yml.postgres
+- database.yml.sqlite3
+
+Rails 3 por supuesto, soporta MySQL y MariaDB. Consulte la documentación de Rails para setear esta base.
 
 5) Ejecutar la migración y poblado de datos mediante
-bundle exec rake db:migrate
-bundle exec rake db:seed
+- bundle exec rake db:migrate
+- bundle exec rake db:seed
 
 6) Puede correr un server de prueba ejecutando en la raíz del proyecto
 bundle exec rails server
