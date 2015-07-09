@@ -21,7 +21,13 @@
     <td><%= job.area %></td>
     <td><%= job.from %></td>
     <td><%= job.until %></td>
-    <td><%= job.workingnow %></td>    
+    <td>
+      <% if job.workingnow %>
+        Si
+      <% else %>
+        No
+      <% end %>
+    </td>
     <td><%= job.user_id %></td>
     <td><%= link_to 'Mas Datos', job %></td>
     <td><%= link_to 'Modificar', edit_job_path(job) %></td>

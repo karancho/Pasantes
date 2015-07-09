@@ -8,7 +8,8 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'pg' #mientras bajo de heroku
+  #gem 'sqlite3'
   gem "rails-erd"
   gem 'railroady'
   gem 'debugger'

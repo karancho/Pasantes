@@ -8,28 +8,30 @@
 	</head>
 	<body>
 		<img src="/assets/logo-nuevo-chico-transparente-con-lunapic.gif" align="right" style="height: 140px; width: auto;">
+
+
 		<% if session[:user_id] %>
 
 			<table>
 				<tr>
-					<script>		
-			  			function goBack() { window.history.back() } 
+					<script>
+			  			function goBack() { window.history.back() }
 					</script>
 					<td><input type="button" value="Volver" onclick="goBack()"></td>
-	         
-					<% user = User.find_by_id(session[:user_id]) %>				
-					
+
+					<% user = User.find_by_id(session[:user_id]) %>
+
 					<%#= button_to 'Salir de la sesión', logout_path, :method => "delete", :class => "buttonTo"  %>
 					<td><%= button_to 'Salir de la sesión', logout_path, :method => "delete" %> </td>
-					
+
 					<td><%= button_to 'Principal', admin_url, :method => "get" %> </td>
 					<td>Logueado como <%= user.name %> <%= user.surname %></td>
 				</tr>
 			</table>
-		    
+
 		    <h1>Escuela Internacional de Turismo,</h1>
-		    <h1>Hotelería y Gastronomía</h1>	    
-	        
+		    <h1>Hotelería y Gastronomía</h1>
+
 	        <% if user.validated %>
 
 				<table border="0">
@@ -37,7 +39,7 @@
 					<% if user.admin == true %>
 
 					  <tr valign="top">
-						
+
 						<td> <center>Menu<br>Administradores</center>
 						<ul>
 							<li>
@@ -123,7 +125,7 @@
 							</li>
 						</ul></td>
 						<% end %>
-						
+
 
 					</tr>
 				</table>
@@ -135,11 +137,12 @@
 					Al hacerlo, recuerda tener tus <b><%= link_to 'datos completos',edit_user_path(user) %></b>, asi podemos buscarte entre nuestros registros.</br>
 					Sobre todo si sos un alumno de los primeros (años 80), cuando no teníamos sistema informático ;) </br>
 					Mientras esperas, podrías ir cargando datos que suman cuando las empresas descubran tu postulación a una oferta de trabajo, como <b><%= link_to 'empleos anteriores ',jobs_path %></b>, y <b><%= link_to 'Estudios Cursados ',studies_path %></b>
-				</p>
+        </p>
+        <p>En este momento, <%= link_to 'así se ve tu curriculum', user %>
 			<% end %> <!-- fin <%# if user.validated %>		-->
 
 		<% end %> <!-- fin <%# if session[:user_id] %> -->
-         
+
 		<hr>
 		<%= yield %>
 		<hr>
