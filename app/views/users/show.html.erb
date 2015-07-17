@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% debugger %>
 <p>
   <b><%= @user.treatment.treatment %> 
   	<%= @user.name %> <%= @user.surname %> </b>
@@ -33,14 +33,6 @@
     <% requiere_validacion_de_datos = 1 %>
     
   </p>  
-<% end %>
-
-<% if requiere_validacion_de_datos == 1 %>
-  <p>
-      <b>
-        Por favor envia una solicitud de validación al correo laboratorio@eim.esc.edu.ar (o al número de Whatsapp +5492615868765) con un smile enojado.
-      </b>
-    </p>  
 <% end %>
 
 <p>
@@ -160,7 +152,7 @@
   <b>Actualmente trabajando:</b>
   <% if @user.working %>
     Si
-    <% if @user.workwhere %>
+    <% if @user.workwhere != "" %>
       , en <%= @user.workwhere %>
       <% if @user.position %>
         , en el puesto de <%= @user.position %>
@@ -186,6 +178,14 @@
   <br />
   <%= simple_format(@user.skillstoimprove) %>
 </p>
+
+<% if requiere_validacion_de_datos == 1 %>
+  <p>
+      Revisa si todo está correcto. <b>Si necesitas que te validemos alguna condición </b> (por ejemplo, eres egresado, o quieres comenzar a postear ofertas), envia una solicitud de validación al correo laboratorio@eim.esc.edu.ar (o al número de Whatsapp +5492615868765). Basta con un smile enojado.
+    </p>  
+<% end %>
+
+
 
 <script>
   function goBack() { window.history.back() } 

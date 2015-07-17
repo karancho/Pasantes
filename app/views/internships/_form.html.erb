@@ -23,10 +23,10 @@
 				<%= f.select :company_id, @companies.map {|com| [com.name, com.id]} %>
 			</td>
 			<td>
-				<h6>¿La Empresa no aparece? <%= link_to 'Agregar ', new_company_path %></h6>				
-			</td>		
+				<h6>¿La Empresa no aparece? <%= link_to 'Agregar ', new_company_path %></h6>
+			</td>
 		</tr>
-		
+
 	</table>
 </div>
 
@@ -40,7 +40,7 @@
 				<%= f.select :type_id, @types.map {|ty| [ty.tipo, ty.id]} %>
 			</td>
 		</tr>
-		
+
 	</table>
 </div>
 
@@ -64,7 +64,7 @@ O simplemente marque las tareas que deberá cumplir el estudiante
 		<%= check_box_tag "internship[task_ids][]", task.id, @internship.tasks.include?(task) %>
 		<%= task.description %>
 	</div>
-<% end %> 
+<% end %>
 
 </br>
 
@@ -137,7 +137,7 @@ O simplemente marque las tareas que deberá cumplir el estudiante
 
 <div class="field">
 	<%#= f.label :hs_friday %>
-	Horas solicitadas de trabajo día viernes: 
+	Horas solicitadas de trabajo día viernes:
 	<br />
 	<%= f.number_field :hs_friday %>
 </div>

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    
+
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -54,24 +54,24 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    #debugger
+    debugger
     @user = User.new(params[:user])
     @localities = Locality.all
     @treatments = Treatment.all
 
-    if @user.validated == false and params[:user][:validated] == true #alguien esta validando este usuario
+    if params[:user][:validated] == "1" #alguien esta validando este usuario
       usuarioEnCurso = User.find_by_id(session[:user_id])
-      @user.validated_by = usuarioEnCurso.id
+      @user.validated_id = usuarioEnCurso.id
     end
 
-    if @user.graduated == false and params[:user][:graduated] == true #alguien esta validando este usuario
+    if @user.graduated == false and params[:user][:graduated] == "1" #alguien esta validando este usuario
       usuarioEnCurso = User.find_by_id(session[:user_id])
-      @user.graduated_by = usuarioEnCurso.id
+      @user.graduated_id = usuarioEnCurso.id
     end
-    
+
     respond_to do |format|
       if @user.save
-        
+
         format.html { redirect_to @user, :notice =>  'User was successfully created.' }
         #format.html { redirect_to :action => "show", :id => @user.id }
         format.json { render :json =>  @user, :status =>  :created, :location => @user }
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
         if @user.admin
           format.html { redirect_to users_url, :notice =>  'User  #{@user.name}  #{@user.surname} was successfully updated.' }
           format.json { head :no_content }
-        else 
+        else
           format.html { redirect_to landing_bienvenida_url, :notice =>  'User  #{@user.name}  #{@user.surname} was successfully updated.' }
           format.json { head :no_content }
         end
@@ -126,5 +126,5 @@ class UsersController < ApplicationController
 
 
 
-  
+
 end
