@@ -15,7 +15,7 @@
     <%= f.label :treatment, "Tratamiento" %><br />
 	<%= f.select :treatment_id, @treatments.map {|tr| [tr.treatment, tr.id]} %>
   </div>
-  
+
   <div class="field">
     <%= f.label :name, "Nombre (obligatorio)" %><br />
     <%= f.text_field :name %>
@@ -25,7 +25,7 @@
     <%= f.text_field :surname %>
   </div>
   <div class="field">
-    <%= f.label :career, "Carrera / Curso" %><br />
+    <%= f.label :career, "Carrera / Curso (solo alumnos y profesores)" %><br />
     <%= f.text_field :career %>
   </div>
   <div class="field">
@@ -44,7 +44,7 @@
     <%= f.label :address, "Dirección" %><br />
     <%= f.text_field :address %>
   </div>
-  
+
   <div class="field">
     <%= f.label :celphone, "Telefono Celular" %><br />
     Recomendado, formato para Whatsapp, con el +54 y el 9 adelante. Ejemplo +5492615868765<br />
@@ -60,26 +60,26 @@
     <%= f.label :skype, "#Skype" %><br />
     Muy útil para algunos recruiters que necesiten personal inmediatamente<br />
     <%= f.text_field :skype %>
-  </div>  
+  </div>
 
   <div class="field">
     <%= f.label :locality_id, "Localidad" %><br />
     <%= f.select :locality_id, @localities.map {|loca| [loca.locality, loca.id]} %>
   </div>
-  
+
   <div class="field">
     <%= f.label :linkedin, "Perfil público en Linkedin (¡muy útil!)" %><%= f.text_field :linkedin %><br/>
-    Ejemplos: 
+    Ejemplos:
     <ul>
     	<li><a target="_blank" href="http://www.linkedin.com/pub/esteban-borzone/66/123/21b" target="_blank">http://www.linkedin.com/pub/esteban-borzone/66/123/21b</a><br/></li>
-    	<li><a target="_blank" href="http://www.linkedin.com/in/alonsosergio" target="_blank">http://www.linkedin.com/in/alonsosergio</a><br /></li>    	
+    	<li><a target="_blank" href="http://www.linkedin.com/in/alonsosergio" target="_blank">http://www.linkedin.com/in/alonsosergio</a><br /></li>
     </ul>
-    
+
   </div>
 
   <div class="field">
       <%= f.check_box :working %>
-      <%= f.label :working, "Actualmente trabajando" %>      
+      <%= f.label :working, "Actualmente trabajando" %>
   </div>
 
   <div class="field">
@@ -115,7 +115,7 @@
     <br />
     <%= f.text_area :skills %>
   </div>
-  
+
   <div class="field">
     <%= f.label :skillstoimprove, "Habilidades y aptitudes que te gustaría mejorar" %><br />
     Ejemplo: ingles conversacional, experiencia como cajero, etc
@@ -147,7 +147,7 @@
       <h1>Solo Administradores o Directores de Carrera:</h1>
       <div class="field">
         <%= f.check_box :admin %>
-        <%= f.label :admin, "Administrador" %>        
+        <%= f.label :admin, "Administrador" %>
       </div>
 
       <div class="field">
@@ -165,7 +165,7 @@
 
       <div class="field">
         <%= f.check_box :graduated %>
-        <%= f.label :graduated, "Egresado. Confirmo que este alumno efectivamente se ha recibido en la fecha y en la carrera que manifiesta, habiendolo validado con Secretaría o Sistema de Gestion de Alumnos. " %></br>        
+        <%= f.label :graduated, "Egresado. Confirmo que este alumno efectivamente se ha recibido en la fecha y en la carrera que manifiesta, habiendolo validado con Secretaría o Sistema de Gestion de Alumnos. " %></br>
       </div>
 
     <% end %>
