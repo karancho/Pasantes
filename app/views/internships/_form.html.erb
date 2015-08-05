@@ -84,6 +84,16 @@ O simplemente marque las tareas que deberá cumplir el estudiante
 	<%= f.select :situation_id, @situations.map {|sit| [sit.status, sit.id]} %>
 </div>
 
+<div class="field">
+	<%#= f.label :description_job %>
+  Convenio Colectivo de Trabajo que aplica al puesto (el mismo de los empleados actuales).<br />
+  Si no está seguro, puede encontrar varias opciones <a href="http://www.laboralis.com.ar/convenios-colectivos-de-trabajo">aquí</a>
+	<br />
+	<%= f.text_field :cct %>
+</div>
+
+
+
 <p><b>Referencia</b>: las pasantías usualmente son de aproximadamente 3 meses, pudiendo renovarse. El estudiante puede estar en el lugar hasta 6 horas diarias, de acuerdo a la ley vigente de pasantías.</p>
 
 <div class="field">

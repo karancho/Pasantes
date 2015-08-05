@@ -42,14 +42,23 @@
 	</ul>
 </p>
 
+<!--
 <p>
 	<b>Situación actual:</b>
 	<%#= @internship.situation.status %>
 </p>
+-->
 
 <p>
-	<b>Horario: a convenir?</b>
+  <% if @internship.cct then %>
+	  <b>Convenio Colectivo de Trabajo: </b>
+    <%= @internship.cct %>
+  <% end %>
+</p>
+
+<p>
   <% if @internship.horario then %>
+	  <b>Horario: a convenir?</b>
     <%="si" %>
   <% end %>
 </p>

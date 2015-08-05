@@ -94,10 +94,11 @@ vida, y pueden acceder a las ofertas de trabajo.</p>
 
 <p>Para instalar, requiere de</p>
 
-<p>1) Clonar el proyecto git clone <a
-href="https://github.com/karancho/Pasantes">github.com/karancho/Pasantes</a></p>
+<p>1) Clonar el proyecto. Ayuda: <a
+href="http://danielme.com/2013/08/07/importar-repositorios-de-github-con-git-o-eclipse/">danielme.com/2013/08/07/importar-repositorios-de-github-con-git-o-eclipse/</a></p>
 
-<p>2) Instalar Ruby en la rama 2.0, preferentemente con RVM</p>
+<p>2) Instalar Ruby en la rama 2.0, preferentemente con RVM, que permite
+varias versiones en simultáneo.</p>
 
 <p>3) Ejecutar bundle en la raíz del proyecto</p>
 
@@ -105,13 +106,15 @@ href="https://github.com/karancho/Pasantes">github.com/karancho/Pasantes</a></p>
 archivos de ejemplo que debería ser renombrandos de acuerdo a sus
 necesidades, como database.yml. Estos archivos son</p>
 <ul><li>
-<p>database.yml.postgres</p>
+<p>database.yml.postgres (instalado por defecto, y apto para compatibilidad
+con Heroku y muchas transacciones)</p>
 </li><li>
-<p>database.yml.sqlite3</p>
+<p>database.yml.sqlite3 (mas apto para principiantes, ambientes de desarrollo
+o con poca carga)</p>
 </li></ul>
 
-<p>Rails por supuesto, soporta MySQL y MariaDB. Consulte la documentación de
-Rails para stear esta base.</p>
+<p>Rails 3 por supuesto, soporta MySQL y MariaDB. Consulte la documentación de
+Rails para setear esta base.</p>
 
 <p>5) Ejecutar la migración y poblado de datos mediante</p>
 <ul><li>
@@ -120,11 +123,14 @@ Rails para stear esta base.</p>
 <p>bundle exec rake db:seed</p>
 </li></ul>
 
-<p>6) Puede correr un server de prueba ejecutando en la raíz del proyecto
-bundle exec rails server</p>
+<p>6) Puede correr un server de prueba ejecutando en la raíz del proyecto</p>
+<ul><li>
+<p>bundle exec rails server</p>
+</li></ul>
 
-<p>Este server permite varias conexiones simultáneas, y debería ser suficiente
-para una Lan pequeña.</p>
+<p>El server por defecto en Ruby (webrick) permite varias conexiones
+simultáneas, y debería ser suficiente para una Lan pequeña.
+Alternativamente puede instalar Mongrel o Thin.</p>
 
 <p>7) Para correr el proyecto en producción con muchos usuarios a la vez,
 puede abrirse una cuenta gratuita en Heroku o similar, y desplegar allí. Si
@@ -137,6 +143,10 @@ href="http://www.eim.esc.edu.ar/incubadora">www.eim.esc.edu.ar/incubadora</a></p
 
 <p>Puede ver una versión funcionando en <a
 href="http://www.eim.esc.edu.ar/dpp1">www.eim.esc.edu.ar/dpp1</a></p>
+
+<p>Este proyecto se encuentra licenciado libremente como Beerware - <a
+href="http://es.wikipedia.org/wiki/Beerware">es.wikipedia.org/wiki/Beerware</a></p>
+<hr style="height: 2px">
 
 <p>Sergio A. Alonso escuelaint@gmail.com <a
 href="http://about.me/elbunker">about.me/elbunker</a></p>

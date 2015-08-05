@@ -13,21 +13,21 @@
 
 <p>En la ciudad de Mendoza, el día <b><%= Time.now.day %>-<%= Time.now.month %>-<%= Time.now.year %></b>, entre la <b>EMPRESA</b> <b><%=@contract.internship.company.name.upcase %></b> cuyos datos son: razón social: <b><%=@contract.internship.company.razon.upcase %></b>, con domicilio en <b> <%=@contract.internship.company.address.upcase %></b>, localidad de <b><%=@contract.internship.company.locality.locality.upcase %></b>, provincia de <b><%=@contract.internship.company.locality.province.province.upcase %></b>, representada en este acto por el <%=Treatment.find(@contract.internship.company.bosstreatment_id).treatment %> <b><%=@contract.internship.company.boss.upcase %></b>, cuyo número de Documento es DNI <b><%=@contract.internship.company.boss_dni.upcase %></b>, quien en su calidad de <b><%=@contract.internship.company.position.upcase %></b>, y la <b>ESCUELA INTERNACIONAL DE TURISMO, HOTELERÍA Y GASTRONOMÍA DE MENDOZA</b>, representada en este acto por la <b>FUNDACION ISLAS MALVINAS</b>, quien comparece a este acto representada por su Presidente <b>ARMANDO ALONSO BADIA (LE. Nº: 8.149.227)</b> y con la participación del Señor Rector de la <b>ESCUELA INTERNACIONAL DE TURISMO, HOTELERÍA Y GASTRONOMÍA DE MENDOZA, Lic. Federico Vasquez de Novoa, D.N.I 20.857.939</b>, todos con domicilio legal en <b>Avda. Roque Saenz Peña No: 745, Ciudad de Mendoza</b>, en adelante la <b>ESCUELA</b>, acuerdan celebrar el presente <b>C</b>ontrato <b>I</b>ndividual, que desde este acto pasa a formar parte del convenio suscripto entre ambas partes el día <b><%= Time.now.day %>-<%= Time.now.month %>-<%= Time.now.year %></b>, con las siguientes cláusulas: </p>
 
-<p>PRIMERA: La EMPRESA recibirá en pasantía al alumno <b><%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %>, CUIL Nº: <%=@contract.user.cuil.upcase %></b>, con domicilio real en <b><%=@contract.user.address %></b> 
-	desde el día: <b><%=@contract.internship.date_from.to_time.strftime('%d/%m/%Y') %> </b>por un período de 
+<p>PRIMERA: La EMPRESA recibirá en pasantía al alumno <b><%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %>, CUIL Nº: <%=@contract.user.cuil.upcase %></b>, con domicilio real en <b><%=@contract.user.address %></b>
+	desde el día: <b><%=@contract.internship.date_from.to_time.strftime('%d/%m/%Y') %> </b>por un período de
 <%= @contract.internship.date_until.month - @contract.internship.date_from.month + 1 %>
- Meses, que caduca el: <b><%=@contract.internship.date_until.to_time.strftime('%d/%m/%Y') %></b>, 
-	desempeñando las tareas de 
-	<% @contract.internship.tasks.each do |t| %> 
-	  <b><%= t.description %></b>, 
-	<% end %> 
+ Meses, que caduca el: <b><%=@contract.internship.date_until.to_time.strftime('%d/%m/%Y') %></b>,
+	desempeñando las tareas de
+	<% @contract.internship.tasks.each do |t| %>
+	  <b><%= t.description %></b>,
+	<% end %>
 
 	<b><%= @contract.internship.description_job %></b>
-	
+
 	<% if (@contract.internship.tasks.count == 0) and (@contract.internship.description_job == "") %>
 	  ...........................
 	<% end %>
-	
+
 	en los siguientes turnos y horarios: <b><% if @contract.internship.horario then %> <%="a convenir" %> <% else %> de .... hs a .... hs <% end %></b>. Las tareas deberán ajustarse al plan pedagógico de trabajo elaborado por la <b>ESCUELA</b> que la <b>EMPRESA</b> declara conocer y aceptar.- (Art. 5 - Ley 26.427).- El régimen de asistencia y licencias por examen, enfermedad y accidente para el pasante se regirá por las normas del Convenio Colectivo de la Actividad y por la LCT .- En todo caso serán aplicables dichas normas para regular las ausencias y/o suspensiones del contrato por razones de enfermedad, accidentes, y exámenes.-</p>
 
 <p>SEGUNDA: La <b>EMPRESA</b> <b><%=@contract.internship.company.name.upcase %></b> entregará al alumno un aporte no remunerativo de hasta $ ……. por mes en calidad de estímulo para viajes, gastos escolares y erogaciones derivadas del ejercicio de la pasantía (Art. 15 - Ley 26.427).-</p>
@@ -38,15 +38,35 @@
 
 <p>QUINTA: La <b>EMPRESA</b> se compromete a, en caso de recibir mas de un pasante (independiente del establecimiento de procedencia), no sobrepasar una relación del 20% de pasantes respecto de la cantidad de empleados existentes al momento de la celebración de este contrato.-</p>
 
-<p>SEXTA: Las pasantías serán coordinadas por el Prof <b>Sergio Alonso, CUIL nº: 20-23180414-6</b> en carácter de docente guía, quien asesorará en todo lo relacionado al sistema de pasantías educativas determinadas por el Art. 1 - Ley 26.427</p>
+<p>SEXTA: Las pasantías serán coordinadas por el Prof <b>Sergio Alonso, CUIL nº: 20-23180414-6</b> en carácter de docente guía, quien asesorará en todo lo relacionado al sistema de pasantías educativas determinadas por el Art. 1 - Ley 26.427-</p>
 
 <p>SEPTIMA: LA <b>EMPRESA</b>, designará un tutor, quién junto al docente guía designado por la <b>ESCUELA</b>, elaborarán de manera conjunta un plan de trabajo que ayude a alcanzar los objetivos pedagógicos de las pasantías, este plan de trabajo, se archivará junto al legajo de  pasantías del alumno. (Art. 17 - Ley 26.427). El tutor designado es el <%=Treatment.find(@contract.internship.company.managertreatment_id).treatment %> <b><%=@contract.internship.company.manager.upcase %></b>, DNI <b><%=@contract.internship.company.manager_cuil.upcase %></b>.-</p>
 
-<p>OCTAVA: Las horas de la presente pasantía, serán computadas dentro de la cantidad de horas que el alumno debe cumplir de acuerdo a la resolución de la carrera respectiva.</p>
+<p>OCTAVA: Las horas de la presente pasantía, serán computadas dentro de la cantidad de horas que el alumno debe cumplir de acuerdo a la resolución de la carrera respectiva.-</p>
 
-<p>NOVENA: Sin perjuicio de otras que surjan naturalmente como consecuencia necesaria de su calidad de alumnos, este asume las siguientes obligaciones: a) asistir puntualmente en horarios y días asignados a realizar sus prácticas, dando cumplimiento a los requerimientos propios de la actividad a desarrollar, observando las indicaciones que al respecto le sean formuladas tanto por parte de la <b>ESCUELA</b> como de la <b>EMPRESA</b>. b) cumplir cuidadosa y responsablemente con las tareas asignadas, asumiendo las responsabilidades y compromisos que de ellas derivan y en particular el plan de trabajo que determine el proceso educativo c) respetar los reglamentos y disposiciones de la <b>EMPRESA</b>. d) realizar su entrenamiento en el marco de la reglamentación interna de la <b>ESCUELA</b>, las que declaran conocer y aceptar. e) observar una relación respetuosa con el personal, clientes y proveedores de la <b>EMPRESA</b>. f) mantener confidencialidad sobre toda la información que haga al giro de la <b>EMPRESA</b>, sus clientes y proveedores a la que tenga acceso. g) consultar con el Coordinador de Prácticas y/o con el docente guía y en su caso con el Supervisor y/o Tutor que la <b>EMPRESA</b> designe, todas aquellas dudas o dificultades que se presenten. h) firmar un compromiso de prácticas con la <b>ESCUELA</b> con copia a la <b>EMPRESA</b>, en donde consten: área, funciones, horarios y duración de la práctica.</p>
+<p>NOVENA: Sin perjuicio de otras que surjan naturalmente como consecuencia necesaria de su calidad de alumnos, este asume las siguientes obligaciones: a) asistir puntualmente en horarios y días asignados a realizar sus prácticas, dando cumplimiento a los requerimientos propios de la actividad a desarrollar, observando las indicaciones que al respecto le sean formuladas tanto por parte de la <b>ESCUELA</b> como de la <b>EMPRESA</b>. b) cumplir cuidadosa y responsablemente con las tareas asignadas, asumiendo las responsabilidades y compromisos que de ellas derivan y en particular el plan de trabajo que determine el proceso educativo c) respetar los reglamentos y disposiciones de la <b>EMPRESA</b>. d) realizar su entrenamiento en el marco de la reglamentación interna de la <b>ESCUELA</b>, las que declaran conocer y aceptar. e) observar una relación respetuosa con el personal, clientes y proveedores de la <b>EMPRESA</b>. f) mantener confidencialidad sobre toda la información que haga al giro de la <b>EMPRESA</b>, sus clientes y proveedores a la que tenga acceso. g) consultar con el Coordinador de Prácticas y/o con el docente guía y en su caso con el Supervisor y/o Tutor que la <b>EMPRESA</b> designe, todas aquellas dudas o dificultades que se presenten. h) firmar un compromiso de prácticas con la <b>ESCUELA</b> con copia a la <b>EMPRESA</b>, en donde consten: área, funciones, horarios y duración de la práctica.-</p>
 
-<p>DECIMA: Para cualquier controversia emergente del presente Protocolo contractual, las partes eligen y se someten a la Competencia de los Tribunales Ordinarios de la Ciudad de Mendoza, renunciando a cualquier fuero especial y al fuero federal.-</p>
+<p>DECIMA: La <b>EMPRESA</b>, en el caso de ser privada, manifiesta que se encuentra inscriptas como empleadora ante la Administración Federal de Ingresos Públicos (AFIP), y cuenta con una dotación de personal en relación de dependencia por tiempo indeterminado igual o mayor a un (1) empleado.-</p>
+
+<p>ONCEAVA: La <b>EMPRESA</b> garantiza al pasante <%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %> un régimen de asistencia y licencias por examen, enfermedad y accidente que sea igual o más beneficioso que el que rige para sus empleados-</p>
+
+<p>DOCEAVA: La <b>EMPRESA</b> entiende que no podrán extinguirse los contratos de pasantía por causa de enfermedad, accidente o maternidad, y que la pasantía de las pasantes se suspenderá durante el período comprendido entre los cuarenta y cinco (45) días anteriores y posteriores a la fecha de parto. Durante dicho período la pasante no recibirá el importe correspondiente a la asignación estímulo 2 . Una vez vencido ese plazo, la pasante tendrá asegurada su reincorporación a la empresa.-</p>
+
+<p>TRECEAVA: La <b>EMPRESA</b> declara que el Convenio Colectivo de Trabajo (CCT) bajo el que se rige el pasante es el mismo que el sus propios empleados. El pasante <%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %> deberá recibir, conforme a las características de las actividades que realice, todos los beneficios regulares y licencias previstos en el CCT.-</p>
+
+<p>CATORCEAVA: La <b>EMPRESA</b> entiende que el pasante <%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %> tendrá una carga horaria semanal de veinte (20) horas que podrá ser libremente distribuida por las partes en los acuerdos individuales, debiéndose desarrollar de lunes a viernes y en jornada diurna. Únicamente se exceptúan de dicha regla aquellas actividades que, por sus características, puedan únicamente cumplirse los fines de semana y/o en jornada nocturna. En esos supuestos, la EMPRESA deberá solicitar autorización expresa al Ministerio de Trabajo. En cualquier caso, cada jornada de pasantía no podrá superar las seis horas treinta minutos (6° 30') diarias.-
+</p>
+
+<p>QUINCEAVA: El pasante <%=@contract.user.name.upcase %> <%=@contract.user.surname.upcase %> no se podrán desarrollar pasantías en tareas calificadas como penosas, riesgosas o insalubres.-</p>
+
+<p>DIECISEISAVA: El Ministerio de Trabajo será el órgano encargado de controlar el cumplimiento de las disposiciones que regulan la materia. En caso de incumplimiento por parte de la empresa de alguno de los requisitos o características que tipifican a esta especial relación, la pasantía educativa podrá perder el carácter de tal y será considerada un contrato laboral por tiempo indeterminado 3 . En especial verificará las siguientes circunstancias: (a) que se dé cumplimiento a los requisitos, obligaciones y prohibiciones contemplados en la Ley 26.4727 y sus normas complementarias; (b) que la actividad del pasante se vincule directamente con la necesidad específica de formación prevista en el contrato y con el nivel particular de capacitación correspondiente; (c) que el desarrollo de la actividad encomendada al pasante resulte acorde con la adquisición progresiva de habilidades o conocimientos prevista en el programa de educación o formación profesional previamente establecido; (d) que el contrato de pasantía no sea utilizado por la empresa u organismo para sustituir puestos de trabajo permanentes existentes o que hayan existido en la empresa u organismo en los doce (12) meses anteriores al comienzo de las actividades de pasantía; (e) que el contrato de pasantía no sea utilizado para cubrir los francos y otros descansos del personal de la empresa; (f) que las tareas asignadas a los pasantes no excedan las pautadas en el acuerdo individual de pasantía; (g) que el tiempo que demande las actividades de pasantía no exceda la jornada máxima legal y reglamentariamente establecida.-</p>
+
+<p>DIECISIETEAVA: En todos los casos la <b>EMPRESA</b> deberá disponer como mínimo de un (1) tutor y, salvo disposición distinta que surja del CCT aplicable, deberá disponer de un (1) tutor por cada diez (10) pasantes. Los tutores deberán estar presentes en el sector en que se cumpla la pasantía durante todo el horario de su desarrollo.-</p>
+
+<p>DECIMOCTAVA: Sólo podrán ser renovados o prorrogados los contratos de pasantías vigentes a la fecha de sanción de la Ley 26.427, cuando su plazo originario fuere menor a doce (12) meses. En total la vinculación con el pasante no podrá superar el plazo de dieciocho (18) meses y la prórroga o renovación deberán ajustar sus términos a la ley 26.427 y su normativa reglamentaria.-
+</p>
+
+<p>DECIMONOVENA: Para cualquier controversia emergente del presente Protocolo contractual, las partes eligen y se someten a la Competencia de los Tribunales Ordinarios de la Ciudad de Mendoza, renunciando a cualquier fuero especial y al fuero federal.-</p>
 
 <p>En prueba de lo cual se firman tres ejemplares de un mismo tenor y a un solo efecto en el lugar y la fecha más arriba indicados.
 </p>
