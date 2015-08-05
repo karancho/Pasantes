@@ -10,7 +10,7 @@ class InternshipsController < ApplicationController
   def index
     #@internships = Internship.where("date_from LIKE :prefix", :prefix => "#{Time.now.year}-#{mesNumerico}-%")
     #@internships = Internship.order("date_from").reverse
-    @internships = Internship.order("id").reverse
+    @internships = Internship.order("updated_at").reverse
 
     respond_to do |format|
       format.html # index.html.erb
