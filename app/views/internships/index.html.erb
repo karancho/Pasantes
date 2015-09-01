@@ -30,7 +30,7 @@
 
 	</tr>
 
-
+  <% debugger %>
   <% if user.manager == true %>
       <% @companies = Company.where(:user_id => user.id) %>
       <% @companies.each do |company| %>
@@ -57,12 +57,11 @@
           <% end %>
 
           </tr>
-          <% end %><!-- @internships.each do |internship|  -->
-        <% end %><!--  @companies.each do |company| -->
+        <% end %><!-- @internships.each do |internship|  -->
+      <% end %><!--  @companies.each do |company| -->
 
-      <% else %>
+  <% else %>
 
-        <% @internships = Internship.order("id").reverse %>
         <% @internships.each do |internship| %>
         <tr>
           <td>
