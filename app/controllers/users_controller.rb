@@ -96,7 +96,9 @@ class UsersController < ApplicationController
       @user.validated_id = usuarioEnCurso.id
     end
 
-    if @user.graduated == false and params[:user][:graduated] == "1" #alguien esta validando este usuario
+    #no se por que esto estaba asi. Jode
+    #if @user.graduated == false and params[:user][:graduated] == "1" #alguien esta validando este usuario
+    if params[:user][:graduated] == "1" #alguien esta validando este usuario
       usuarioEnCurso = User.find_by_id(session[:user_id])
       @user.graduated_id = usuarioEnCurso.id
     end
