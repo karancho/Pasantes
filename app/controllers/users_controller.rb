@@ -86,9 +86,21 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+    debugger
     @user = User.find(params[:id])
     @localities = Locality.all
     @treatments = Treatment.all
+
+    if params[:user][:validated] == "1" #alguien esta validando este usuario
+      usuarioEnCurso = User.find_by_id(session[:user_id])
+      @user.validated_id = usuarioEnCurso.id
+    end
+
+    if @user.graduated == false and params[:user][:graduated] == "1" #alguien esta validando este usuario
+      usuarioEnCurso = User.find_by_id(session[:user_id])
+      @user.graduated_id = usuarioEnCurso.id
+    end
+
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% debugger %>
 <p>
-  <b><%= @user.treatment.treatment %> 
+  <b><%= @user.treatment.treatment %>
   	<%= @user.name %> <%= @user.surname %> </b>
 </p>
 
@@ -31,12 +31,12 @@
   <p>
     Condición de <b>*** egresado ***</b> todavía no validado en esta plataforma.
     <% requiere_validacion_de_datos = 1 %>
-    
-  </p>  
+
+  </p>
 <% end %>
 
 <p>
-  <b>Carrera / Curso: </b><%= @user.career %> 
+  <b>Carrera / Curso: </b><%= @user.career %>
   <% if @user.careercomplete %>
     (terminada)
   <% end %>
@@ -182,23 +182,23 @@
 <% if requiere_validacion_de_datos == 1 %>
   <p>
       Revisa si todo está correcto. <b>Si necesitas que te validemos alguna condición </b> (por ejemplo, eres egresado, o quieres comenzar a postear ofertas), envia una solicitud de validación al correo laboratorio@eim.esc.edu.ar (o al número de Whatsapp +5492615868765). Basta con un smile enojado.
-    </p>  
+    </p>
 <% end %>
 
 
 
 <script>
-  function goBack() { window.history.back() } 
+  function goBack() { window.history.back() }
 </script>
 
-<% if session[:user_id] %>  
+<% if session[:user_id] %>
   <input type="button" value="Volver" onclick="goBack()">
-  <% if usuarioLogueado.manager == false %>   
+  <% if usuarioLogueado.manager == false %>
    <%= link_to 'Edit', edit_user_path(@user) %> |
   <% end %>
 <% end %>
 
-<% if session[:user_id] == nil %>  
+<% if session[:user_id] == nil %>
   <%= link_to "Volver a Home Page", '/' %>
 <% end %>
 
