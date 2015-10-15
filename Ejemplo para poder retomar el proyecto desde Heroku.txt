@@ -13,3 +13,18 @@ bundle exec db:seed
 Recordar refrescar github
 
 Ya con eso se puede empezar a programar
+
+Para subir simultaneamente a Heroku y a GitHub, poner en .git/config
+[core]
+  repositoryformatversion = 0.
+  filemode = true
+  bare = false
+  logallrefupdates = true
+[remote "origin"]
+  url = git@heroku.com:dpp1.git
+  url = git@github.com:karancho/Pasantes.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
