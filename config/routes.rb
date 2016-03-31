@@ -21,19 +21,19 @@ Pasantes::Application.routes.draw do
   resources :internships
   resources :companies
 
-  get '/internships/:id/postularme', :to => 'internships#postularme'  
-  
+  get '/internships/:id/postularme', :to => 'internships#postularme'
+
     # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-  
+
   # Sample of named route:
   #match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-  
-  #Este me sirvio mas que el anterior get cuando tuve que incluir un  :confirm => '¿Te ha llamado el empresario y has pasado la entrevista ?' 
+
+  #Este me sirvio mas que el anterior get cuando tuve que incluir un  :confirm => '¿Te ha llamado el empresario y has pasado la entrevista ?'
   match 'contracts/:id/redactarme' => 'contracts#redactarme', :as => :redactarme
-  
+
   match 'contracts/:id/imprimirmeci' => 'contracts#imprimirmeci', :as => :imprimirmeci
   match 'contracts/:id/imprimirmecm' => 'contracts#imprimirmecm', :as => :imprimirmecm
 

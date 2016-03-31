@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
 
   #Activando autorizacion por CONTROLADOR, no GENERAL
   before_filter :authorize
-  
+
   # GET /contracts
   # GET /contracts.json
   def index
@@ -107,36 +107,36 @@ class ContractsController < ApplicationController
 
   def redactarme
     #debugger
-    @contract = Contract.new 
+    @contract = Contract.new
 
     @internship = Internship.find(params[:id])
-        
+
     @contract.internship_id = @internship.id #proveniente de internships index
-    
+
     elpelotudodecarrizo = User.find(session[:user_id])
-    
+
     elpelotudodecarrizo.contracts.each do |i|
       i.destroy
     end
 
-    @contract.user_id = elpelotudodecarrizo.id 
-    
+    @contract.user_id = elpelotudodecarrizo.id
+
     @contract.save
   end
-  
+
   def imprimirmeci
     @contract = Contract.find_by_user_id(params[:id])
     respond_to do |format|
           format.html { redirect_to @contract }
-          format.json { head :no_content }  
-    end    
-  end  
-  
-  def imprimirmecm    
+          format.json { head :no_content }
+    end
+  end
+
+  def imprimirmecm
     @contract = Contract.find_by_user_id(params[:id])
     respond_to do |format|
-          format.html { render :action => "cm" }  
-    end    
-  end  
-  
+          format.html { render :action => "cm" }
+    end
+  end
+
 end
